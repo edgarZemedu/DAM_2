@@ -1,5 +1,6 @@
 
-ls -la (para ver la lista de carpetas)
-git log (ver las últimas modificaciónes "--oneline")
-git branch x (crear una nueva rama o branch "master o x ")
-git checkout x (cambiar de rama o branch "master o x ")
+-> ls -la (para ver la lista de carpetas)
+-> git log (ver las últimas modificaciónes "--oneline")
+-> git branch x (crear una nueva rama o branch "master o x ")
+-> git checkout x (cambiar de rama o branch "master o x ")
+-> git merge x (para fusionar las dos ramas y desde la rama master)
