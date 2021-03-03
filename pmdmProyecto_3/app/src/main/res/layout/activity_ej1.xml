@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ej1Activity">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="FRUTAS"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSubtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Teclea el nombre de una fruta"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitulo"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/tvTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+
+    <EditText
+        android:id="@+id/etNombreFruta"
+        android:layout_width="80dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="76dp"
+        android:ems="10"
+        android:hint="Fruta"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/tvSubtitulo"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/tvSubtitulo"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitulo" />
+
+    <Button
+        android:id="@+id/bAñadir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="AÑADIR "
+        app:layout_constraintStart_toStartOf="@+id/tvSubtitulo"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreFruta" />
+
+    <Button
+        android:id="@+id/bAcabar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="ACABAR"
+        app:layout_constraintBottom_toBottomOf="@+id/bAñadir"
+        app:layout_constraintStart_toEndOf="@+id/bAñadir"
+        app:layout_constraintTop_toTopOf="@+id/bAñadir"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="64dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="144dp"
+
+        android:entries="@array/arrayFrutas"
+
+        app:layout_constraintEnd_toEndOf="@+id/bAcabar"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/bAñadir"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreFruta" />
+</androidx.constraintlayout.widget.ConstraintLayout>

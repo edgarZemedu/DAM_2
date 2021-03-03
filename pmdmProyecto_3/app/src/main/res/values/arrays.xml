@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arrayMenu">
+        <item name="activity2" type="">Activity 2</item>
+        <item name="activity3" type="">Activity 3</item>
+        <item name="activity4" type="">Activity 4</item>
+    </string-array>
+    <string-array name="arrayFrutas">
+
+    </string-array>
+</resources>

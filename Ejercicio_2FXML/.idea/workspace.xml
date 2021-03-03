@@ -48,6 +48,14 @@
     <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
@@ -63,6 +71,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -72,12 +81,17 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Cliente_Servidor/CS_TCP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\I B M\Documents\zemedu\DAM\Ejercicio_2FXML\src\sample\FXML" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -179,41 +193,76 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="120" y="66" key="#Project_Structure" timestamp="1613434426824">
+    <state x="120" y="66" key="#Project_Structure" timestamp="1614101496214">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="120" y="66" key="#Project_Structure/0.0.1280.984@0.0.1280.984" timestamp="1613434426824" />
+    <state x="120" y="66" key="#Project_Structure/0.0.1280.984@0.0.1280.984" timestamp="1614101496214" />
     <state x="94" y="147" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614039474254">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="94" y="147" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.984@0.0.1280.984" timestamp="1614039474254" />
-    <state x="445" y="198" key="#com.intellij.ide.util.MemberChooser" timestamp="1614042206172">
+    <state x="415" y="294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614196629967">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="445" y="198" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984@0.0.1280.984" timestamp="1614042206172" />
-    <state x="420" y="247" key="FileChooserDialogImpl" timestamp="1614094171705">
+    <state x="415" y="294" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.984@0.0.1280.984" timestamp="1614196629967" />
+    <state x="445" y="198" key="#com.intellij.ide.util.MemberChooser" timestamp="1614171229748">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="420" y="247" key="FileChooserDialogImpl/0.0.1280.984@0.0.1280.984" timestamp="1614094171705" />
-    <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1614042261509">
+    <state x="445" y="198" key="#com.intellij.ide.util.MemberChooser/0.0.1280.984@0.0.1280.984" timestamp="1614171229748" />
+    <state x="415" y="203" key="FileChooserDialogImpl" timestamp="1614192189170">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1614042261509" />
-    <state width="1237" height="263" key="GridCell.Tab.0.center" timestamp="1614042261509">
+    <state x="415" y="203" key="FileChooserDialogImpl/0.0.1280.984@0.0.1280.984" timestamp="1614192189170" />
+    <state width="875" height="321" key="GridCell.Tab.0.bottom" timestamp="1614257829304">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1614042261509" />
-    <state width="1237" height="263" key="GridCell.Tab.0.left" timestamp="1614042261508">
+    <state width="875" height="321" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state width="875" height="321" key="GridCell.Tab.0.center" timestamp="1614257829304">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1614042261508" />
-    <state width="1237" height="263" key="GridCell.Tab.0.right" timestamp="1614042261509">
+    <state width="875" height="321" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state width="875" height="321" key="GridCell.Tab.0.left" timestamp="1614257829304">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1614042261509" />
-    <state x="141" y="133" key="SettingsEditor" timestamp="1614041144707">
+    <state width="875" height="321" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state width="875" height="321" key="GridCell.Tab.0.right" timestamp="1614257829304">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="141" y="133" key="SettingsEditor/0.0.1280.984@0.0.1280.984" timestamp="1614041144707" />
+    <state width="875" height="321" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state width="875" height="321" key="GridCell.Tab.1.bottom" timestamp="1614257829304">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="875" height="321" key="GridCell.Tab.1.bottom/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state width="875" height="321" key="GridCell.Tab.1.center" timestamp="1614257829304">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="875" height="321" key="GridCell.Tab.1.center/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state width="875" height="321" key="GridCell.Tab.1.left" timestamp="1614257829304">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="875" height="321" key="GridCell.Tab.1.left/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state width="875" height="321" key="GridCell.Tab.1.right" timestamp="1614257829304">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="875" height="321" key="GridCell.Tab.1.right/0.0.1280.984@0.0.1280.984" timestamp="1614257829304" />
+    <state x="141" y="133" key="SettingsEditor" timestamp="1614198339573">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="141" y="133" key="SettingsEditor/0.0.1280.984@0.0.1280.984" timestamp="1614198339573" />
+    <state x="58" y="277" width="896" height="724" key="dock-window-1" timestamp="1614170397329">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="58" y="277" width="896" height="724" key="dock-window-1/0.0.1280.984@0.0.1280.984" timestamp="1614170397329" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
