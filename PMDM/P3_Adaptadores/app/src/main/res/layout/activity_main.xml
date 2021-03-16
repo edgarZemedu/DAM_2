@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="50dp"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/ej8_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toEj01Activity"
+        android:text="Ejercicio 1"
+        app:layout_constraintBottom_toTopOf="@+id/ej10_button"
+        app:layout_constraintEnd_toEndOf="@+id/ej10_button"
+        app:layout_constraintStart_toStartOf="@+id/ej10_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ej10_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toEj02Activity"
+        android:text="Ejercicio 2"
+        app:layout_constraintBottom_toTopOf="@+id/ej15a_button"
+        app:layout_constraintEnd_toEndOf="@+id/ej15a_button"
+        app:layout_constraintStart_toStartOf="@+id/ej15a_button"
+        app:layout_constraintTop_toBottomOf="@+id/ej8_button" />
+
+    <Button
+        android:id="@+id/ej15a_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toEj03Activity"
+        android:text="Ejercicio 3"
+        app:layout_constraintBottom_toTopOf="@+id/ej15b_button"
+        app:layout_constraintEnd_toEndOf="@+id/ej15b_button"
+        app:layout_constraintStart_toStartOf="@+id/ej15b_button"
+        app:layout_constraintTop_toBottomOf="@+id/ej10_button" />
+
+    <Button
+        android:id="@+id/ej15b_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ejercicio 4"
+        android:onClick="toEj04Activity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ej15a_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>
