@@ -205,7 +205,6 @@ public class Principal {
                             System.out.println(ex.getMessage());
                         }                        
                     break;
-
                     case 6:
                         System.out.println("Hasta luego!!!");
                         finalizar = true;
