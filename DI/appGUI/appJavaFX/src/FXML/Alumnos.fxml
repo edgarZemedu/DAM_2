@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="546.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appjavafx.AddAlumnos">
+    <stylesheets>
+        <URL value="@alumnos.css" />
+    </stylesheets>
+   <children>
+      <MenuBar prefHeight="27.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Alumnos del x">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Salir" />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="tablaAlumnos" layoutX="6.0" layoutY="85.0" prefHeight="266.0" prefWidth="585.0">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="137.0" text="Nombre" />
+          <TableColumn fx:id="colApellidos" prefWidth="313.0" text="Apellidos" />
+            <TableColumn fx:id="colEdad" prefWidth="149.0" text="Edad" />
+        </columns>
+      </TableView>
+      <Label layoutX="289.0" layoutY="49.0" text="Filtrar por nombre:" />
+      <TextField fx:id="idFiltrar" layoutX="415.0" layoutY="45.0" onAction="#filtrarNombre" />
+      <Button layoutX="47.0" layoutY="362.0" mnemonicParsing="false" onAction="#añadirAlumno" text="Añadir alumno" />
+      <Button layoutX="261.0" layoutY="362.0" mnemonicParsing="false" onAction="#modificarAlumno" text="Modificar" />
+      <Button layoutX="449.0" layoutY="362.0" mnemonicParsing="false" onAction="#eliminarAlumno" text="Eliminar" />
+   </children>
+</AnchorPane>

@@ -11,29 +11,16 @@ import java.util.ArrayList;
  *
  * @author a18zemedufc
  */
-class Alumnos extends Modulos /*implements Cursos*/{
-    
-    private int idA;
-    private String nombreA;
-    private int edad;
-    
-    public Alumnos(int id, String nombre, ArrayList<Modulos> modulos) {
-        super(id, nombre, modulos);
-    }
+class Alumnos extends Modulos /*implements Cursos*/ {
 
-    public Alumnos(int idA, String nombreA, int edad, int id, String nombre, ArrayList<Modulos> modulos) {
-        super(id, nombre, modulos);
-        this.idA = idA;
+    private String nombreA, apellidos;
+    private int edad;
+
+    public Alumnos(String nombreA, String apellidos, int edad) {
+        super();
+        this.apellidos = apellidos;
         this.nombreA = nombreA;
         this.edad = edad;
-    }
-
-    public int getIdA() {
-        return idA;
-    }
-
-    public void setIdA(int idA) {
-        this.idA = idA;
     }
 
     public String getNombreA() {
@@ -44,6 +31,14 @@ class Alumnos extends Modulos /*implements Cursos*/{
         this.nombreA = nombreA;
     }
 
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
     public int getEdad() {
         return edad;
     }
@@ -51,8 +46,5 @@ class Alumnos extends Modulos /*implements Cursos*/{
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    
-    
-    
-    
+
 }

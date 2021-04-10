@@ -12,13 +12,34 @@ import java.util.ArrayList;
  * @author a18zemedufc
  */
 class Modulos extends Cursos {
-    private int idM;
+    
     private String nombreM;
     private ArrayList<Alumnos> alumnos;
-
-    public Modulos(int id, String nombre, ArrayList<Modulos> modulos) {
-        super(id, nombre, modulos);
+    
+    public Modulos(){        
+    }
+    
+    public Modulos(String nombreM,ArrayList<Alumnos> alumnos) {
+        super();
+        this.nombreM = nombreM;
+        
     }    
+
+    public String getNombreM() {
+        return nombreM;
+    }
+
+    public void setNombreM(String nombreM) {
+        this.nombreM = nombreM;
+    }
+
+    public ArrayList<Alumnos> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(ArrayList<Alumnos> alumnos) {
+        this.alumnos = alumnos;
+    }
     
     
 }

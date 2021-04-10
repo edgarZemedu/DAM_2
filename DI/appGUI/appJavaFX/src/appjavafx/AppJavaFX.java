@@ -16,15 +16,15 @@ import javafx.stage.Stage;
  * @author a18zemedufc
  */
 public class AppJavaFX extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
-        
-        Parent root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
-        Scene scene = new Scene(root);        
+
+        Parent root = FXMLLoader.load(getClass().getResource("/FXML/Cursos.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     /**
@@ -33,5 +33,5 @@ public class AppJavaFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

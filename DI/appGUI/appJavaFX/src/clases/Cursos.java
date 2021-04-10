@@ -12,31 +12,25 @@ import java.util.ArrayList;
  * @author a18zemedufc
  */
 public class Cursos {
-    
-    private int id;
-    private String nombre;
-    private ArrayList<Modulos> modulos;
 
-    public Cursos(int id, String nombre, ArrayList<Modulos> modulos) {
-        this.id = id;
-        this.nombre = nombre;
+    private String nombreC;
+    private ArrayList<Modulos> modulos;
+    
+    public Cursos(){
+        
+    }
+    
+    public Cursos(String nombreC, ArrayList<Modulos> modulos) {
+        this.nombreC = nombreC;
         this.modulos = modulos;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNombre() {
-        return nombre;
+        return nombreC;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombreC = nombre;
     }
 
     public ArrayList<Modulos> getModulos() {
@@ -46,7 +40,5 @@ public class Cursos {
     public void setModulos(ArrayList<Modulos> modulos) {
         this.modulos = modulos;
     }
-    
-    
-    
+
 }
