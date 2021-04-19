@@ -6,8 +6,11 @@
 package appjavafx;
 
 import clases.Cursos;
+import clases.Modulos;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,24 +35,35 @@ public class FXMLController implements Initializable {
 
     @FXML // fx:id="comboCurso"
     private ComboBox<String> comboCurso; // Value injected by FXMLLoader
-    private ObservableList<String> listaCursos;
+    private ObservableList<String> listObsC;
+    private List<Cursos> listCursos;
+    private List<Modulos> listModulos;
     private Cursos c;
+    private int posicionC;
 
     @FXML
     private void añadirCurso(ActionEvent event) throws IOException {
         c = new Cursos();
         String nombreCurso = JOptionPane.showInputDialog(null, "Escribe el nombre del curso a crear", "Entrada", JOptionPane.QUESTION_MESSAGE);
 
-        if (!listaCursos.contains(nombreCurso) || !nombreCurso.isEmpty()) {
-            listaCursos.add(nombreCurso);
-            comboCurso.setItems(listaCursos);
-            c.setNombre(nombreCurso);
+        if (!listObsC.contains(nombreCurso) || !nombreCurso.isEmpty()) {
+            listObsC.add(nombreCurso);
+            comboCurso.setItems(listObsC);
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Modulos.fxml"));
             Parent newRoot = loader.load();
             
             AddModulos controller = loader.getController();
-            controller.initAtributos(nombreCurso); 
+            controller.initAtributos(nombreCurso,listModulos); 
+            c.setNombre(nombreCurso);
+            c.setModulos(listModulos);
+            
+            listCursos.add(c);
+            for (int i = 0; i < listCursos.size(); i++) {
+                if (listCursos.equals(c)) {
+                    posicionC = i;
+                }
+            }
             
             Scene scene = new Scene(newRoot);
             Stage stage = new Stage();
@@ -78,9 +92,9 @@ public class FXMLController implements Initializable {
             Parent newRoot = loader.load();
             
             AddModulos getController = loader.getController();
-            for (int i = 0; i < listaCursos.size(); i++) {
-                if (listaCursos.get(i).equals(nombreC)) {
-                    getController.initAtributos(nombreC);
+            for (int i = 0; i < listObsC.size(); i++) {
+                if (listObsC.get(i).equals(nombreC)) {
+                    //getController.initAtributos(nombreC);
                 }                
             }
             Scene scene = new Scene(newRoot);
@@ -127,7 +141,8 @@ public class FXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listaCursos = FXCollections.observableArrayList();
+        listObsC = FXCollections.observableArrayList();
+        listCursos = new ArrayList<>();
         comboCurso.setPromptText("Selecciona un curso");
 
     }

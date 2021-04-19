@@ -6,6 +6,7 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class Cursos {
 
     private String nombreC;
-    private ArrayList<Modulos> modulos;
+    private List<Modulos> modulos;
     
     public Cursos(){
         
@@ -33,12 +34,16 @@ public class Cursos {
         this.nombreC = nombre;
     }
 
-    public ArrayList<Modulos> getModulos() {
+    public List<Modulos> getModulos() {
         return modulos;
     }
 
-    public void setModulos(ArrayList<Modulos> modulos) {
+    public void setModulos(List<Modulos> modulos) {
         this.modulos = modulos;
+    }
+    //para añadir
+    public void addModulos(Modulos m){
+        this.modulos.add(m);
     }
 
 }

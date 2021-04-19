@@ -9,6 +9,7 @@ import clases.Alumnos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,19 +50,21 @@ public class AddAlumnos implements Initializable {
     private TextField idFiltrar;
     private ObservableList<Alumnos> listObs;
     private FilteredList<Alumnos> listFilter;
-    private Alumnos a;
+    private List<Alumnos> listaAlumnos;
 
     @FXML
     void añadirAlumno(ActionEvent event) throws IOException {
-
+       
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
         Parent newRoot = loader.load();
 
         AñadirA controllerA = loader.getController();
         controllerA.initA(listObs, listFilter);
-
+        
         tablaAlumnos.setItems(listFilter);
-
+        tablaAlumnos.refresh();
+         
         Scene scene = new Scene(newRoot);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -78,13 +81,18 @@ public class AddAlumnos implements Initializable {
 
             AñadirA ac = fxmlLoader.getController();
 
-            ac.initA(listObs, listFilter);
-
+            ac.modificarA(tablaAlumnos);
+            tablaAlumnos.setItems(listObs);
+            tablaAlumnos.refresh();
+            
             Scene scene = new Scene(par);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+            
+            
+            
         }else{
             JOptionPane.showInternalMessageDialog(null, "Debes seleccionar Alumno");
         }
@@ -93,8 +101,10 @@ public class AddAlumnos implements Initializable {
 
     @FXML
     void eliminarAlumno(ActionEvent event) {
+        Alumnos a = new Alumnos();        
         a = tablaAlumnos.getSelectionModel().getSelectedItem();
         listObs.remove(a);
+        tablaAlumnos.refresh();
     }
 
     @FXML
@@ -117,7 +127,8 @@ public class AddAlumnos implements Initializable {
         });
     }
 
-    public void init(String nombreModulo) {
+    public void init(String nombreModulo,List<Alumnos> listaAlumnos) {
+        //listaAlumnos.ad
         menuModulo.setText("Alumnos del módulo de " + nombreModulo);
     }
 
@@ -130,10 +141,6 @@ public class AddAlumnos implements Initializable {
         colApellidos.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("apellidos"));
         colEdad.setCellValueFactory(new PropertyValueFactory<Alumnos, Integer>("edad"));
 
-    }
-
-    public ArrayList<Alumnos> getAlumno() {
-        return (ArrayList<Alumnos>) listObs;
     }
 
 }

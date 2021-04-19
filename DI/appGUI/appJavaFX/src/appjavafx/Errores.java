@@ -44,11 +44,18 @@ public class Errores {
         }
     }
     //objeto vacio
-    public static void getObject(Alumnos a) {
+    public static void getObject() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
         alert.setContentText("La persona introducida ya está en la tabla");
+        alert.showAndWait();
+    }
+    public static void noHay() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("No existe ese empleado");
         alert.showAndWait();
     }
 }

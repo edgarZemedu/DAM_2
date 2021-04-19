@@ -44,36 +44,45 @@ public class AddModulos implements Initializable {
     private Button bModificar;
     @FXML
     private Button bEliminar;
-    private ObservableList<String> listaModulos;
+    private ObservableList<String> listObsM;
     private Modulos m;
-    private ArrayList<Modulos> listM;
-    
+    private List<Modulos> listModulos;
+    private List<Alumnos> listAlumnos;
+    private int posicionM;
 
     @FXML
     void añadirModulo(ActionEvent event) throws IOException {
         m = new Modulos();
+
         String nombreModulo = JOptionPane.showInputDialog(null, "Escribe el nombre del módulo a crear", "Entrada", JOptionPane.QUESTION_MESSAGE);
         //Modulos ms = new Modulos();
-        if (!listaModulos.contains(nombreModulo) || !nombreModulo.isEmpty()) {
-            listaModulos.add(nombreModulo);
-            comboModulos.setItems(listaModulos);
-            
-            //añadimos el nombre a nuevo modulo
-            m.setNombreM(nombreModulo);
-            //pasamos a un arraList y seteamos en la superclase
-            m.setModulos(listM);
-            
+        if (!listObsM.contains(nombreModulo) || !nombreModulo.isEmpty()) {
+            listObsM.add(nombreModulo);
+            comboModulos.setItems(listObsM);
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
             Parent newRoot = loader.load();
 
             AddAlumnos controller = loader.getController();
-            controller.init(nombreModulo);
+            controller.init(nombreModulo,listAlumnos);
+            
+            m.setNombreM(nombreModulo);
+            m.setAlumnos(listAlumnos);
 
+            listModulos.add(m);
+            for (int i = 0; i < listModulos.size(); i++) {
+                if (listModulos.equals(m)) {
+                    posicionM = i;
+                }
+            }
+            
             Scene scene = new Scene(newRoot);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-
+            ///para gurdar el módulo en cursos
+            listModulos.add(m);
+            m.setModulos(listModulos);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -96,9 +105,9 @@ public class AddModulos implements Initializable {
             Parent newRoot = loader.load();
 
             AddAlumnos getController = loader.getController();
-            for (int i = 0; i < listaModulos.size(); i++) {
-                if (listaModulos.get(i).equals(nombreM)) {
-                    getController.init(nombreM);
+            for (int i = 0; i < listObsM.size(); i++) {
+                if (listObsM.get(i).equals(nombreM)) {
+                    getController.init(nombreM,listAlumnos);
                 }
             }
             Scene scene = new Scene(newRoot);
@@ -130,11 +139,13 @@ public class AddModulos implements Initializable {
 
     }
 
-    public void initAtributos(String nombreCurso) {
-        listaModulos = FXCollections.observableArrayList();
+    public void initAtributos(String nombreCurso, List<Modulos> listModulos) {
+        listObsM = FXCollections.observableArrayList();
+        listModulos = new ArrayList<>();
         menuTitulo.setText("Modulos de " + nombreCurso);
     }
-    public Modulos getModulo(){
+
+    public Modulos getModulo() {
         return m;
-    } 
+    }
 }
