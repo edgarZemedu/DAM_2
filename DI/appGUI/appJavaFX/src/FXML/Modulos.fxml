@@ -5,25 +5,21 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="367.0" prefWidth="541.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appjavafx.AddModulos">
+<AnchorPane id="AnchorPane" prefHeight="367.0" prefWidth="541.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appjavafx.AddModulos">
     <stylesheets>
         <URL value="@modulos.css" />
     </stylesheets>
    <children>
       <MenuBar prefHeight="27.0" prefWidth="541.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Modulos del x">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Salir" />
-               </items></Menu>
+          <Menu fx:id="menuTitulo" mnemonicParsing="false" text="Modulos del x" />
         </menus>
       </MenuBar>
-      <ComboBox layoutX="187.0" layoutY="145.0" onAction="#selectModulo" prefWidth="150.0" />
-      <Button layoutX="50.0" layoutY="324.0" mnemonicParsing="false" onAction="#añadirModulo" text="Añadir módulo" />
-      <Button layoutX="232.0" layoutY="324.0" mnemonicParsing="false" onAction="#modificarModulos" text="Modificar" AnchorPane.bottomAnchor="49.0" AnchorPane.topAnchor="324.0" />
-      <Button layoutX="381.0" layoutY="324.0" mnemonicParsing="false" onAction="#EliminarModulos" prefHeight="24.0" prefWidth="78.0" text="Eliminar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="82.0" />
+      <ComboBox fx:id="comboModulos" layoutX="187.0" layoutY="145.0" onAction="#selectModulo" prefWidth="150.0" />
+      <Button fx:id="bAñadir" layoutX="50.0" layoutY="324.0" mnemonicParsing="false" onAction="#añadirModulo" text="Añadir módulo" />
+      <Button fx:id="bModificar" layoutX="232.0" layoutY="324.0" mnemonicParsing="false" onAction="#modificarModulos" text="Modificar" AnchorPane.bottomAnchor="49.0" AnchorPane.topAnchor="324.0" />
+      <Button fx:id="bEliminar" layoutX="381.0" layoutY="324.0" mnemonicParsing="false" onAction="#eliminarModulos" prefHeight="24.0" prefWidth="78.0" text="Eliminar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="82.0" />
    </children>
 </AnchorPane>

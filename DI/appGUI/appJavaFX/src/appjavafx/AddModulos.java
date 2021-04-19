@@ -5,27 +5,118 @@
  */
 package appjavafx;
 
+import clases.Alumnos;
+import clases.Cursos;
+import clases.Modulos;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Menu;
+import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author edgar
  */
-public class AddModulos {
+public class AddModulos implements Initializable {
+
+    @FXML
+    private Menu menuTitulo;
+    @FXML
+    private ComboBox<String> comboModulos;
+    @FXML
+    private Button bAñadir;
+    @FXML
+    private Button bModificar;
+    @FXML
+    private Button bEliminar;
+    private ObservableList<String> listaModulos;
+    private Modulos m;
+    private ArrayList<Modulos> listM;
     
-     @FXML
-    void EliminarModulos(ActionEvent event) {
 
+    @FXML
+    void añadirModulo(ActionEvent event) throws IOException {
+        m = new Modulos();
+        String nombreModulo = JOptionPane.showInputDialog(null, "Escribe el nombre del módulo a crear", "Entrada", JOptionPane.QUESTION_MESSAGE);
+        //Modulos ms = new Modulos();
+        if (!listaModulos.contains(nombreModulo) || !nombreModulo.isEmpty()) {
+            listaModulos.add(nombreModulo);
+            comboModulos.setItems(listaModulos);
+            
+            //añadimos el nombre a nuevo modulo
+            m.setNombreM(nombreModulo);
+            //pasamos a un arraList y seteamos en la superclase
+            m.setModulos(listM);
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
+            Parent newRoot = loader.load();
+
+            AddAlumnos controller = loader.getController();
+            controller.init(nombreModulo);
+
+            Scene scene = new Scene(newRoot);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("1.- Ya tienes en la lisa ese módulo"
+                    + "\n2.- Debes introducir el modulo");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    void añadirModulo(ActionEvent event) {
+    void modificarModulos(ActionEvent event) throws IOException {
+        String nombreM = null;
 
+        if (comboModulos.getValue().toString() != null && !comboModulos.getValue().toString().isEmpty()) {
+
+            nombreM = comboModulos.getValue().toString();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
+            Parent newRoot = loader.load();
+
+            AddAlumnos getController = loader.getController();
+            for (int i = 0; i < listaModulos.size(); i++) {
+                if (listaModulos.get(i).equals(nombreM)) {
+                    getController.init(nombreM);
+                }
+            }
+            Scene scene = new Scene(newRoot);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Primero selecciona el Módulo");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    void modificarModulos(ActionEvent event) {
+    void eliminarModulos(ActionEvent event) {
 
     }
 
@@ -33,4 +124,17 @@ public class AddModulos {
     void selectModulo(ActionEvent event) {
 
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+    }
+
+    public void initAtributos(String nombreCurso) {
+        listaModulos = FXCollections.observableArrayList();
+        menuTitulo.setText("Modulos de " + nombreCurso);
+    }
+    public Modulos getModulo(){
+        return m;
+    } 
 }

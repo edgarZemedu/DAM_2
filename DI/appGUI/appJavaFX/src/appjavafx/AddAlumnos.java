@@ -5,51 +5,135 @@
  */
 package appjavafx;
 
+import clases.Alumnos;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Menu;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.util.Callback;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author edgar
  */
-public class AddAlumnos {
-    
-    @FXML
-    private TableView<?> tablaAlumnos;
-    
-    @FXML
-    private TableColumn<?, ?> colNombre;
+public class AddAlumnos implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colApellidos;
-
+    private Menu menuModulo;
     @FXML
-    private TableColumn<?, ?> colEdad;
-
+    private TableView<Alumnos> tablaAlumnos;
+    @FXML
+    private TableColumn<Alumnos, String> colNombre;
+    @FXML
+    private TableColumn<Alumnos, String> colApellidos;
+    @FXML
+    private TableColumn<Alumnos, Integer> colEdad;
     @FXML
     private TextField idFiltrar;
+    private ObservableList<Alumnos> listObs;
+    private FilteredList<Alumnos> listFilter;
+    private Alumnos a;
 
     @FXML
-    void añadirAlumno(ActionEvent event) {
+    void añadirAlumno(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
+        Parent newRoot = loader.load();
+
+        AñadirA controllerA = loader.getController();
+        controllerA.initA(listObs, listFilter);
+
+        tablaAlumnos.setItems(listFilter);
+
+        Scene scene = new Scene(newRoot);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
+    @FXML
+    void modificarAlumno(ActionEvent event) throws IOException {
+
+        if (tablaAlumnos.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
+            Parent par = fxmlLoader.load();
+
+            AñadirA ac = fxmlLoader.getController();
+
+            ac.initA(listObs, listFilter);
+
+            Scene scene = new Scene(par);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }else{
+            JOptionPane.showInternalMessageDialog(null, "Debes seleccionar Alumno");
+        }
 
     }
 
     @FXML
     void eliminarAlumno(ActionEvent event) {
-
+        a = tablaAlumnos.getSelectionModel().getSelectedItem();
+        listObs.remove(a);
     }
 
     @FXML
     void filtrarNombre(ActionEvent event) {
+        idFiltrar.textProperty().addListener((observable, oldValue, newValue) -> {
+            listFilter.setPredicate(Alumnos -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (Alumnos.getNombre().toLowerCase().startsWith(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            });
+            //tabla.setItems(listaFilter);
+        });
+    }
+
+    public void init(String nombreModulo) {
+        menuModulo.setText("Alumnos del módulo de " + nombreModulo);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        listObs = FXCollections.observableArrayList();
+        listFilter = new FilteredList(listObs);
+
+        colNombre.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("nombreA"));
+        colApellidos.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("apellidos"));
+        colEdad.setCellValueFactory(new PropertyValueFactory<Alumnos, Integer>("edad"));
 
     }
 
-    @FXML
-    void modificarAlumno(ActionEvent event) {
-
+    public ArrayList<Alumnos> getAlumno() {
+        return (ArrayList<Alumnos>) listObs;
     }
-    
+
 }

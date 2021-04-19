@@ -7,9 +7,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appjavafx.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appjavafx.FXMLController">
     <children>
         <MenuBar prefHeight="27.0" prefWidth="520.0">
             <menus>
@@ -32,19 +31,11 @@
                 </Menu>
             </menus>
         </MenuBar>      
-        <Label layoutX="84.0" layoutY="50.0" text="Bienvenido al Curso Académico" textAlignment="CENTER" underline="true">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </Label>
-        <Label layoutX="100.0" layoutY="127.0" minHeight="16" minWidth="69" text="Seleccionar Curso">
-            <font>
-                <Font name="System Bold" size="13.0" />
-            </font>
-        </Label>
+        <Label layoutX="172.0" layoutY="58.0" text="Bienvenido al Curso Académico" textAlignment="CENTER" underline="true" />
+        <Label layoutX="116.0" layoutY="127.0" minHeight="16" minWidth="69" text="Seleccionar Curso" />
         <Button layoutX="52.0" layoutY="312.0" mnemonicParsing="false" onAction="#añadirCurso" text="Añadir curso" />
         <Button layoutX="222.0" layoutY="312.0" mnemonicParsing="false" onAction="#modificarCurso" text="Modificar" />
-        <Button layoutX="369.0" layoutY="312.0" mnemonicParsing="false" onAction="#eliminarCursi" text="Eliminar" />
-        <ComboBox fx:id="comboCurso" layoutX="239.0" layoutY="123.0" onAction="#selectCombo" prefWidth="150.0" />
+        <Button layoutX="369.0" layoutY="312.0" mnemonicParsing="false" onAction="#eliminarCurso" text="Eliminar" />
+        <ComboBox fx:id="comboCurso" layoutX="222.0" layoutY="123.0" onAction="#selectCombo" prefWidth="150.0" />
     </children>
 </AnchorPane>

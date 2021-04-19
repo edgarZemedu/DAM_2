@@ -11,9 +11,9 @@ import java.util.ArrayList;
  *
  * @author a18zemedufc
  */
-class Modulos extends Cursos {
+public class Modulos extends Cursos {
     
-    private String nombreM;
+    private String nombreM;    
     private ArrayList<Alumnos> alumnos;
     
     public Modulos(){        
@@ -21,8 +21,7 @@ class Modulos extends Cursos {
     
     public Modulos(String nombreM,ArrayList<Alumnos> alumnos) {
         super();
-        this.nombreM = nombreM;
-        
+        this.nombreM = nombreM;        
     }    
 
     public String getNombreM() {

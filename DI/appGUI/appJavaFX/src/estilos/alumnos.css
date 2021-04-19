@@ -1,7 +1,11 @@
-/*
- * Empty Stylesheet file.
- */
 
-.mainFxmlClass {
-
+.fondo{
+    -fx-background-color: #00ccff;
+    
+}
+.boton{
+    -fx-text-fill: #cc0000;
+}
+.boton2{
+    -fx-background-color: #33ff33;
 }
