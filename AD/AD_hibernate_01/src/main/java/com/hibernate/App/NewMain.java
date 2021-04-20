@@ -23,19 +23,19 @@ public class NewMain {
         int idAEliminar = 7;
 
         //Creamos tres instancias de Contacto
-//        Propietario pro1 = new Propietario("12345612","Propietario1", "juan","juan", "756438456");
-//        Propietario pro2 = new Propietario("12345644","Propietario2", "juan","juan", "756345456");
-//        Propietario pro3 = new Propietario("12345633","Propietario2", "juan", "juan","153438456");
-//
-//        //Guardamos las tres instancias
-//        //Guardamos el id del contacto1 para usarlo posteriormente
-//        idAEliminar = operaciones.guardaContacto(pro1);
-//        operaciones.guardaContacto(pro2);
-//        operaciones.guardaContacto(pro3);
-//
-//        //Modificamos el contacto2 y lo actualizamos
-//        pro2.setNombre("pro2modificado");
-//        operaciones.actualizaContacto(pro2);
+        Propietario pro1 = new Propietario("12345612","Propietario1", "juan","juan", "756438456");
+        Propietario pro2 = new Propietario("12345644","Propietario2", "juan","juan", "756345456");
+        Propietario pro3 = new Propietario("12345633","Propietario2", "juan", "juan","153438456");
+
+        //Guardamos las tres instancias
+        //Guardamos el id del contacto1 para usarlo posteriormente
+        idAEliminar = operaciones.guardaContacto(pro1);
+        operaciones.guardaContacto(pro2);
+        operaciones.guardaContacto(pro3);
+
+        //Modificamos el contacto2 y lo actualizamos
+        pro2.setNombre("pro2modificado");
+        operaciones.actualizaContacto(pro2);
 
         //Recuperamos el contacto1 de la BD
         //idAEliminar = 1;
