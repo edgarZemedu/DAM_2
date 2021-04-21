@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -39,44 +40,45 @@ public class AñadirA implements Initializable {
 
     private ObservableList<Alumnos> listObs;
     private FilteredList<Alumnos> listaFilter;
-    private Alumnos a = new Alumnos();
-    private List<Alumnos> arrayPadre;
+    private Alumnos a;
+    //private List<Alumnos> arrayPadre;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        listObs = FXCollections.observableArrayList();
+        
+    }
+    public void initA(ObservableList<Alumnos> listObs,Alumnos a) {
+        this.listObs = listObs;
+        this.a = a;
+
     }
 
-    public void initA(ObservableList<Alumnos> listObs, FilteredList<Alumnos> listaFilter) {
-        this.listObs = listObs;
-        this.listaFilter = listaFilter;
+    public void initA(ObservableList<Alumnos> listObs) {
+        this.a = a;
 
     }
 
     @FXML
     void onBotonGuardar(ActionEvent event) {
-        a = new Alumnos();
-        Errores.tfVacio(tfNombre.getText(), tfApellidos.getText());
-
-        //Alumnos newA = new Alumnos();
-        a.setNombreA(tfNombre.getText());
-        a.setApellidos(tfApellidos.getText());
-
+        Alumnos newA = new Alumnos();
+        
+        Errores.tfVacio(tfNombre.getText(), tfApellidos.getText());     
         Errores.tfVacioInteger(tfEdad.getText());//Control de entrada de datos
+        
+        newA.setNombreA(tfNombre.getText());
+        newA.setApellidos(tfApellidos.getText());
 
-        a.setEdad(Integer.parseInt(tfEdad.getText()));
+        newA.setEdad(Integer.parseInt(tfEdad.getText()));
 
-        if (listObs.contains(a)) {
+        if (listObs.contains(newA)) {
             Errores.getObject();
-        } else {
-            //a = newA;
-            listObs.add(a);
-            //lo metemos en un arrayList
-            arrayPadre.add(a);
-
+        } else {   
+            //insertar
+            a = newA; 
         }
         Stage stg = (Stage) tfApellidos.getScene().getWindow();
         stg.close();
@@ -84,7 +86,7 @@ public class AñadirA implements Initializable {
 
     @FXML
     void onBotonSalir(ActionEvent event) {
-        a = null;
+        this.a = null;
         Stage stg = (Stage) tfApellidos.getScene().getWindow();
         stg.close();
     }
@@ -93,40 +95,21 @@ public class AñadirA implements Initializable {
         return a;
     }
 
-    public void modificarA(TableView<Alumnos> tabla) {
-        int posicionAlumno = 0;
-        Alumnos modificadoA = new Alumnos();
-        if (tabla != null && !tabla.getSelectionModel().isEmpty()) {
-            //alumno para modificar
-            Alumnos modA = tabla.getSelectionModel().getSelectedItem();            
-            
-//            for (Alumnos i : listObs) {
-//                if (i.equals(modA)) {                    
-//                    
-//                }
+//    public void modificarA(ObservableList<Alumnos> listObs, FilteredList<Alumnos> listaFilter,Alumnos a) {
+//        int posicionAlumno = 0;
+//        Alumnos modificadoA = tabla.getSelectionModel().getSelectedItem();
+//        if (tabla != null && modificadoA != null ) {
+//            //alumno para modificar            
+//            a = modificadoA;
+//            
+//            if (modificadoA.getNombre().toLowerCase().contains(s)) {
+//                
 //            }
-            for (int i = 0; i < listObs.size(); i++) {
-                if (listObs.get(i).equals(modA)) {                    
-                    posicionAlumno = i;
-                    arrayPadre.remove(i);
-                }
-            }
-            Errores.tfVacio(tfNombre.getText(), tfApellidos.getText());
-            Errores.tfVacioInteger(tfEdad.getText());//Control de entrada de datos
-            //Alumno modificado
-            modificadoA.setNombreA(tfNombre.getText());
-            modificadoA.setApellidos(tfNombre.getText());
-            modificadoA.setEdad(Integer.parseInt(tfNombre.getText()));            
-
-            listObs.add(posicionAlumno,modificadoA);
-            arrayPadre.add(posicionAlumno,modificadoA);
-            //añadimos a la clase padre
-            a.setAlumnos(arrayPadre);
-
-        } else {
-            Errores.noHay();
-        }
-
-    }
+//
+//        } else {
+//            Errores.noHay();
+//        }
+//
+//    }
 
 }

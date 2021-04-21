@@ -136,12 +136,12 @@ public class AddModulos implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        listModulos = new ArrayList<>();
     }
 
     public void initAtributos(String nombreCurso, List<Modulos> listModulos) {
         listObsM = FXCollections.observableArrayList();
-        listModulos = new ArrayList<>();
+        
         menuTitulo.setText("Modulos de " + nombreCurso);
     }
 

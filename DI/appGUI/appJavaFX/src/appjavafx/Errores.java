@@ -55,7 +55,8 @@ public class Errores {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("No existe ese empleado");
+        alert.setContentText("No existe ese empleado"
+                + "\nDebes seleccionar una persona");
         alert.showAndWait();
     }
 }
