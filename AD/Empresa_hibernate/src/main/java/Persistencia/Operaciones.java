@@ -19,6 +19,7 @@ import org.hibernate.Transaction;
  * @author a18zemedufc
  */
 public class Operaciones {
+
     /**
      * Objeto Session y Transaction para porder realizar operaciones sobre la BD
      */
@@ -49,7 +50,7 @@ public class Operaciones {
      */
     private static void manejaExcepcion(HibernateException he) {
         transa.rollback();
-        throw new HibernateException("Ha sucedido un error en la capa de acceso a datos", he);
+        throw new HibernateException("\n\nHa sucedido un error en la capa de acceso a datos", he);
     }
 
     /*
@@ -81,14 +82,15 @@ public class Operaciones {
         }
         return id;
     }
+
     public static long gurdarD(Direccion d) {
-        long id = -1;
+        int id = -1;
         try {
             //abre la sesión e inicia la transición
             iniciaOperacion();
             /*guarda el contacto en la base de datos y devuelve el id generado
             aquí no se usa, pero se podría utilizar*/
-            id = (long) sesion.save(d);
+            id = (int) sesion.save(d);
             transa.commit();
         } catch (HibernateException he) {
             manejaExcepcion(he);
@@ -132,7 +134,7 @@ public class Operaciones {
      * @return si la operación ha sido realizada con éxito, devuelve true
      * @throws HibernateException
      */
-    public static boolean eliminaE(long id) {
+    public static boolean eliminaE(int id) {
 
         boolean eliminado = false;
         try {
@@ -166,7 +168,7 @@ public class Operaciones {
      * @return
      * @throws HibernateException
      */
-    public static Empleado obtenContacto(long id) {
+    public static Empleado obtenEmpleado(int id) {
         Empleado e = null;
         boolean obtenido = false;
 
@@ -190,19 +192,38 @@ public class Operaciones {
      * @return devuleve un ojeto List con todos los contactos de la BD
      * @throws HibernateException
      */
-    public static List<Object[]> obtenListaED() throws MisExcepciones{
+    public static List<Object[]> obtenerListaED() throws HibernateException {
         List<Object[]> listaED = null;
-
         try {
             iniciaOperacion();
-            listaED = sesion.createQuery("FROM Direccion AS dire INNER JOIN dire.empleado AS emp" ).list();
+            listaED = sesion.createQuery("FROM Direccion AS dire INNER JOIN dire.empleado AS emp").list();
 
         } catch (HibernateException he) {
             manejaExcepcion(he);
         } finally {
             sesion.close();
         }
+        return listaED;
+    }
 
+    public static List<Object[]> obtenerListaEDconID(int idBuscar) throws HibernateException {
+        List<Object[]> listaED = null;
+        boolean obtenido = false;
+        try {
+            //abre la sesión e
+            //inicia la transición
+            iniciaOperacion();
+            
+            listaED = sesion.createQuery("FROM Direccion AS dire INNER JOIN dire.empleado AS emp "
+                    + "WHERE emp.id = :idP").setParameter("idP", idBuscar).list();
+            
+            //query.uniqueResult();
+            transa.commit();
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+        } finally {
+            sesion.close();
+        }
         return listaED;
     }
 }
