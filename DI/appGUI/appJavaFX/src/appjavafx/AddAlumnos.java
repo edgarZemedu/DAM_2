@@ -76,10 +76,12 @@ public class AddAlumnos implements Initializable {
             Alumnos a = controllerA.getAlumno();
             if (a != null && !listObs.contains(a)) {
                 listObs.add(a);
-                if (a.getNombre().toLowerCase().contains(this.tfFiltrar.getText().toLowerCase())) {
+                if (a.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
                     listFilter.add(a);
+                } else {
+                    Errores.filter();
                 }
-                tablaAlumnos.setItems(listFilter);
+                //tablaAlumnos.setItems(listFilter);
                 tablaAlumnos.refresh();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -99,27 +101,30 @@ public class AddAlumnos implements Initializable {
 
     @FXML
     void modificarAlumno(ActionEvent event) throws IOException {
-        Alumnos a = tablaAlumnos.getSelectionModel().getSelectedItem();
-        if (a != null) {
+        Alumnos ASeleccionado = tablaAlumnos.getSelectionModel().getSelectedItem();
+
+        if (tablaAlumnos.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
             Parent par = fxmlLoader.load();
 
             AñadirA ac = fxmlLoader.getController();
-            ac.initA(listObs, a);
-
-            Alumnos ASeleccionado = ac.getAlumno();
-            if (ASeleccionado.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
-                listFilter.remove(ASeleccionado);
-            }
-            tablaAlumnos.setItems(listFilter);
-            tablaAlumnos.refresh();
+            ac.initA(listObs);
 
             Scene scene = new Scene(par);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+            Alumnos al = ac.getAlumno();
+            if (al != null) {
+                if (ASeleccionado.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
+                    listFilter.remove(al);
+                }
+            }
 
+            //listObs.indexOf(ASeleccionado);
+            tablaAlumnos.setItems(listFilter);
+            tablaAlumnos.refresh();
         } else {
             Errores.noHay();
         }

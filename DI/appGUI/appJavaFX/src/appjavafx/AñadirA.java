@@ -21,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -39,7 +40,7 @@ public class AñadirA implements Initializable {
     private Text textError;
 
     private ObservableList<Alumnos> listObs;
-    private FilteredList<Alumnos> listaFilter;
+
     private Alumnos a;
     //private List<Alumnos> arrayPadre;
 
@@ -48,27 +49,25 @@ public class AñadirA implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listObs = FXCollections.observableArrayList();
-        
-    }
-    public void initA(ObservableList<Alumnos> listObs,Alumnos a) {
-        this.listObs = listObs;
-        this.a = a;
 
     }
 
     public void initA(ObservableList<Alumnos> listObs) {
+        this.listObs = listObs;
         this.a = a;
 
+        this.tfNombre.setText(a.getNombre());
+        this.tfApellidos.setText(a.getApellidos());
+        this.tfEdad.setText(a.getEdad()+"");
     }
 
     @FXML
     void onBotonGuardar(ActionEvent event) {
         Alumnos newA = new Alumnos();
-        
-        Errores.tfVacio(tfNombre.getText(), tfApellidos.getText());     
+
+        Errores.tfVacio(tfNombre.getText(), tfApellidos.getText());
         Errores.tfVacioInteger(tfEdad.getText());//Control de entrada de datos
-        
+
         newA.setNombreA(tfNombre.getText());
         newA.setApellidos(tfApellidos.getText());
 
@@ -76,9 +75,15 @@ public class AñadirA implements Initializable {
 
         if (listObs.contains(newA)) {
             Errores.getObject();
-        } else {   
-            //insertar
-            a = newA; 
+        } else if(a != null){
+            //mofdificar
+            a.setNombre(newA.getNombre());
+            a.setApellidos(newA.getApellidos());
+            a.setEdad(newA.getEdad());
+            Errores.correcto();
+        }else{
+             a = newA;
+             Errores.correcto();
         }
         Stage stg = (Stage) tfApellidos.getScene().getWindow();
         stg.close();
@@ -94,22 +99,4 @@ public class AñadirA implements Initializable {
     public Alumnos getAlumno() {
         return a;
     }
-
-//    public void modificarA(ObservableList<Alumnos> listObs, FilteredList<Alumnos> listaFilter,Alumnos a) {
-//        int posicionAlumno = 0;
-//        Alumnos modificadoA = tabla.getSelectionModel().getSelectedItem();
-//        if (tabla != null && modificadoA != null ) {
-//            //alumno para modificar            
-//            a = modificadoA;
-//            
-//            if (modificadoA.getNombre().toLowerCase().contains(s)) {
-//                
-//            }
-//
-//        } else {
-//            Errores.noHay();
-//        }
-//
-//    }
-
 }

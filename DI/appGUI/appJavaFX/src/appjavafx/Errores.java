@@ -55,8 +55,22 @@ public class Errores {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("No existe ese empleado"
-                + "\nDebes seleccionar una persona");
+        alert.setContentText("No existe ese Alumno"
+                + "\nDebes seleccionar una Alumno");
         alert.showAndWait();
     }
+    public static void correcto(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Informacion");
+                alert.setContentText("Se ha modificado correctamente");
+                alert.showAndWait();
+    }
+     public static void filter(){
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("Error con el filter");
+        alert.showAndWait();
+     }
 }
