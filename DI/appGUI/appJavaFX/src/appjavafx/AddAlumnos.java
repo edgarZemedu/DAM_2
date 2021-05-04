@@ -81,7 +81,7 @@ public class AddAlumnos implements Initializable {
                 } else {
                     Errores.filter();
                 }
-                //tablaAlumnos.setItems(listFilter);
+               tablaAlumnos.setItems(listFilter);
                 tablaAlumnos.refresh();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
