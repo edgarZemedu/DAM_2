@@ -55,7 +55,7 @@ public class FXMLController implements Initializable {
             
             AddModulos controller = loader.getController();
             controller.initAtributos(nombreCurso,listModulos); 
-            c.setNombre(nombreCurso);
+            c.setNombreC(nombreCurso);
             c.setModulos(listModulos);
             
             listCursos.add(c);
@@ -69,7 +69,9 @@ public class FXMLController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-
+            
+            actualizar();
+            
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -84,19 +86,24 @@ public class FXMLController implements Initializable {
     void modificarCurso(ActionEvent event) throws IOException {
         String nombreC = null;
         
-        if (comboCurso.getValue().toString() != null && !comboCurso.getValue().toString().isEmpty()) {
+        if (!comboCurso.getValue().toString().isEmpty()) {
             
             nombreC = comboCurso.getValue().toString();
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Modulos.fxml"));
             Parent newRoot = loader.load();
             
-            AddModulos getController = loader.getController();
+            AddModulos am = loader.getController();
+            am.initAtributos(nombreC, listModulos);
+            
             for (int i = 0; i < listObsC.size(); i++) {
                 if (listObsC.get(i).equals(nombreC)) {
-                    //getController.initAtributos(nombreC);
+                    am.initAtributos(nombreC,listModulos);
                 }                
             }
+            
+            actualizar();
+            
             Scene scene = new Scene(newRoot);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -145,6 +152,12 @@ public class FXMLController implements Initializable {
         listCursos = new ArrayList<>();
         comboCurso.setPromptText("Selecciona un curso");
 
+    }
+    public void actualizar(){
+        this.listCursos.clear();
+        for (int i = 0; i < listObsC.size(); i++) {
+            listCursos.add(new Cursos(listObsC.get(i), listModulos));
+        }        
     }
     
 }

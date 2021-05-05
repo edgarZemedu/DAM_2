@@ -21,17 +21,17 @@ public class Cursos {
         
     }
     
-    public Cursos(String nombreC, ArrayList<Modulos> modulos) {
+    public Cursos(String nombreC, List<Modulos> modulos) {
         this.nombreC = nombreC;
         this.modulos = modulos;
     }
 
-    public String getNombre() {
+    public String getNombreC() {
         return nombreC;
     }
 
-    public void setNombre(String nombre) {
-        this.nombreC = nombre;
+    public void setNombreC(String nombreC) {
+        this.nombreC = nombreC;
     }
 
     public List<Modulos> getModulos() {

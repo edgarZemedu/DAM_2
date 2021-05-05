@@ -55,8 +55,8 @@ public class AñadirA implements Initializable {
     public void initA(ObservableList<Alumnos> listObs) {
         this.listObs = listObs;
         this.a = a;
-
-        this.tfNombre.setText(a.getNombre());
+        
+        this.tfNombre.setText(a.getNombreA());
         this.tfApellidos.setText(a.getApellidos());
         this.tfEdad.setText(a.getEdad()+"");
     }
@@ -77,7 +77,7 @@ public class AñadirA implements Initializable {
             Errores.getObject();
         } else if(a != null){
             //mofdificar
-            a.setNombre(newA.getNombre());
+            a.setNombreA(newA.getNombreA());
             a.setApellidos(newA.getApellidos());
             a.setEdad(newA.getEdad());
             Errores.correcto();

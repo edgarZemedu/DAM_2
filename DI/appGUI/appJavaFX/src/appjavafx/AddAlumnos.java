@@ -76,12 +76,12 @@ public class AddAlumnos implements Initializable {
             Alumnos a = controllerA.getAlumno();
             if (a != null && !listObs.contains(a)) {
                 listObs.add(a);
-                if (a.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
+                if (a.getNombreA().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
                     listFilter.add(a);
                 } else {
                     Errores.filter();
                 }
-               tablaAlumnos.setItems(listFilter);
+                tablaAlumnos.setItems(listFilter);
                 tablaAlumnos.refresh();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -90,6 +90,9 @@ public class AddAlumnos implements Initializable {
                 alert.setContentText("Esta vacio alumno");
                 alert.showAndWait();
             }
+            
+            actualizar();
+            
         } catch (IOException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -117,7 +120,7 @@ public class AddAlumnos implements Initializable {
             stage.showAndWait();
             Alumnos al = ac.getAlumno();
             if (al != null) {
-                if (ASeleccionado.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
+                if (ASeleccionado.getNombreA().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
                     listFilter.remove(al);
                 }
             }
@@ -152,7 +155,7 @@ public class AddAlumnos implements Initializable {
             this.listFilter.clear();
 
             for (Alumnos a : this.listObs) {
-                if (a.getNombre().toLowerCase().contains(filtroNombre.toLowerCase())) {
+                if (a.getNombreA().toLowerCase().contains(filtroNombre.toLowerCase())) {
                     this.listObs.add(a);
                 }
             }
@@ -162,7 +165,16 @@ public class AddAlumnos implements Initializable {
     }
 
     public void init(String nombreModulo, List<Alumnos> listaAlumnos) {
+        if (nombreModulo != null) {
+
+        }
         menuModulo.setText("Alumnos del módulo de " + nombreModulo);
+
+    }
+
+    public void actualizar() {
+        this.listaAlumnos.clear();
+        listaAlumnos.addAll(listObs);
     }
 
     @Override

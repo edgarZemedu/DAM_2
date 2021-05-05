@@ -80,9 +80,10 @@ public class AddModulos implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+            
             ///para gurdar el módulo en cursos
-            listModulos.add(m);
-            m.setModulos(listModulos);
+            actualizar();
+            
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -104,10 +105,11 @@ public class AddModulos implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
             Parent newRoot = loader.load();
 
-            AddAlumnos getController = loader.getController();
+            AddAlumnos aA = loader.getController();
+            
             for (int i = 0; i < listObsM.size(); i++) {
                 if (listObsM.get(i).equals(nombreM)) {
-                    getController.init(nombreM,listAlumnos);
+                    aA.init(nombreM,listAlumnos);
                 }
             }
             Scene scene = new Scene(newRoot);
@@ -115,6 +117,8 @@ public class AddModulos implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
 
+            actualizar();
+            
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -140,9 +144,14 @@ public class AddModulos implements Initializable {
     }
 
     public void initAtributos(String nombreCurso, List<Modulos> listModulos) {
-        listObsM = FXCollections.observableArrayList();
-        
+        listObsM = FXCollections.observableArrayList();        
         menuTitulo.setText("Modulos de " + nombreCurso);
+    }
+    public void actualizar(){
+        this.listModulos.clear();
+        for (int i = 0; i < listObsM.size(); i++) {
+            listModulos.add(new Modulos(listObsM.get(i), listAlumnos));
+        }        
     }
 
     public Modulos getModulo() {
