@@ -43,6 +43,13 @@ public class Errores {
             alert.showAndWait();
         }
     }
+    public static void estaVacio(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("Esta vacio alumno");
+                alert.showAndWait();
+    }
     //objeto vacio
     public static void getObject() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -56,7 +63,7 @@ public class Errores {
         alert.setHeaderText(null);
         alert.setTitle("Error");
         alert.setContentText("No existe ese Alumno"
-                + "\nDebes seleccionar una Alumno");
+                + "\nDebes seleccionar al alumno primero para modificar");
         alert.showAndWait();
     }
     public static void correcto(){

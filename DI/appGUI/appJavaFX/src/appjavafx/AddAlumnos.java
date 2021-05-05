@@ -53,17 +53,14 @@ public class AddAlumnos implements Initializable {
     @FXML
     private TextField tfFiltrar;
     private ObservableList<Alumnos> listObs;
-    private FilteredList<Alumnos> listFilter;
+    private ObservableList<Alumnos> listFilter;
     private List<Alumnos> listaAlumnos;
-    //private Alumnos a;
 
     @FXML
     void añadirAlumno(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
-            Parent newRoot;
-
-            newRoot = loader.load();
+            Parent newRoot = loader.load();
 
             AñadirA controllerA = loader.getController();
             controllerA.initA(listObs);
@@ -73,22 +70,19 @@ public class AddAlumnos implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+
             Alumnos a = controllerA.getAlumno();
-            if (a != null && !listObs.contains(a)) {
+            if (a != null) {
                 listObs.add(a);
-                if (a.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
+                if (a.getNombreA().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
                     listFilter.add(a);
                 } else {
                     Errores.filter();
                 }
-               tablaAlumnos.setItems(listFilter);
+                //tablaAlumnos.setItems(listFilter);
                 tablaAlumnos.refresh();
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Error");
-                alert.setContentText("Esta vacio alumno");
-                alert.showAndWait();
+                Errores.estaVacio();
             }
         } catch (IOException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -101,30 +95,35 @@ public class AddAlumnos implements Initializable {
 
     @FXML
     void modificarAlumno(ActionEvent event) throws IOException {
-        Alumnos ASeleccionado = tablaAlumnos.getSelectionModel().getSelectedItem();
+        Alumnos a = tablaAlumnos.getSelectionModel().getSelectedItem();
 
         if (tablaAlumnos.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
             Parent par = fxmlLoader.load();
 
             AñadirA ac = fxmlLoader.getController();
-            ac.initA(listObs);
+            ac.initAtri(listObs, a);
 
             Scene scene = new Scene(par);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.showAndWait();
+
             Alumnos al = ac.getAlumno();
             if (al != null) {
-                if (ASeleccionado.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
+                if (a.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
                     listFilter.remove(al);
+                }else {
+                    Errores.filter();
                 }
+                tablaAlumnos.refresh();
+            } else {
+                Errores.estaVacio();
             }
 
             //listObs.indexOf(ASeleccionado);
-            tablaAlumnos.setItems(listFilter);
-            tablaAlumnos.refresh();
+            //tablaAlumnos.setItems(listFilter);
         } else {
             Errores.noHay();
         }
@@ -157,7 +156,7 @@ public class AddAlumnos implements Initializable {
                 }
             }
             tablaAlumnos.setItems(listObs);
-            tablaAlumnos.refresh();
+            //tablaAlumnos.refresh();
         }
     }
 
@@ -168,8 +167,9 @@ public class AddAlumnos implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listObs = FXCollections.observableArrayList();
-        listFilter = new FilteredList(listObs);
-
+        //listFilter = new FilteredList(listObs);
+        listFilter =  FXCollections.observableArrayList();
+        
         tablaAlumnos.setItems(listObs);
 
         colNombre.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("nombreA"));

@@ -36,8 +36,6 @@ public class AñadirA implements Initializable {
     private TextField tfApellidos;
     @FXML
     private TextField tfEdad;
-    @FXML
-    private Text textError;
 
     private ObservableList<Alumnos> listObs;
 
@@ -54,11 +52,15 @@ public class AñadirA implements Initializable {
 
     public void initA(ObservableList<Alumnos> listObs) {
         this.listObs = listObs;
+    }
+
+    public void initAtri(ObservableList<Alumnos> listObs, Alumnos a) {
+        this.listObs = listObs;
         this.a = a;
 
         this.tfNombre.setText(a.getNombre());
         this.tfApellidos.setText(a.getApellidos());
-        this.tfEdad.setText(a.getEdad()+"");
+        this.tfEdad.setText(a.getEdad() + "");
     }
 
     @FXML
@@ -70,20 +72,20 @@ public class AñadirA implements Initializable {
 
         newA.setNombreA(tfNombre.getText());
         newA.setApellidos(tfApellidos.getText());
-
         newA.setEdad(Integer.parseInt(tfEdad.getText()));
 
         if (listObs.contains(newA)) {
             Errores.getObject();
-        } else if(a != null){
+        } else if (a != null) {
             //mofdificar
-            a.setNombre(newA.getNombre());
+            a.setNombreA(newA.getNombreA());
             a.setApellidos(newA.getApellidos());
             a.setEdad(newA.getEdad());
             Errores.correcto();
-        }else{
-             a = newA;
-             Errores.correcto();
+        } else {
+            //insertar
+            a = newA;
+            Errores.correcto();
         }
         Stage stg = (Stage) tfApellidos.getScene().getWindow();
         stg.close();
