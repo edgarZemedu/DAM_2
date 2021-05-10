@@ -27,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         et1 = findViewById(R.id.editTextNumberDecimal);
         tv = findViewById(R.id.tv);
-        a = new ArrayList<Integer>();
-        uNumero = Integer.parseInt(String.valueOf(et1.getText()));
-        a.add(uNumero);
-        Toast.makeText(this,"  ******->  "+uNumero,Toast.LENGTH_SHORT).show();
+         
+        if (et1.getText() != null){
+
+        }
+
+        Toast.makeText(this,"  ******->  "+uNumero,Toast.LENGTH_LONG).show();
 
     }
 

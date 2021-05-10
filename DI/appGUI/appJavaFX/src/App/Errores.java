@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package appjavafx;
+package App;
 
 import clases.Alumnos;
 import javafx.scene.control.Alert;
@@ -13,7 +13,23 @@ import javafx.scene.control.Alert;
  * @author A C E R
  */
 public class Errores {
+
     //Control de entrada de datos
+    public static void nullNombre() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("Debes introducir el nombre ");
+        alert.showAndWait();
+    }
+
+    public static void comboBox() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("Ya existe uno con este nombre");
+        alert.showAndWait();
+    }
 
     public static void tfVacio(String tfN, String tfA) {
         if (tfN.isEmpty() || tfA == null || tfA == "") {
@@ -43,21 +59,24 @@ public class Errores {
             alert.showAndWait();
         }
     }
-    public static void estaVacio(){
+
+    public static void estaVacio() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Error");
-                alert.setContentText("Esta vacio alumno");
-                alert.showAndWait();
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("Esta vacio ");
+        alert.showAndWait();
     }
+
     //objeto vacio
     public static void getObject() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("La persona introducida ya está en la tabla");
+        alert.setContentText(" Ya existe ese objeto");
         alert.showAndWait();
     }
+
     public static void noHay() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
@@ -66,18 +85,20 @@ public class Errores {
                 + "\nDebes seleccionar al alumno primero para modificar");
         alert.showAndWait();
     }
-    public static void correcto(){
+
+    public static void correcto() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setTitle("Informacion");
-                alert.setContentText("Se ha modificado correctamente");
-                alert.showAndWait();
+        alert.setHeaderText(null);
+        alert.setTitle("Informacion");
+        alert.setContentText("Se ha modificado correctamente");
+        alert.showAndWait();
     }
-     public static void filter(){
-         Alert alert = new Alert(Alert.AlertType.ERROR);
+
+    public static void seleccionar() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("Error con el filter");
+        alert.setContentText("Primero selecciona el curso");
         alert.showAndWait();
-     }
+    }
 }

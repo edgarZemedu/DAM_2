@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="546.0" styleClass="fondo" stylesheets="@../estilos/alumnos.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appjavafx.AddAlumnos">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="546.0" styleClass="fondo" stylesheets="@../estilos/alumnos.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.AddAlumnos">
     <children>
         <MenuBar prefHeight="27.0" prefWidth="600.0">
             <menus>
@@ -25,7 +25,7 @@
             </columns>
         </TableView>
         <Label layoutX="289.0" layoutY="49.0" text="Filtrar por nombre:" />
-        <TextField fx:id="idFiltrar" layoutX="415.0" layoutY="45.0"  onKeyReleased="#filtrarNombre" />
+        <TextField fx:id="idFiltrar" layoutX="415.0" layoutY="45.0" />
         <Button layoutX="47.0" layoutY="362.0" mnemonicParsing="false" onAction="#añadirAlumno" stylesheets="@../estilos/alumnos.css" text="Añadir alumno">
          <styleClass>
             <String fx:value="boton" />

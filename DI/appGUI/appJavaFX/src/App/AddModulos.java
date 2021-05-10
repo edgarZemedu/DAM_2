@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package appjavafx;
+package App;
 
 import clases.Alumnos;
 import clases.Cursos;
@@ -50,46 +50,42 @@ public class AddModulos implements Initializable {
     private List<Alumnos> listAlumnos;
     private int posicionM;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        this.listModulos = new ArrayList<Modulos>();
+        this.listObsM = FXCollections.observableArrayList();
+        this.listAlumnos = new ArrayList<Alumnos>();
+        comboModulos.setPromptText("Selecciona un Modulo");
+    }
+
     @FXML
     void añadirModulo(ActionEvent event) throws IOException {
         m = new Modulos();
+        String nombreModulo = JOptionPane.showInputDialog(null, "Escribe el nombre del módulo a crear",
+                "Entrada", JOptionPane.QUESTION_MESSAGE);
 
-        String nombreModulo = JOptionPane.showInputDialog(null, "Escribe el nombre del módulo a crear", "Entrada", JOptionPane.QUESTION_MESSAGE);
-        //Modulos ms = new Modulos();
-        if (!listObsM.contains(nombreModulo) || !nombreModulo.isEmpty()) {
-            listObsM.add(nombreModulo);
-            comboModulos.setItems(listObsM);
+        if (nombreModulo.isBlank()) {
+            Errores.nullNombre();
+        }
+        if (!listObsM.contains(nombreModulo)) {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
             Parent newRoot = loader.load();
-
             AddAlumnos controller = loader.getController();
-            controller.init(nombreModulo,listAlumnos);
-            
-            m.setNombreM(nombreModulo);
-            m.setAlumnos(listAlumnos);
 
-            listModulos.add(m);
-            for (int i = 0; i < listModulos.size(); i++) {
-                if (listModulos.equals(m)) {
-                    posicionM = i;
-                }
-            }
-            
+            controller.init(nombreModulo, listAlumnos);
+
             Scene scene = new Scene(newRoot);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-            ///para gurdar el módulo en cursos
-            listModulos.add(m);
-            m.setModulos(listModulos);
+
+            listModulos.add(new Modulos(nombreModulo, listAlumnos));
+
+            actualizarCombo();
+
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("1.- Ya tienes en la lisa ese módulo"
-                    + "\n2.- Debes introducir el modulo");
-            alert.showAndWait();
+            Errores.comboBox();
         }
     }
 
@@ -104,10 +100,11 @@ public class AddModulos implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
             Parent newRoot = loader.load();
 
-            AddAlumnos getController = loader.getController();
+            AddAlumnos aA = loader.getController();
+
             for (int i = 0; i < listObsM.size(); i++) {
                 if (listObsM.get(i).equals(nombreM)) {
-                    getController.init(nombreM,listAlumnos);
+                    aA.init(nombreM, listAlumnos);
                 }
             }
             Scene scene = new Scene(newRoot);
@@ -115,18 +112,25 @@ public class AddModulos implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
 
+            actualizarCombo();
+
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Primero selecciona el Módulo");
-            alert.showAndWait();
+            Errores.estaVacio();
         }
     }
 
     @FXML
     void eliminarModulos(ActionEvent event) {
-
+        String m = comboModulos.getValue();
+        if (listObsM.contains(m)) {            
+            for (int i = 0; i < listModulos.size(); i++) {
+                if (listModulos.get(i).getNombreC() == m) {
+                    listModulos.remove(i);
+                }
+            }
+            listObsM.remove(m);
+            comboModulos.setItems(listObsM);
+        }
     }
 
     @FXML
@@ -134,15 +138,28 @@ public class AddModulos implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        listModulos = new ArrayList<>();
+    public Cursos initAgregar(Cursos c) {
+        menuTitulo.setText("Modulos de " + c.getNombreC());
+        
+        c.setModulos(listModulos);
+        
+        return c;
+    }
+    public void initAtributos(Cursos c) {
+        menuTitulo.setText("Modulos de " + c.getNombreC());
+        if (!c.getNombreC().isEmpty()) {
+            //guardar en curso correspondiente
+            this.listModulos = c.getModulos();
+        }
+        actualizarCombo();
     }
 
-    public void initAtributos(String nombreCurso, List<Modulos> listModulos) {
-        listObsM = FXCollections.observableArrayList();
-        
-        menuTitulo.setText("Modulos de " + nombreCurso);
+    public void actualizarCombo() {
+        this.listObsM.clear();
+        for (Modulos i : listModulos) {
+            this.listObsM.add(i.getNombreM());
+        }
+        comboModulos.setItems(listObsM);
     }
 
     public Modulos getModulo() {

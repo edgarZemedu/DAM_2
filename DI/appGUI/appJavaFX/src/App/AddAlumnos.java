@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package appjavafx;
+package App;
 
 import clases.Alumnos;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -31,8 +28,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,7 +48,7 @@ public class AddAlumnos implements Initializable {
     @FXML
     private TextField tfFiltrar;
     private ObservableList<Alumnos> listObs;
-    private ObservableList<Alumnos> listFilter;
+    private FilteredList<Alumnos> listFilter;
     private List<Alumnos> listaAlumnos;
 
     @FXML
@@ -76,14 +71,15 @@ public class AddAlumnos implements Initializable {
                 listObs.add(a);
                 if (a.getNombreA().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
                     listFilter.add(a);
-                } else {
-                    Errores.filter();
                 }
-                //tablaAlumnos.setItems(listFilter);
+                tablaAlumnos.setItems(listFilter);
                 tablaAlumnos.refresh();
             } else {
                 Errores.estaVacio();
             }
+
+            actualizar();
+
         } catch (IOException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -97,7 +93,7 @@ public class AddAlumnos implements Initializable {
     void modificarAlumno(ActionEvent event) throws IOException {
         Alumnos a = tablaAlumnos.getSelectionModel().getSelectedItem();
 
-        if (tablaAlumnos.getSelectionModel().getSelectedItem() != null) {
+        if (a != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
             Parent par = fxmlLoader.load();
 
@@ -112,21 +108,18 @@ public class AddAlumnos implements Initializable {
 
             Alumnos al = ac.getAlumno();
             if (al != null) {
-                if (a.getNombre().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
+                if (al.getNombreA().toLowerCase().contains(tfFiltrar.getText().toString().toLowerCase())) {
                     listFilter.remove(al);
-                }else {
-                    Errores.filter();
                 }
+                tablaAlumnos.setItems(listFilter);
                 tablaAlumnos.refresh();
             } else {
                 Errores.estaVacio();
             }
-
-            //listObs.indexOf(ASeleccionado);
-            //tablaAlumnos.setItems(listFilter);
         } else {
             Errores.noHay();
         }
+        //actualizar();
 
     }
 
@@ -138,44 +131,41 @@ public class AddAlumnos implements Initializable {
         tablaAlumnos.refresh();
     }
 
-    @FXML
-    void filtrarNombre(KeyEvent event) {
-
-        String filtroNombre = this.tfFiltrar.getText();
-
-        // Si el texto del nombre esta vacio, seteamos la tabla de personas con el original
-        if (filtroNombre.isEmpty()) {
-            this.tablaAlumnos.setItems(listObs);
-        } else {
-            // Limpio la lista
-            this.listFilter.clear();
-
-            for (Alumnos a : this.listObs) {
-                if (a.getNombre().toLowerCase().contains(filtroNombre.toLowerCase())) {
-                    this.listObs.add(a);
-                }
-            }
-            tablaAlumnos.setItems(listObs);
-            //tablaAlumnos.refresh();
-        }
-    }
-
     public void init(String nombreModulo, List<Alumnos> listaAlumnos) {
         menuModulo.setText("Alumnos del módulo de " + nombreModulo);
+        this.listaAlumnos = listaAlumnos;
+    }
+
+    public void actualizar() {
+        
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listObs = FXCollections.observableArrayList();
-        //listFilter = new FilteredList(listObs);
-        listFilter =  FXCollections.observableArrayList();
-        
-        tablaAlumnos.setItems(listObs);
+
+        listFilter = new FilteredList<>(listObs);
+
+        tfFiltrar.textProperty().addListener((observable, oldValue, newValue) -> {
+            listFilter.setPredicate(a -> {
+                if (newValue.isBlank()) {
+                    return true;
+                }
+                if (a.getNombreA().toLowerCase().contains(newValue.toLowerCase())) {
+                    return true;
+                } 
+                else if (a.getApellidos().toLowerCase().contains(newValue.toLowerCase())) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        this.tablaAlumnos.setItems(listFilter);
 
         colNombre.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("nombreA"));
         colApellidos.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("apellidos"));
         colEdad.setCellValueFactory(new PropertyValueFactory<Alumnos, Integer>("edad"));
-
     }
 
 }

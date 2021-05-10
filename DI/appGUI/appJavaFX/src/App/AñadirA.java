@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package appjavafx;
+package App;
 
 import clases.Alumnos;
 import java.net.URL;
@@ -57,8 +57,8 @@ public class AñadirA implements Initializable {
     public void initAtri(ObservableList<Alumnos> listObs, Alumnos a) {
         this.listObs = listObs;
         this.a = a;
-
-        this.tfNombre.setText(a.getNombre());
+        
+        this.tfNombre.setText(a.getNombreA());
         this.tfApellidos.setText(a.getApellidos());
         this.tfEdad.setText(a.getEdad() + "");
     }
@@ -66,10 +66,10 @@ public class AñadirA implements Initializable {
     @FXML
     void onBotonGuardar(ActionEvent event) {
         Alumnos newA = new Alumnos();
-
+        //control de errores
         Errores.tfVacio(tfNombre.getText(), tfApellidos.getText());
-        Errores.tfVacioInteger(tfEdad.getText());//Control de entrada de datos
-
+        Errores.tfVacioInteger(tfEdad.getText());
+        //copturar alumno de la entrada de datos
         newA.setNombreA(tfNombre.getText());
         newA.setApellidos(tfApellidos.getText());
         newA.setEdad(Integer.parseInt(tfEdad.getText()));
@@ -77,15 +77,15 @@ public class AñadirA implements Initializable {
         if (listObs.contains(newA)) {
             Errores.getObject();
         } else if (a != null) {
-            //mofdificar
-            a.setNombreA(newA.getNombreA());
-            a.setApellidos(newA.getApellidos());
-            a.setEdad(newA.getEdad());
-            Errores.correcto();
+            //modificar
+            a.setNombreA(tfNombre.getText());
+            a.setApellidos(tfApellidos.getText());
+            a.setEdad(Integer.parseInt(tfEdad.getText()));            
+            //Errores.correcto();
+            
         } else {
             //insertar
             a = newA;
-            Errores.correcto();
         }
         Stage stg = (Stage) tfApellidos.getScene().getWindow();
         stg.close();
