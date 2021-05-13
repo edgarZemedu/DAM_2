@@ -11,6 +11,7 @@ import Excepciones.MisExcepciones;
 import Persistencia.Hibernate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -30,9 +31,9 @@ public class Operaciones {
     /**
      * obtenemos una referencia a "SessionFactory" usando nuestra clase de
      * utilidad "HibernateUtil". Una vez que tenemos la "SessionFactory" creamos
-     * una conexión a la base de datos e iniciamos una nueva sesión con el
-     * método "openSession()". Una vez teniendo la sesión iniciamos una nueva
-     * transacción y obtenemos una referencia a ella con "beginTransaction()"
+     * una conexiï¿½n a la base de datos e iniciamos una nueva sesiï¿½n con el
+     * mï¿½todo "openSession()". Una vez teniendo la sesiï¿½n iniciamos una nueva
+     * transacciï¿½n y obtenemos una referencia a ella con "beginTransaction()"
      *
      */
     private static void iniciaOperacion() throws HibernateException {
@@ -45,9 +46,9 @@ public class Operaciones {
     }
 
     /**
-     * Si se produce una excepción queremos que la transacción que se está
-     * ejecutando se deshaga y se relance la excepción (podríamos lanzar una
-     * excepción propia)
+     * Si se produce una excepciï¿½n queremos que la transacciï¿½n que se estï¿½
+     * ejecutando se deshaga y se relance la excepciï¿½n (podrï¿½amos lanzar una
+     * excepciï¿½n propia)
      */
     private static void manejaExcepcion(HibernateException he) {
         transa.rollback();
@@ -55,7 +56,7 @@ public class Operaciones {
     }
 
     /*
-    Ahora crearemos los métodos que nos permitirán realizar las tareas de persistencia 
+    Ahora crearemos los mï¿½todos que nos permitirï¿½n realizar las tareas de persistencia 
     de una entidad "Contacto", conocidas en lenguaje de base de datos como CRUD: guardarla, 
     actualizarla, eliminarla, buscar un entidad "Contacto" y obtener todas los contactos 
     que existen en la base de datos
@@ -65,15 +66,31 @@ public class Operaciones {
      *
      * @param Empleado Contacto, elemento a insertar en la BD
      * @return devuelve el id generado para el elemento guardado o -1 si la
-     * operación no se ha podido realizar
+     * operaciï¿½n no se ha podido realizar
      */
+    public static Propietario aÃ±adirP(Scanner sc) {
+        
+        System.out.println("Dime el dni: ");
+        String dni = sc.nextLine();        
+        System.out.println("Dime el nombre: ");
+        String nombre = sc.nextLine();
+        System.out.println("Dime el apellido: ");
+        String apellidos = sc.nextLine();
+        System.out.println("Dime el direccion: ");
+        String direccion = sc.nextLine();
+        System.out.println("Dime el telÃ©fono: ");
+        String telefono = sc.nextLine();
+        Propietario p = new Propietario(dni,nombre,apellidos,direccion,telefono);
+        
+        return p;
+    }
     public static long gurdarP(Propietario p) {
         int id = -1;
         try {
-            //abre la sesión e inicia la transición
+            //abre la sesiï¿½n e inicia la transiciï¿½n
             iniciaOperacion();
             /*guarda el contacto en la base de datos y devuelve el id generado
-            aquí no se usa, pero se podría utilizar*/
+            aquï¿½ no se usa, pero se podrï¿½a utilizar*/
             id = (int) sesion.save(p);
             transa.commit();
         } catch (HibernateException he) {
@@ -87,10 +104,10 @@ public class Operaciones {
     public static long gurdarI(Inmueble i) {
         int id = -1;
         try {
-            //abre la sesión e inicia la transición
+            //abre la sesiï¿½n e inicia la transiciï¿½n
             iniciaOperacion();
             /*guarda el contacto en la base de datos y devuelve el id generado
-            aquí no se usa, pero se podría utilizar*/
+            aquï¿½ no se usa, pero se podrï¿½a utilizar*/
             id = (int) sesion.save(i);
             transa.commit();
         } catch (HibernateException he) {
@@ -111,7 +128,7 @@ public class Operaciones {
         boolean actualizado = false;
 
         try {
-            //abre la sesión e inicia la transición
+            //abre la sesiï¿½n e inicia la transiciï¿½n
             iniciaOperacion();
 
             //Actualiza el contacto 
@@ -132,22 +149,22 @@ public class Operaciones {
      * confirmar que existe
      *
      * @param contacto Contacto, elemento a eliminar
-     * @return si la operación ha sido realizada con éxito, devuelve true
+     * @return si la operaciï¿½n ha sido realizada con ï¿½xito, devuelve true
      * @throws HibernateException
      */
-    public static boolean eliminaE(int id) {
+    public static boolean eliminaP(int id) {
 
         boolean eliminado = false;
         try {
-            //abre la sesión e inicia la transición
+            //abre la sesiï¿½n e inicia la transiciï¿½n
             iniciaOperacion();
 
             //Antes de eliminar el objeto debe ser recuperado de la BD con get
-            Propietario getE = sesion.get(Propietario.class, id);
+            Propietario getP = sesion.get(Propietario.class, id);
 
             //Elimina el contacto persistente si existe
-            if (!Objects.isNull(getE)) {
-                sesion.delete(getE);
+            if (!Objects.isNull(getP)) {
+                sesion.delete(getP);
                 transa.commit();
                 eliminado = true;
             }
@@ -161,9 +178,9 @@ public class Operaciones {
     }
 
     /**
-     * Obtiene un contacto de la BD Para ejecutar las búsquedas se puede usar
+     * Obtiene un contacto de la BD Para ejecutar las bï¿½squedas se puede usar
      * get o load. La diferencia es el comportamiento cuando no se encuentra la
-     * entidad, mientras get() devuelve null, load() lanza una excepción
+     * entidad, mientras get() devuelve null, load() lanza una excepciï¿½n
      *
      * @param idContacto
      * @return
@@ -174,7 +191,7 @@ public class Operaciones {
         boolean obtenido = false;
 
         try {
-            //abre la sesión e inicia la transición
+            //abre la sesiï¿½n e inicia la transiciï¿½n
             iniciaOperacion();
 
             e = sesion.get(Propietario.class, id);
@@ -211,8 +228,8 @@ public class Operaciones {
         List<Object[]> listaPI = null;
         boolean obtenido = false;
         try {
-            //abre la sesión e
-            //inicia la transición
+            //abre la sesiï¿½n e
+            //inicia la transiciï¿½n
             iniciaOperacion();
             
             listaPI = sesion.createQuery("FROM Direccion AS dire INNER JOIN dire.empleado AS emp "

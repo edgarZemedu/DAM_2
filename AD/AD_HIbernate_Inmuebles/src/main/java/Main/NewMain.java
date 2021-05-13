@@ -6,6 +6,7 @@
 package Main;
 
 import Menu.Menu;
+import Operaciones.Operaciones;
 import Persistencia.Hibernate;
 import java.util.Scanner;
 
@@ -44,12 +45,15 @@ public class NewMain {
                         case 2:
                             System.out.println("\n************************************************************\n"
                                     + "Agregar propietario");
-                            //menuGuardarElemento();
+                            Operaciones.gurdarP(Operaciones.añadirP(sc));
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
                                     + "Eliminar propietario");
-                            //menuBuscarElemento();
+                            System.out.println("Dime el id a eliminar: ");
+                            int id = sc.nextInt();
+                            //mostrar para ser los existen y comprobar si mete bn los datos
+                            Operaciones.eliminaP(id);
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
@@ -116,8 +120,8 @@ public class NewMain {
                     finalizar = true;
                     //Cierra la sesión de Hibernate
                     try {
-                        Hibernate.shutdown();                        
-                    }catch(ExceptionInInitializerError e){
+                        Hibernate.shutdown();
+                    } catch (ExceptionInInitializerError e) {
                         System.out.println(e.getMessage());
                     }
 
