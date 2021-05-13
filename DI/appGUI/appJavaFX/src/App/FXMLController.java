@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package appjavafx;
+package App;
 
 import clases.Cursos;
 import clases.Modulos;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,10 +21,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -37,92 +37,97 @@ public class FXMLController implements Initializable {
     private ComboBox<String> comboCurso; // Value injected by FXMLLoader
     private ObservableList<String> listObsC;
     private List<Cursos> listCursos;
-    private List<Modulos> listModulos;
     private Cursos c;
-    private int posicionC;
+    //private int posicionC;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        listObsC = FXCollections.observableArrayList();
+        this.listCursos = new ArrayList<Cursos>();
+        comboCurso.setPromptText("Selecciona un curso");
+
+    }
 
     @FXML
     private void añadirCurso(ActionEvent event) throws IOException {
         c = new Cursos();
-        String nombreCurso = JOptionPane.showInputDialog(null, "Escribe el nombre del curso a crear", "Entrada", JOptionPane.QUESTION_MESSAGE);
+        String nombreCurso = JOptionPane.showInputDialog(null, "Escribe el nombre del curso a crear",
+                "Entrada", JOptionPane.QUESTION_MESSAGE);
 
-        if (!listObsC.contains(nombreCurso) || !nombreCurso.isEmpty()) {
-            listObsC.add(nombreCurso);
-            comboCurso.setItems(listObsC);
-            
+        if (nombreCurso.isBlank()) {
+            Errores.nullNombre();
+        } else {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Modulos.fxml"));
             Parent newRoot = loader.load();
-            
             AddModulos controller = loader.getController();
-            controller.initAtributos(nombreCurso,listModulos); 
+
             c.setNombreC(nombreCurso);
-            c.setModulos(listModulos);
-            
-            listCursos.add(c);
-            for (int i = 0; i < listCursos.size(); i++) {
-                if (listCursos.equals(c)) {
-                    posicionC = i;
-                }
-            }
-            
+            controller.initAgregar(c);
+
             Scene scene = new Scene(newRoot);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-            
-            actualizar();
-            
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("1.- Ya tienes en la lisa ese curso"
-                    + "\n2.- Debes introducir el curso");
-            alert.showAndWait();
-        }
-    }
-    
-    @FXML
-    void modificarCurso(ActionEvent event) throws IOException {
-        String nombreC = null;
-        
-        if (!comboCurso.getValue().toString().isEmpty()) {
-            
-            nombreC = comboCurso.getValue().toString();
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Modulos.fxml"));
-            Parent newRoot = loader.load();
-            
-            AddModulos am = loader.getController();
-            am.initAtributos(nombreC, listModulos);
-            
-            for (int i = 0; i < listObsC.size(); i++) {
-                if (listObsC.get(i).equals(nombreC)) {
-                    am.initAtributos(nombreC,listModulos);
-                }                
+
+            if (!listCursos.contains(c)) {
+                this.listCursos.add(c);
+                this.listObsC.add(c.getNombreC());
             }
-            
-            actualizar();
-            
-            Scene scene = new Scene(newRoot);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.showAndWait();
-        
-        }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Primero selecciona el curso");
-            alert.showAndWait();
+            this.comboCurso.setItems(listObsC);
         }
     }
 
     @FXML
-    void eliminarCurso(ActionEvent event) {
-        
+    void modificarCurso(ActionEvent event) throws IOException {
+        String nombreC = null;
+
+        if (!comboCurso.getValue().isEmpty()) {
+            //para cuando quiera modificar el nombre del combo
+
+            nombreC = comboCurso.getValue().toString();
+            for (Cursos i : listCursos) {
+                if (i.getNombreC().equalsIgnoreCase(nombreC)) {
+                    c = i;
+                }
+            }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Modulos.fxml"));
+            Parent newRoot = loader.load();
+            AddModulos am = loader.getController();
+
+            am.initAtributos(c);
+
+            Scene scene = new Scene(newRoot);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.showAndWait();
+
+            //actualizar observable para ponerlo en combobox
+            actualizarCombo();
+
+        } else {
+            Errores.seleccionar();
+        }
+
     }
-    
+
+    @FXML
+    void eliminarCurso(ActionEvent event) {
+        String ncurso = comboCurso.getValue().toString();
+        if (listObsC.contains(ncurso)) {
+            listObsC.remove(ncurso);
+            comboCurso.setItems(listObsC);
+
+            for (int i = 0; i < listCursos.size(); i++) {
+                if (listCursos.get(i).getNombreC() == ncurso) {
+                    listCursos.remove(i);
+                    //JOptionPane.showMessageDialog(null, "Hecho");
+                }
+            }
+        }
+    }
+
     @FXML   //ESTO ES DEL menufile
     private void cambiarCursos(ActionEvent event) {
 
@@ -130,34 +135,31 @@ public class FXMLController implements Initializable {
 
     @FXML   //ESTO ES DEL menufile
     void guardarCurso(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
 
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (.json)", ".json");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Guardar en JSON");
+        File selectedFile = fileChooser.showSaveDialog((Stage) ((Button) event.getSource()).getScene().getWindow());
+
+        //guardarCMA(selectedFile);
     }
 
     @FXML   //ESTO ES DEL menufile
     void inforCursos(ActionEvent event) {
 
     }
-    
 
     @FXML
     void selectCombo(ActionEvent event) {
-        /*comboCurso.setOnAction((event) -> {
-            int
-        });*/
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        listObsC = FXCollections.observableArrayList();
-        listCursos = new ArrayList<>();
-        comboCurso.setPromptText("Selecciona un curso");
+    public void actualizarCombo() {
+        this.listObsC.clear();
+        for (Cursos i : listCursos) {
+            this.listObsC.add(i.getNombreC());
+        }
+        this.comboCurso.setItems(listObsC);
+    }
 
-    }
-    public void actualizar(){
-        this.listCursos.clear();
-        for (int i = 0; i < listObsC.size(); i++) {
-            listCursos.add(new Cursos(listObsC.get(i), listModulos));
-        }        
-    }
-    
 }
