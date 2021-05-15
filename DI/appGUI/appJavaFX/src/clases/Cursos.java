@@ -5,14 +5,14 @@
  */
 package clases;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author a18zemedufc
  */
-public class Cursos {
+public class Cursos implements Serializable{
 
     private String nombreC;
     private List<Modulos> modulos;

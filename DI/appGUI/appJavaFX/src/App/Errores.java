@@ -64,7 +64,7 @@ public class Errores {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("Esta vacio ");
+        alert.setContentText("Esta vacio ----");
         alert.showAndWait();
     }
 

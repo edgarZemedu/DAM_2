@@ -6,8 +6,10 @@
 package App;
 
 import clases.Alumnos;
+import clases.Modulos;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -25,7 +27,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -46,10 +47,37 @@ public class AddAlumnos implements Initializable {
     @FXML
     private TableColumn<Alumnos, Integer> colEdad;
     @FXML
-    private TextField tfFiltrar;
+    private TextField idFiltrar;
     private ObservableList<Alumnos> listObs;
     private FilteredList<Alumnos> listFilter;
     private List<Alumnos> listaAlumnos;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        listObs = FXCollections.observableArrayList();
+        listaAlumnos = new ArrayList<>();
+        listFilter = new FilteredList(listObs);
+
+        idFiltrar.setPromptText("Buscar...");
+        idFiltrar.textProperty().addListener((observable, oldValue, newValue) -> {
+            listFilter.setPredicate(a -> {
+                if (newValue.isEmpty()) {
+                    return true;
+                }
+                if (a.getNombreA().toLowerCase().contains(newValue.toLowerCase())) {
+                    return true;
+                } else if (a.getApellidos().toLowerCase().contains(newValue.toLowerCase())) {
+                    return true;
+                }
+                return false;
+            });
+        });
+        //this.tablaAlumnos.setItems(listFilter);        
+
+        colNombre.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("nombreA"));
+        colApellidos.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("apellidos"));
+        colEdad.setCellValueFactory(new PropertyValueFactory<Alumnos, Integer>("edad"));
+    }
 
     @FXML
     void añadirAlumno(ActionEvent event) {
@@ -67,18 +95,15 @@ public class AddAlumnos implements Initializable {
             stage.showAndWait();
 
             Alumnos a = controllerA.getAlumno();
+
             if (a != null) {
                 listObs.add(a);
-                if (a.getNombreA().toLowerCase().contains(tfFiltrar.getText().toLowerCase())) {
-                    listFilter.add(a);
-                }
-                tablaAlumnos.setItems(listFilter);
+                tablaAlumnos.setItems(listObs);
                 tablaAlumnos.refresh();
+                listaAlumnos.add(a);
             } else {
                 Errores.estaVacio();
             }
-
-            actualizar();
 
         } catch (IOException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -96,8 +121,8 @@ public class AddAlumnos implements Initializable {
         if (a != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/añadirA.fxml"));
             Parent par = fxmlLoader.load();
-
             AñadirA ac = fxmlLoader.getController();
+
             ac.initAtri(listObs, a);
 
             Scene scene = new Scene(par);
@@ -107,9 +132,14 @@ public class AddAlumnos implements Initializable {
             stage.showAndWait();
 
             Alumnos al = ac.getAlumno();
-            if (al != null) {
-                if (al.getNombreA().toLowerCase().contains(tfFiltrar.getText().toString().toLowerCase())) {
-                    listFilter.remove(al);
+
+            if (a != null) {
+                if (a.getNombreA().toLowerCase().contains(idFiltrar.getText().toString().toLowerCase())) {
+                    listObs.remove(a);
+                    listObs.add(al);
+
+                    listaAlumnos.remove(a);
+                    listaAlumnos.add(al);
                 }
                 tablaAlumnos.setItems(listFilter);
                 tablaAlumnos.refresh();
@@ -128,44 +158,50 @@ public class AddAlumnos implements Initializable {
         Alumnos a = new Alumnos();
         a = tablaAlumnos.getSelectionModel().getSelectedItem();
         listObs.remove(a);
+        listaAlumnos.remove(a);
+        actualizarTabla();
+    }
+
+    public Modulos init(Modulos mo) {
+        menuModulo.setText("Alumnos del módulo de " + mo.getNombreM());
+
+        mo.setAlumnos(listaAlumnos);
+
+        return mo;
+    }
+
+    public void initM(Modulos mo) {
+        menuModulo.setText("Alumnos del módulo de " + mo.getNombreM());
+        if (mo != null) {
+            this.listaAlumnos.addAll(mo.getAlumnos());
+        }
+        actualizarTabla();
+    }
+
+    public void actualizarTabla() {
+        this.listObs.clear();
+        for (Alumnos i : listaAlumnos) {
+            this.listObs.add(i);
+        }
+        tablaAlumnos.setItems(listFilter);
         tablaAlumnos.refresh();
     }
 
-    public void init(String nombreModulo, List<Alumnos> listaAlumnos) {
-        menuModulo.setText("Alumnos del módulo de " + nombreModulo);
-        this.listaAlumnos = listaAlumnos;
-    }
-
-    public void actualizar() {
-        
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        listObs = FXCollections.observableArrayList();
-
-        listFilter = new FilteredList<>(listObs);
-
-        tfFiltrar.textProperty().addListener((observable, oldValue, newValue) -> {
-            listFilter.setPredicate(a -> {
-                if (newValue.isBlank()) {
-                    return true;
-                }
-                if (a.getNombreA().toLowerCase().contains(newValue.toLowerCase())) {
-                    return true;
-                } 
-                else if (a.getApellidos().toLowerCase().contains(newValue.toLowerCase())) {
-                    return true;
-                }
-                return false;
-            });
-        });
-
-        this.tablaAlumnos.setItems(listFilter);
-
-        colNombre.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("nombreA"));
-        colApellidos.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("apellidos"));
-        colEdad.setCellValueFactory(new PropertyValueFactory<Alumnos, Integer>("edad"));
-    }
-
+//    @FXML
+//    public void onFilter(KeyEvent ke){
+//        String filterNombre = idFiltrar.getText();
+//        
+//        if (filterNombre.isBlank()) {
+//            tablaAlumnos.setItems(listObs);
+//        }else{
+//            listFilter.clear();
+//            for (Alumnos i : listaAlumnos) {
+//                if (i.getNombreA().toLowerCase().contains(filterNombre.toLowerCase())) {
+//                    listFilter.add(i);
+//                }
+//            }
+//            tablaAlumnos.setItems(listFilter);
+//        }
+//        
+//    }
 }

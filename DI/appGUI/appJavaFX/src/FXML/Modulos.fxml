@@ -17,7 +17,7 @@
           <Menu fx:id="menuTitulo" mnemonicParsing="false" text="Modulos del x" />
         </menus>
       </MenuBar>
-      <ComboBox fx:id="comboModulos" layoutX="187.0" layoutY="145.0" onAction="#selectModulo" prefWidth="150.0" />
+      <ComboBox fx:id="comboModulos" layoutX="187.0" layoutY="145.0" prefWidth="150.0" />
       <Button fx:id="bAñadir" layoutX="50.0" layoutY="324.0" mnemonicParsing="false" onAction="#añadirModulo" text="Añadir módulo" />
       <Button fx:id="bModificar" layoutX="232.0" layoutY="324.0" mnemonicParsing="false" onAction="#modificarModulos" text="Modificar" AnchorPane.bottomAnchor="49.0" AnchorPane.topAnchor="324.0" />
       <Button fx:id="bEliminar" layoutX="381.0" layoutY="324.0" mnemonicParsing="false" onAction="#eliminarModulos" prefHeight="24.0" prefWidth="78.0" text="Eliminar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="82.0" />

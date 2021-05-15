@@ -14,19 +14,13 @@
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#guardarCurso" text="Save JSON" />
-                        <MenuItem mnemonicParsing="false" onAction="#cambiarCursos" text="charge" />
-                  <MenuItem mnemonicParsing="false" text="Salir" />
+                        <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
+                        <MenuItem mnemonicParsing="false" onAction="#guardarCursoJSON" text="Save JSON" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#inforCursos" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -36,6 +30,6 @@
         <Button layoutX="52.0" layoutY="312.0" mnemonicParsing="false" onAction="#añadirCurso" text="Añadir curso" />
         <Button layoutX="222.0" layoutY="312.0" mnemonicParsing="false" onAction="#modificarCurso" text="Modificar" />
         <Button layoutX="369.0" layoutY="312.0" mnemonicParsing="false" onAction="#eliminarCurso" text="Eliminar" />
-        <ComboBox fx:id="comboCurso" layoutX="222.0" layoutY="123.0" onAction="#selectCombo" prefWidth="150.0" />
+        <ComboBox fx:id="comboCurso" layoutX="222.0" layoutY="123.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

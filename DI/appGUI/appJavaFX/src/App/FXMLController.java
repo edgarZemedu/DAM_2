@@ -6,7 +6,6 @@
 package App;
 
 import clases.Cursos;
-import clases.Modulos;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +25,7 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  *
@@ -54,7 +54,7 @@ public class FXMLController implements Initializable {
         String nombreCurso = JOptionPane.showInputDialog(null, "Escribe el nombre del curso a crear",
                 "Entrada", JOptionPane.QUESTION_MESSAGE);
 
-        if (nombreCurso.isBlank()) {
+        if (nombreCurso.isEmpty()) {
             Errores.nullNombre();
         } else {
 
@@ -86,12 +86,12 @@ public class FXMLController implements Initializable {
             //para cuando quiera modificar el nombre del combo
 
             nombreC = comboCurso.getValue().toString();
+
             for (Cursos i : listCursos) {
                 if (i.getNombreC().equalsIgnoreCase(nombreC)) {
                     c = i;
                 }
             }
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Modulos.fxml"));
             Parent newRoot = loader.load();
             AddModulos am = loader.getController();
@@ -115,43 +115,25 @@ public class FXMLController implements Initializable {
     @FXML
     void eliminarCurso(ActionEvent event) {
         String ncurso = comboCurso.getValue().toString();
-        if (listObsC.contains(ncurso)) {
-            listObsC.remove(ncurso);
-            comboCurso.setItems(listObsC);
-
-            for (int i = 0; i < listCursos.size(); i++) {
-                if (listCursos.get(i).getNombreC() == ncurso) {
-                    listCursos.remove(i);
-                    //JOptionPane.showMessageDialog(null, "Hecho");
-                }
+//        if (listObsC.contains(ncurso)) {
+//            listObsC.remove(ncurso);
+//            comboCurso.setItems(listObsC);
+//
+//            for (int i = 0; i < listCursos.size(); i++) {
+//                if (listCursos.get(i).getNombreC() == ncurso) {
+//                    listCursos.remove(i);
+//                    //JOptionPane.showMessageDialog(null, "Hecho");
+//                }
+//            }
+//        }
+        for (Cursos i : listCursos) {
+            if (i.getNombreC().equalsIgnoreCase(ncurso)) {
+                listCursos.remove(i);
+                listObsC.remove(ncurso);
+                comboCurso.setItems(listObsC);
             }
         }
-    }
 
-    @FXML   //ESTO ES DEL menufile
-    private void cambiarCursos(ActionEvent event) {
-
-    }
-
-    @FXML   //ESTO ES DEL menufile
-    void guardarCurso(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (.json)", ".json");
-        fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.setTitle("Guardar en JSON");
-        File selectedFile = fileChooser.showSaveDialog((Stage) ((Button) event.getSource()).getScene().getWindow());
-
-        //guardarCMA(selectedFile);
-    }
-
-    @FXML   //ESTO ES DEL menufile
-    void inforCursos(ActionEvent event) {
-
-    }
-
-    @FXML
-    void selectCombo(ActionEvent event) {
     }
 
     public void actualizarCombo() {
@@ -160,6 +142,56 @@ public class FXMLController implements Initializable {
             this.listObsC.add(i.getNombreC());
         }
         this.comboCurso.setItems(listObsC);
+    }
+
+    @FXML   //ESTO ES DEL menufile
+    private void openFile(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Selecciona el archivo JSON a cargar");
+        File selectedFile = fileChooser.showOpenDialog((Stage) (comboCurso.getScene().getWindow()));
+
+        //loadPersonDataFromFile(selectedFile);
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            //PersonaListWrapper wrapper = objectMapper.readValue(file, PersonaListWrapper.class);
+
+            listObsC.clear();
+            listObsC.addAll((ArrayList) objectMapper.readValue(selectedFile, objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Cursos.class)));
+            //lista.addAll(wrapper.getPersons());
+
+            //tabla.setItems(listaFilter);
+        } catch (Exception e) { // catches ANY exception
+            System.out.println("....Error O " + e.getMessage());
+        }
+
+    }
+
+    @FXML   //ESTO ES DEL menufile
+    private void guardarCursoJSON(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (.json)", ".json");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Guardar en JSON");
+        File selectedFile =  fileChooser.showSaveDialog((Stage) (comboCurso.getScene().getWindow()));
+
+        //gurda;
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            //PersonaListWrapper wrapper = new PersonaListWrapper();
+            //wrapper.setPersons(lista);
+
+            //objectMapper.writeValue(file, wrapper);
+            objectMapper.writeValue(selectedFile, listObsC);
+
+            //objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Persona.class));
+        } catch (Exception e) { // catches ANY exception
+            System.out.println("....Error G: " + e.getMessage());
+        }
     }
 
 }

@@ -46,8 +46,7 @@ public class Propietario implements Serializable {
     public List<Inmueble> getInmuebles() {
         return inmuebles;
     }
-
-    public void setInmuebles() {
+    public void setInmuebles(List<Inmueble> inmuebles) {
         this.inmuebles = inmuebles;
     }
 

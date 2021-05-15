@@ -21,8 +21,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
 import javafx.stage.Stage;
@@ -38,12 +36,6 @@ public class AddModulos implements Initializable {
     private Menu menuTitulo;
     @FXML
     private ComboBox<String> comboModulos;
-    @FXML
-    private Button bAñadir;
-    @FXML
-    private Button bModificar;
-    @FXML
-    private Button bEliminar;
     private ObservableList<String> listObsM;
     private Modulos m;
     private List<Modulos> listModulos;
@@ -54,7 +46,8 @@ public class AddModulos implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.listModulos = new ArrayList<Modulos>();
         this.listObsM = FXCollections.observableArrayList();
-        this.listAlumnos = new ArrayList<Alumnos>();
+        this.m = m;
+        
         comboModulos.setPromptText("Selecciona un Modulo");
     }
 
@@ -64,7 +57,7 @@ public class AddModulos implements Initializable {
         String nombreModulo = JOptionPane.showInputDialog(null, "Escribe el nombre del módulo a crear",
                 "Entrada", JOptionPane.QUESTION_MESSAGE);
 
-        if (nombreModulo.isBlank()) {
+        if (nombreModulo.isEmpty()) {
             Errores.nullNombre();
         }
         if (!listObsM.contains(nombreModulo)) {
@@ -72,15 +65,20 @@ public class AddModulos implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
             Parent newRoot = loader.load();
             AddAlumnos controller = loader.getController();
-
-            controller.init(nombreModulo, listAlumnos);
+            
+            m.setNombreM(nombreModulo);
+            controller.init(m);
 
             Scene scene = new Scene(newRoot);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
 
-            listModulos.add(new Modulos(nombreModulo, listAlumnos));
+            if (!listModulos.contains(m)) {
+                this.listModulos.add(m);
+                this.listObsM.add(m.getNombreM());
+            }
+            this.comboModulos.setItems(listObsM);
 
             actualizarCombo();
 
@@ -91,22 +89,25 @@ public class AddModulos implements Initializable {
 
     @FXML
     void modificarModulos(ActionEvent event) throws IOException {
-        String nombreM = null;
+        Modulos mo = new Modulos();
+        String nombreM = comboModulos.getValue().toString();
 
-        if (comboModulos.getValue().toString() != null && !comboModulos.getValue().toString().isEmpty()) {
+        if (nombreM != null && !nombreM.isEmpty()) {
 
             nombreM = comboModulos.getValue().toString();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Alumnos.fxml"));
             Parent newRoot = loader.load();
-
-            AddAlumnos aA = loader.getController();
-
-            for (int i = 0; i < listObsM.size(); i++) {
-                if (listObsM.get(i).equals(nombreM)) {
-                    aA.init(nombreM, listAlumnos);
+            AddAlumnos aA = loader.getController();            
+            
+            mo.setNombreM(nombreM);
+            for (Modulos i : listModulos) {
+                if (i.getNombreM().equalsIgnoreCase(mo.getNombreM())) {
+                    mo =  i;
                 }
             }
+            aA.initM(mo);            
+            
             Scene scene = new Scene(newRoot);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -122,36 +123,40 @@ public class AddModulos implements Initializable {
     @FXML
     void eliminarModulos(ActionEvent event) {
         String m = comboModulos.getValue();
-        if (listObsM.contains(m)) {            
-            for (int i = 0; i < listModulos.size(); i++) {
-                if (listModulos.get(i).getNombreC() == m) {
-                    listModulos.remove(i);
-                }
+//        if (listObsM.contains(m)) {
+//            listObsM.remove(m);
+//            comboModulos.setItems(listObsM);
+//            
+//            for (int i = 0; i < listModulos.size(); i++) {
+//                if (listModulos.get(i).getNombreC() == m) {
+//                    listModulos.remove(i);                    
+//                }
+//            }                        
+//        }
+        for (Modulos i : listModulos) {
+            if (i.getNombreM().equalsIgnoreCase(m)) {
+                listModulos.remove(i);
+                listObsM.remove(m);
+                comboModulos.setItems(listObsM);
             }
-            listObsM.remove(m);
-            comboModulos.setItems(listObsM);
         }
-    }
-
-    @FXML
-    void selectModulo(ActionEvent event) {
-
     }
 
     public Cursos initAgregar(Cursos c) {
         menuTitulo.setText("Modulos de " + c.getNombreC());
-        
         c.setModulos(listModulos);
-        
         return c;
     }
-    public void initAtributos(Cursos c) {
+
+    public Cursos initAtributos(Cursos c) {
         menuTitulo.setText("Modulos de " + c.getNombreC());
         if (!c.getNombreC().isEmpty()) {
             //guardar en curso correspondiente
             this.listModulos = c.getModulos();
         }
         actualizarCombo();
+        c.setModulos(listModulos);
+        return c;
     }
 
     public void actualizarCombo() {
@@ -161,8 +166,8 @@ public class AddModulos implements Initializable {
         }
         comboModulos.setItems(listObsM);
     }
-
-    public Modulos getModulo() {
-        return m;
-    }
+//
+//    public Modulos getModulo() {
+//        return m;
+//    }
 }
