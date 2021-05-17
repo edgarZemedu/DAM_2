@@ -123,16 +123,6 @@ public class AddModulos implements Initializable {
     @FXML
     void eliminarModulos(ActionEvent event) {
         String m = comboModulos.getValue();
-//        if (listObsM.contains(m)) {
-//            listObsM.remove(m);
-//            comboModulos.setItems(listObsM);
-//            
-//            for (int i = 0; i < listModulos.size(); i++) {
-//                if (listModulos.get(i).getNombreC() == m) {
-//                    listModulos.remove(i);                    
-//                }
-//            }                        
-//        }
         for (Modulos i : listModulos) {
             if (i.getNombreM().equalsIgnoreCase(m)) {
                 listModulos.remove(i);
@@ -166,8 +156,4 @@ public class AddModulos implements Initializable {
         }
         comboModulos.setItems(listObsM);
     }
-//
-//    public Modulos getModulo() {
-//        return m;
-//    }
 }

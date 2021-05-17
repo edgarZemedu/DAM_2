@@ -1,7 +1,13 @@
 /*
  * Empty Stylesheet file.
  */
-
-.mainFxmlClass {
-
+.fondo{
+    -fx-background-color: #006666;    
 }
+.botonSalir{
+    -fx-background-color: #ff6666;
+}
+.botonGuardar{
+    -fx-background-color: #00cc33;
+}
+

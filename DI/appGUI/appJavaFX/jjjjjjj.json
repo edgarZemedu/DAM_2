@@ -1,0 +1,25 @@
+[{
+        "nombreC": "sa",
+        "modulos": [{
+                "nombreC": null,
+                "modulos": null,
+                "nombreM": "ss",
+                "alumnos": [{
+                        "nombreC": null,
+                        "modulos": null,
+                        "nombreM": null,
+                        "alumnos": null,
+                        "nombreA": "dd",
+                        "apellidos": "ss",
+                        "edad": 21
+                    }, {
+                        "nombreC": null,
+                        "modulos": null,
+                        "nombreM": null,
+                        "alumnos": null,
+                        "nombreA": "rr",
+                        "apellidos": "tt",
+                        "edad": 55
+                    }]
+            }]
+    }]

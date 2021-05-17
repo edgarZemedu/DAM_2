@@ -7,8 +7,9 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="520.0" styleClass="fondo" stylesheets="@../estilos/cursos.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.FXMLController">
     <children>
         <MenuBar prefHeight="27.0" prefWidth="520.0">
             <menus>
@@ -25,11 +26,26 @@
                 </Menu>
             </menus>
         </MenuBar>      
-        <Label layoutX="172.0" layoutY="58.0" text="Bienvenido al Curso Académico" textAlignment="CENTER" underline="true" />
-        <Label layoutX="116.0" layoutY="127.0" minHeight="16" minWidth="69" text="Seleccionar Curso" />
-        <Button layoutX="52.0" layoutY="312.0" mnemonicParsing="false" onAction="#añadirCurso" text="Añadir curso" />
-        <Button layoutX="222.0" layoutY="312.0" mnemonicParsing="false" onAction="#modificarCurso" text="Modificar" />
-        <Button layoutX="369.0" layoutY="312.0" mnemonicParsing="false" onAction="#eliminarCurso" text="Eliminar" />
-        <ComboBox fx:id="comboCurso" layoutX="222.0" layoutY="123.0" prefWidth="150.0" />
+        <Label layoutX="113.0" layoutY="59.0" text="Bienvenido al Curso Académico" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font></Label>
+        <Label layoutX="116.0" layoutY="127.0" minHeight="16" minWidth="69" text="Seleccionar Curso">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font></Label>
+        <Button layoutX="52.0" layoutY="312.0" mnemonicParsing="false" onAction="#añadirCurso" styleClass="botonAdd" stylesheets="@../estilos/cursos.css" text="Añadir curso">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+        <Button layoutX="222.0" layoutY="312.0" mnemonicParsing="false" onAction="#modificarCurso" styleClass="botonModificar" stylesheets="@../estilos/cursos.css" text="Modificar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+        <Button layoutX="369.0" layoutY="312.0" mnemonicParsing="false" onAction="#eliminarCurso" styleClass="botonEliminar" stylesheets="@../estilos/cursos.css" text="Eliminar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+        <ComboBox fx:id="comboCurso" layoutX="230.0" layoutY="124.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

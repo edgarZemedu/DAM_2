@@ -71,8 +71,7 @@ public class AddAlumnos implements Initializable {
                 }
                 return false;
             });
-        });
-        //this.tablaAlumnos.setItems(listFilter);        
+        });     
 
         colNombre.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("nombreA"));
         colApellidos.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("apellidos"));
@@ -187,21 +186,4 @@ public class AddAlumnos implements Initializable {
         tablaAlumnos.refresh();
     }
 
-//    @FXML
-//    public void onFilter(KeyEvent ke){
-//        String filterNombre = idFiltrar.getText();
-//        
-//        if (filterNombre.isBlank()) {
-//            tablaAlumnos.setItems(listObs);
-//        }else{
-//            listFilter.clear();
-//            for (Alumnos i : listaAlumnos) {
-//                if (i.getNombreA().toLowerCase().contains(filterNombre.toLowerCase())) {
-//                    listFilter.add(i);
-//                }
-//            }
-//            tablaAlumnos.setItems(listFilter);
-//        }
-//        
-//    }
 }

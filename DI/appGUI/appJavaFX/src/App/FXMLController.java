@@ -115,17 +115,6 @@ public class FXMLController implements Initializable {
     @FXML
     void eliminarCurso(ActionEvent event) {
         String ncurso = comboCurso.getValue().toString();
-//        if (listObsC.contains(ncurso)) {
-//            listObsC.remove(ncurso);
-//            comboCurso.setItems(listObsC);
-//
-//            for (int i = 0; i < listCursos.size(); i++) {
-//                if (listCursos.get(i).getNombreC() == ncurso) {
-//                    listCursos.remove(i);
-//                    //JOptionPane.showMessageDialog(null, "Hecho");
-//                }
-//            }
-//        }
         for (Cursos i : listCursos) {
             if (i.getNombreC().equalsIgnoreCase(ncurso)) {
                 listCursos.remove(i);
@@ -153,7 +142,6 @@ public class FXMLController implements Initializable {
         fileChooser.setTitle("Selecciona el archivo JSON a cargar");
         File selectedFile = fileChooser.showOpenDialog((Stage) (comboCurso.getScene().getWindow()));
 
-        //loadPersonDataFromFile(selectedFile);
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
@@ -179,14 +167,13 @@ public class FXMLController implements Initializable {
         fileChooser.setTitle("Guardar en JSON");
         File selectedFile =  fileChooser.showSaveDialog((Stage) (comboCurso.getScene().getWindow()));
 
-        //gurda;
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             //PersonaListWrapper wrapper = new PersonaListWrapper();
             //wrapper.setPersons(lista);
 
             //objectMapper.writeValue(file, wrapper);
-            objectMapper.writeValue(selectedFile, listObsC);
+            objectMapper.writeValue(selectedFile, listCursos);
 
             //objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Persona.class));
         } catch (Exception e) { // catches ANY exception

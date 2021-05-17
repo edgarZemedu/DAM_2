@@ -1,11 +1,21 @@
 
+
 .fondo{
-    -fx-background-color: #00ccff;
-    
+    -fx-background-color: #006666;    
 }
-.boton{
-    -fx-text-fill: #cc0000;
+.botonEliminar{
+    -fx-background-color: #ff6666;
+    /*-fx-text-fill: #;*/
 }
-.boton2{
-    -fx-background-color: #33ff33;
+.botonModificar{
+    -fx-background-color: #99ff00;
+}
+.botonAdd{
+    -fx-background-color: #00cc33;
+}
+.table-cell:hover{
+    -fx-background-color: #ff9999;
+}
+.table-cell{
+    -fx-border-color: transparent;
 }
