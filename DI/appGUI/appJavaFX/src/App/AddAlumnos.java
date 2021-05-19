@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,7 +58,7 @@ public class AddAlumnos implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         listObs = FXCollections.observableArrayList();
         listaAlumnos = new ArrayList<>();
-        listFilter = new FilteredList(listObs);
+        listFilter = new FilteredList<>(listObs,a -> true);
 
         idFiltrar.setPromptText("Buscar...");
         idFiltrar.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -64,15 +66,23 @@ public class AddAlumnos implements Initializable {
                 if (newValue.isEmpty()) {
                     return true;
                 }
+                //int edad = Integer.parseInt(newValue);
                 if (a.getNombreA().toLowerCase().contains(newValue.toLowerCase())) {
+                    
                     return true;
                 } else if (a.getApellidos().toLowerCase().contains(newValue.toLowerCase())) {
+                    
+                    return true;
+                }else if (newValue.contains(String.valueOf(a.getEdad()))) {                    
                     return true;
                 }
+                
                 return false;
             });
-        });     
+            tablaAlumnos.setItems(listFilter);
+        });
 
+        
         colNombre.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("nombreA"));
         colApellidos.setCellValueFactory(new PropertyValueFactory<Alumnos, String>("apellidos"));
         colEdad.setCellValueFactory(new PropertyValueFactory<Alumnos, Integer>("edad"));

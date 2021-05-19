@@ -20,7 +20,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -146,12 +145,12 @@ public class FXMLController implements Initializable {
 
             ObjectMapper objectMapper = new ObjectMapper();
             //PersonaListWrapper wrapper = objectMapper.readValue(file, PersonaListWrapper.class);
-
-            listObsC.clear();
-            listObsC.addAll((ArrayList) objectMapper.readValue(selectedFile, objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Cursos.class)));
-            //lista.addAll(wrapper.getPersons());
-
-            //tabla.setItems(listaFilter);
+            listCursos.clear();
+            listCursos.addAll((ArrayList) objectMapper.readValue(selectedFile, objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Cursos.class)));
+            //lista.addAll(wrapper.getPersons());            
+            actualizarCombo();
+            
+            
         } catch (Exception e) { // catches ANY exception
             System.out.println("....Error O " + e.getMessage());
         }
@@ -173,6 +172,8 @@ public class FXMLController implements Initializable {
             //wrapper.setPersons(lista);
 
             //objectMapper.writeValue(file, wrapper);
+            
+           
             objectMapper.writeValue(selectedFile, listCursos);
 
             //objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Persona.class));

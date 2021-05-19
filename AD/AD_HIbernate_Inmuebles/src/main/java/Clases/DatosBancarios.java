@@ -42,10 +42,9 @@ public class DatosBancarios implements Serializable{
     public DatosBancarios() {
     }
 
-    public DatosBancarios(String numCuenta, String nombreBanco) {
+    public DatosBancarios(String numCuenta, String nombreBanco,Propietario propietario) {
         this.numCuenta = numCuenta;
         this.nombreBanco = nombreBanco;
-        this.id = id;
         this.propietario = propietario;
     }
 

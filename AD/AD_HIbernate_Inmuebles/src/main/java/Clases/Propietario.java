@@ -28,15 +28,15 @@ public class Propietario implements Serializable {
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)//autoincremental
     private int id;
-    @Column(name = "prDNI", length = 9, nullable = false)
+    @Column(name = "prDNI")
     private String dni;
-    @Column(name = "prNombre", length = 15, nullable = false)
+    @Column(name = "prNombre")
     private String nombre;
-    @Column(name = "prApellidos", length = 40, nullable = false)
+    @Column(name = "prApellidos")
     private String apellidos;
-    @Column(name = "prDireccion", length = 50, nullable = false)
+    @Column(name = "prDireccion")
     private String direccion;
-    @Column(name = "prTelefono", length = 9, nullable = false)
+    @Column(name = "prTelefono")
     private String telefono;
 
     //importantes

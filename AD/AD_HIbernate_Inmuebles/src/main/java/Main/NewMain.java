@@ -5,7 +5,10 @@
  */
 package Main;
 
+import Clases.Propietario;
+import Libreria.ControlData;
 import Menu.Menu;
+import Operaciones.Operaciones;
 import Persistencia.Hibernate;
 import java.util.Scanner;
 
@@ -17,9 +20,6 @@ public class NewMain {
 
     static Scanner sc = new Scanner(System.in);
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         //Variables de control de operaciones
@@ -28,8 +28,6 @@ public class NewMain {
 
         //Obtenemos la lista de contactos de la base de datos
         do {
-//            Menu m = new Menu();
-//            m.printMenu();
             switch (Menu.pintarMenuPrincipal(sc)) {
                 case 1:
                     System.out.print("\n************************************************************\n"
@@ -38,18 +36,30 @@ public class NewMain {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + "Buscar/Mostrar un propietario por su id ");
-                            //mostrarTodos();
+                            Operaciones.buscarPropietario(sc);
                             break;
 
                         case 2:
                             System.out.println("\n************************************************************\n"
                                     + "Agregar propietario");
-                            //menuGuardarElemento();
+                            
+                            Propietario p = Operaciones.añadirP(sc);
+                            Operaciones.gurdarP(p);
+                            
+                            System.out.println("Quiere agregar datos Bancarios (S/N) ");
+                            char siModificar = ControlData.lerLetra(sc);
+                                if (Character.toUpperCase(siModificar) == 'S') {//Realizamos la operación
+                                    //Pide los datos por teclado
+                                    Operaciones.añadirDatosBancariosP(p,sc);
+                                }
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
                                     + "Eliminar propietario");
                             //menuBuscarElemento();
+                            System.out.println("Dime el id del propietario a eliminar: ");
+                            int id = sc.nextInt();
+                            Operaciones.eliminaP(id);
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
@@ -116,8 +126,8 @@ public class NewMain {
                     finalizar = true;
                     //Cierra la sesión de Hibernate
                     try {
-                        Hibernate.shutdown();                        
-                    }catch(ExceptionInInitializerError e){
+                        Hibernate.shutdown();
+                    } catch (ExceptionInInitializerError e) {
                         System.out.println(e.getMessage());
                     }
 

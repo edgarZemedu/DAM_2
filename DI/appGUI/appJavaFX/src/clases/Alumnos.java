@@ -9,7 +9,7 @@ package clases;
  *
  * @author a18zemedufc
  */
-public class Alumnos extends Modulos{
+public class Alumnos /*extends Modulos*/{
 
     private String nombreA, apellidos;
     private int edad;

@@ -5,14 +5,13 @@
  */
 package clases;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author a18zemedufc
  */
-public class Modulos extends Cursos {
+public class Modulos /*extends Cursos*/ {
     
     private String nombreM;    
     private List<Alumnos> alumnos;
@@ -21,7 +20,7 @@ public class Modulos extends Cursos {
     }
     
     public Modulos(String nombreM,List<Alumnos> alumnos) {
-        super();
+        //super();
         this.nombreM = nombreM;
         this.alumnos = alumnos;
     }    
