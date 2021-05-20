@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author a18zemedufc
  */
 @Entity
-@Table (name = "propietarios")
+@Table (name = "Inmuebles")
 public class Inmueble implements Serializable{
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)//autoincremental
@@ -39,15 +39,8 @@ public class Inmueble implements Serializable{
     public Inmueble() {
     }
 
-    public Inmueble(int id, String direccion, char codigoPostal, char estado, Propietario propietario) {
-        this.id = id;
-        this.direccion = direccion;
-        this.codigoPostal = codigoPostal;
-        this.estado = estado;
-        this.propietario = propietario;
-    }
     //constructor sin id
-    public Inmueble(String direccion, char codigoPostal, char estado, Propietario propietario) {
+    public Inmueble(String direccion, char codigoPostal, char estado) {
         this.direccion = direccion;
         this.codigoPostal = codigoPostal;
         this.estado = estado;
@@ -56,10 +49,6 @@ public class Inmueble implements Serializable{
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getDireccion() {

@@ -12,11 +12,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+<<<<<<< HEAD
+=======
+import javax.persistence.OneToMany;
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  *
+<<<<<<< HEAD
  * @author a18zemedufc
  */
 @Entity
@@ -49,11 +54,42 @@ public class DatosBancarios implements Serializable {
         this.numCuenta = numCuenta;
         this.nombreBanco = nombreBanco;
         this.Propietario = Propietario;
+=======
+ * @author A C E R
+ */
+@Entity
+@Table (name = "datosBancarios")
+public class DatosBancarios implements Serializable{
+        
+    @Id //pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//autoincremental
+    @Column (name = "id")
+    private int id;
+        
+    @Column (name = "numCuenta")
+    private String numCuenta;
+    
+    @Column (name = "nombreBanco")
+    private String nombreBanco;
+
+    @OneToOne
+    @JoinColumn (name = "idPropietario")
+    private Propietario propietario;
+    
+    public DatosBancarios() {
+    }
+
+    public DatosBancarios(String numCuenta, String nombreBanco,Propietario propietario) {
+        this.numCuenta = numCuenta;
+        this.nombreBanco = nombreBanco;
+        this.propietario = propietario;
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
     }
 
     public int getId() {
         return id;
     }
+<<<<<<< HEAD
 
     public void setId(int id) {
         this.id = id;
@@ -63,6 +99,12 @@ public class DatosBancarios implements Serializable {
         return numCuenta;
     }
 
+=======
+      
+    public String getNumCuenta() {
+        return numCuenta;
+    }
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
     public void setNumCuenta(String numCuenta) {
         this.numCuenta = numCuenta;
     }
@@ -70,23 +112,41 @@ public class DatosBancarios implements Serializable {
     public String getNombreBanco() {
         return nombreBanco;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
     public void setNombreBanco(String nombreBanco) {
         this.nombreBanco = nombreBanco;
     }
 
+<<<<<<< HEAD
     public Propietario getPropietario() {
         return Propietario;
     }
 
     public void setPropietario(Propietario Propietario) {
         this.Propietario = Propietario;
+=======
+    public Propietario getIdPropietario() {
+        return propietario;
+    }
+    public void setIdPropietario(Propietario propietario) {
+        this.propietario = propietario;
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
     }
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "DatosBancarios{" + "id=" + id + ", numCuenta=" + numCuenta + ", nombreBanco=" + nombreBanco + ", Propietario=" + Propietario + '}';
     }
     
+=======
+        return "DatosBancarios{" + "numCuenta=" + numCuenta + ", nombreBanco=" + nombreBanco + '}';
+    }
+    
+        
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
     
 }

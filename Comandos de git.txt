@@ -7,3 +7,5 @@
 -> git pull    (will pull the latest changes)
 -> git fetch    (will update the list of changes)
 -> git status    (will check the status of the repo. Without the fetch first, you will not see remote changes)
+-> git config core.autocrlf = true 
+    Formas de señalar los saltos de lineas en los proyectos en formato Unix(LF line feed) o en formato Windows(CRLF carriage return ...).

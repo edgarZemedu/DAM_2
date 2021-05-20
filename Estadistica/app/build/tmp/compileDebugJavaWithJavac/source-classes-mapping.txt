@@ -1,0 +1,4 @@
+com/example/estadistica/BuildConfig.java
+ com.example.estadistica.BuildConfig
+com/example/estadistica/MainActivity.java
+ com.example.estadistica.MainActivity

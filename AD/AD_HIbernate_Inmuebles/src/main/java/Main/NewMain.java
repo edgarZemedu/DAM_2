@@ -5,6 +5,8 @@
  */
 package Main;
 
+import Clases.Propietario;
+import Libreria.ControlData;
 import Menu.Menu;
 import Operaciones.Operaciones;
 import Persistencia.Hibernate;
@@ -18,9 +20,6 @@ public class NewMain {
 
     static Scanner sc = new Scanner(System.in);
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         //Variables de control de operaciones
@@ -29,8 +28,6 @@ public class NewMain {
 
         //Obtenemos la lista de contactos de la base de datos
         do {
-//            Menu m = new Menu();
-//            m.printMenu();
             switch (Menu.pintarMenuPrincipal(sc)) {
                 case 1:
                     System.out.print("\n************************************************************\n"
@@ -39,20 +36,39 @@ public class NewMain {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + "Buscar/Mostrar un propietario por su id ");
-                            //mostrarTodos();
+                            Operaciones.buscarPropietario(sc);
                             break;
 
                         case 2:
                             System.out.println("\n************************************************************\n"
                                     + "Agregar propietario");
+<<<<<<< HEAD
                             Operaciones.gurdarP(Operaciones.añadirP(sc));
+=======
+                            
+                            Propietario p = Operaciones.añadirP(sc);
+                            Operaciones.gurdarP(p);
+                            
+                            System.out.println("Quiere agregar datos Bancarios (S/N) ");
+                            char siModificar = ControlData.lerLetra(sc);
+                                if (Character.toUpperCase(siModificar) == 'S') {//Realizamos la operación
+                                    //Pide los datos por teclado
+                                    Operaciones.añadirDatosBancariosP(p,sc);
+                                }
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
                                     + "Eliminar propietario");
+<<<<<<< HEAD
                             System.out.println("Dime el id a eliminar: ");
                             int id = sc.nextInt();
                             //mostrar para ser los existen y comprobar si mete bn los datos
+=======
+                            //menuBuscarElemento();
+                            System.out.println("Dime el id del propietario a eliminar: ");
+                            int id = sc.nextInt();
+>>>>>>> 8813502d5264ccccc41e237b55deaf62efe04d74
                             Operaciones.eliminaP(id);
                             break;
                         case 4:
