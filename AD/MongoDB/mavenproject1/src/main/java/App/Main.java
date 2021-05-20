@@ -30,9 +30,9 @@ public class Main {
         
         Iterator it = coleccion.find().iterator();
           
-//        while(it.hasNext()){
-//            System.out.println("\n-> "+ it.next().toString());
-//        }
+        while(it.hasNext()){
+            System.out.println("\n-> "+" => "+ it.next().toString());
+        }
         
         /***********OPERACIONES CRUD**********/
         //INSERTAR
@@ -46,6 +46,8 @@ public class Main {
         while(it.hasNext()){
             System.out.println("\n-> "+ it.next().toString());
         }
+        //BORRADO
+        coleccion.deleteOne(new Document("_id",3));
         //LECTURA
         Modulo m = new Modulo();
         Document doc2 = new Document("Asignatura","AD");
