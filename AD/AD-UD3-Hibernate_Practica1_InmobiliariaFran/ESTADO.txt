@@ -1,0 +1,1 @@
+Error al eliminar un propiatario con inmuebles asignados.
