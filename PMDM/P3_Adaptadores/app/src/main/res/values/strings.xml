@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Adaptadores2</string>
-    <string name="provincias_y_localidades">PROVINCIAS Y LOCALIDADES</string>
-    <string name="provincia">Provincia</string>
-    <string name="localidade">Localidade</string>
-    <string name="no_app_error">App no encontrada</string>
-    <string name="valor_erroneo">Valor erroneo</string>
-</resources>

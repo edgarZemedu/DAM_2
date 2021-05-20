@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">Intents</string>
-    <string name="no_app_error">No tengo app para este intent</string>
-</resources>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="EjSpinner">EjSpinner</string>
-    <string name="country_prompt">Choose a country</string>
-    <string name="item_prompt">Select item:</string>
-    <string name="botonEleccion">Pulsa para ver tu elección</string>
-
-</resources>

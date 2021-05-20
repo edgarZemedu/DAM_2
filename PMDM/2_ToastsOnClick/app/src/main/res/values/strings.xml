@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">2-ToastsOnClick</string>
-    <string name="o1_receptor_de_eventos">Opción 1: receptor de eventos</string>
-    <string name="o2_clase_listener">Opción 2: Creación de una clase listener</string>
-    <string name="o3_clase_anonima">Opción 3: Clase anónima</string>
-</resources>
