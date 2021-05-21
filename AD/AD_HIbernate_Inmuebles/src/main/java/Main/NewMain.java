@@ -5,6 +5,8 @@
  */
 package Main;
 
+import Clases.Propietario;
+import Libreria.ControlData;
 import Menu.Menu;
 import Operaciones.Operaciones;
 import Persistencia.Hibernate;
@@ -39,13 +41,21 @@ public class NewMain {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + "Buscar/Mostrar un propietario por su id ");
-                            //mostrarTodos();
+                            Operaciones.buscarPropietario(sc);
                             break;
 
                         case 2:
                             System.out.println("\n************************************************************\n"
                                     + "Agregar propietario");
-                            Operaciones.gurdarP(Operaciones.añadirP(sc));
+                            Propietario p = Operaciones.añadirP(sc);
+                            Operaciones.gurdarP(p);
+                            
+                            System.out.println("Quiere agregar datos Bancarios (S/N) ");
+                            char siModificar = ControlData.lerLetra(sc);
+                                if (Character.toUpperCase(siModificar) == 'S') {//Realizamos la operación
+                                    //Pide los datos por teclado
+                                    Operaciones.añadirDatosBancariosP(p,sc);
+                                }
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
@@ -54,6 +64,7 @@ public class NewMain {
                             int id = sc.nextInt();
                             //mostrar para ser los existen y comprobar si mete bn los datos
                             Operaciones.eliminaP(id);
+                                System.out.println("Se ha eliminado, pringaooo");
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"

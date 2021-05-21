@@ -5,9 +5,11 @@
  */
 package Operaciones;
 
+import Clases.DatosBancarios;
 import Clases.Propietario;
 import Clases.Inmueble;
 import Excepciones.MisExcepciones;
+import Libreria.ControlData;
 import Persistencia.Hibernate;
 import java.util.List;
 import java.util.Objects;
@@ -69,9 +71,9 @@ public class Operaciones {
      * operaci�n no se ha podido realizar
      */
     public static Propietario añadirP(Scanner sc) {
-        
+
         System.out.println("Dime el dni: ");
-        String dni = sc.nextLine();        
+        String dni = sc.nextLine();
         System.out.println("Dime el nombre: ");
         String nombre = sc.nextLine();
         System.out.println("Dime el apellido: ");
@@ -80,10 +82,31 @@ public class Operaciones {
         String direccion = sc.nextLine();
         System.out.println("Dime el teléfono: ");
         String telefono = sc.nextLine();
-        Propietario p = new Propietario(dni,nombre,apellidos,direccion,telefono);
-        
+        Propietario p = new Propietario(dni, nombre, apellidos, direccion, telefono);
+
         return p;
     }
+
+    public static DatosBancarios añadirDatosBancariosP(Propietario nuevoP, Scanner sc) {
+        DatosBancarios nuevoDB = new DatosBancarios();
+        try {
+            System.out.println("Introduce el Número de Cuenta");
+            String numCuenta = ControlData.lerString(sc);
+            System.out.println("Introduce el nombre del Banco");
+            String nombreBanco = ControlData.lerNome(sc);
+            nuevoDB = new DatosBancarios(numCuenta, nombreBanco, nuevoP);
+
+            //nuevoDB.setPropietario(nuevoPropietario);
+            long id = gurdarDB(nuevoDB);
+            System.out.println("Se han guardado los datos bancarios del propietario que tiene el id " + id);
+
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+
+        return nuevoDB;
+    }
+
     public static long gurdarP(Propietario p) {
         int id = -1;
         try {
@@ -109,6 +132,20 @@ public class Operaciones {
             /*guarda el contacto en la base de datos y devuelve el id generado
             aqu� no se usa, pero se podr�a utilizar*/
             id = (int) sesion.save(i);
+            transa.commit();
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+        } finally {
+            sesion.close();
+        }
+        return id;
+    }
+
+    public static long gurdarDB(DatosBancarios dp) {
+        int id = -1;
+        try {
+            iniciaOperacion();
+            id = (int) sesion.save(dp);
             transa.commit();
         } catch (HibernateException he) {
             manejaExcepcion(he);
@@ -186,9 +223,8 @@ public class Operaciones {
      * @return
      * @throws HibernateException
      */
-    public static Propietario obtenEmpleado(int id) {
+    public static Propietario obtenerP(long id) {
         Propietario e = null;
-        boolean obtenido = false;
 
         try {
             //abre la sesi�n e inicia la transici�n
@@ -202,6 +238,38 @@ public class Operaciones {
             sesion.close();
         }
         return e;
+    }
+
+    public static DatosBancarios obtenerDB(int id) {
+        DatosBancarios dp = null;
+        boolean obtenido = false;
+
+        try {
+            iniciaOperacion();
+            dp = sesion.get(DatosBancarios.class, id);
+            transa.commit();
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+        } finally {
+            sesion.close();
+        }
+        return dp;
+    }
+
+    public static Inmueble obtenerInm(int id) {
+        Inmueble i = null;
+        boolean obtenido = false;
+
+        try {
+            iniciaOperacion();
+            i = sesion.get(Inmueble.class, id);
+            transa.commit();
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+        } finally {
+            sesion.close();
+        }
+        return i;
     }
 
     /**
@@ -224,6 +292,20 @@ public class Operaciones {
         return listaED;
     }
 
+    public static List<Object[]> obtenerListaPdatosB() throws HibernateException {
+        List<Object[]> listaPdatosB = null;
+        try {
+            iniciaOperacion();
+            listaPdatosB = sesion.createQuery("FROM datosBancarios AS db INNER JOIN db.propietarios AS pro").list();
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+        } finally {
+            sesion.close();
+        }
+        return listaPdatosB;
+    }
+
     public static List<Object[]> obtenerListaPIconID(int idBuscar) throws HibernateException {
         List<Object[]> listaPI = null;
         boolean obtenido = false;
@@ -231,10 +313,10 @@ public class Operaciones {
             //abre la sesi�n e
             //inicia la transici�n
             iniciaOperacion();
-            
+
             listaPI = sesion.createQuery("FROM Direccion AS dire INNER JOIN dire.empleado AS emp "
                     + "WHERE emp.id = :idP").setParameter("idP", idBuscar).list();
-            
+
             //query.uniqueResult();
             transa.commit();
         } catch (HibernateException he) {
@@ -243,5 +325,49 @@ public class Operaciones {
             sesion.close();
         }
         return listaPI;
+    }
+    public static List<Object[]> obtenerListaPdBconID(long idBuscar) throws HibernateException {
+        List<Object[]> listaPdatosB = null;
+        boolean obtenido = false;
+        try {
+            iniciaOperacion();
+            listaPdatosB = sesion.createQuery("FROM datosBancarios AS db INNER JOIN db.propietarios AS pro "
+                    + "WHERE pro.id = :idP").setParameter("idP", idBuscar).list();
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+        } finally {
+            sesion.close();
+        }
+        return listaPdatosB;
+    }
+
+    public static void buscarPropietario(Scanner sc) {
+        System.out.println("Introduce el id del propietario a buscar ");
+        Long id = ControlData.lerLong(sc);
+        try {
+            Propietario encontradoP = Operaciones.obtenerP(id);
+            if (!Objects.isNull(encontradoP)) {
+                System.out.println("El propietario ha sido localizado ");
+                System.out.println(encontradoP.toString());
+
+                System.out.println("Quiere ver los datos Bancarios (S/N) ");
+                char siModificar = ControlData.lerLetra(sc);
+                if (Character.toUpperCase(siModificar) == 'S') {
+
+                    List<Object[]> propietarioCuenta = Operaciones.obtenerListaPdBconID(id);
+
+                    if (!Objects.isNull(propietarioCuenta)) {
+
+                        System.out.println(propietarioCuenta.get(0)[0] + " - " + propietarioCuenta.get(0)[1]);
+                    }
+                }
+            } else {
+                System.out.println("El propietario no ha sido localizado ");
+            }
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+
     }
 }

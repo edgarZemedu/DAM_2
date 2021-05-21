@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author a18zemedufc
  */
 @Entity
-@Table (name = "propietarios")
+@Table (name = "inmuebles")
 public class Inmueble implements Serializable{
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)//autoincremental

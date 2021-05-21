@@ -13,7 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -40,7 +39,7 @@ public class Propietario implements Serializable {
     private String telefono;
 
     //importantes
-    @OneToMany(mappedBy = "propietarios")
+    @OneToMany(mappedBy = "id")
     private List<Inmueble> inmuebles = new ArrayList<Inmueble>();
 
     public List<Inmueble> getInmuebles() {
