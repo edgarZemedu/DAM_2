@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ciudades" >
+        <item>Vilaboa</item>
+        <item>Sotomayor</item>
+        <item>Bueu</item>
+        <item>Marín</item>
+        <item>Puentecaldelas</item>
+        <item>Fornelos de Montes</item>
+        <item>Padrón</item>
+        <item>Ames</item>
+        <item>Narón</item>
+        <item>Aldán</item>
+        <item>Arteijo</item>
+        <item>Poyo</item>
+        <item>Barbadás</item>
+        <item>Culleredo</item>
+    </string-array>
+</resources>

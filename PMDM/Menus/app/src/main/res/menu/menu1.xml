@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/item1"
+        android:icon="@android:drawable/ic_secure"
+          android:title="Item 1"
+          app:showAsAction="always">
+    </item>
+    <item android:id="@+id/item2"
+        android:title="Item 2"
+        android:icon="@color/black">
+    </item>
+    <item android:id="@+id/item3"
+        android:icon="@android:drawable/ic_delete"
+        android:title="Item 3"
+        app:showAsAction="collapseActionView">
+    </item>
+    <item android:id="@+id/item4"
+        android:icon="@android:drawable/btn_dialog"
+        android:title="Item 4"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item android:id="@+id/item41" android:title="Item 41"   app:showAsAction="withText"> </item>
+            <item android:id="@+id/item42" android:title="Item 42"   app:showAsAction="ifRoom">   </item>
+        </menu>
+    </item>
+    <item android:id="@+id/item5"
+        android:title="Item 5"
+        android:icon="@android:drawable/ic_menu_zoom"
+        app:showAsAction="never">
+    </item>
+    <item android:id="@+id/item6"
+        android:icon="@android:drawable/alert_dark_frame"
+        android:title="Item 6"
+        app:showAsAction="withText">
+        <menu>
+            <item android:id="@+id/item61" android:title="Item 61" app:showAsAction="withText">  </item>
+            <item android:id="@+id/item62" android:title="Item 62" app:showAsAction="ifRoom">    </item>
+        </menu>
+    </item>
+</menu>
