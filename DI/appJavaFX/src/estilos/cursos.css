@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 de abr. de 2021, 20:37:58
+    Author     : a18zemedufc
+*/
+.fondo{
+    -fx-background-color: #006666;    
+}
+.botonEliminar{
+    -fx-background-color: #ff6666;
+    /*-fx-text-fill: #;*/
+}
+.botonModificar{
+    -fx-background-color: #99ff00;
+}
+.botonAdd{
+    -fx-background-color: #00cc33;
+}

@@ -1,0 +1,16 @@
+/*
+ * Empty Stylesheet file.
+ */
+.fondo{
+    -fx-background-color: #006666;    
+}
+.botonEliminar{
+    -fx-background-color: #ff6666;
+    /*-fx-text-fill: #;*/
+}
+.botonModificar{
+    -fx-background-color: #99ff00;
+}
+.botonAdd{
+    -fx-background-color: #00cc33;
+}

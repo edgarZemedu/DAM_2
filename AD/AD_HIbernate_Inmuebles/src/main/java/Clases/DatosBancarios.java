@@ -6,6 +6,7 @@
 package Clases;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -87,6 +88,17 @@ public class DatosBancarios implements Serializable {
     public String toString() {
         return "DatosBancarios{" + "id=" + id + ", numCuenta=" + numCuenta + ", nombreBanco=" + nombreBanco + ", Propietario=" + Propietario + '}';
     }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, numCuenta, nombreBanco);
+    }
     
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DatosBancarios)) return false;
+        DatosBancarios that = (DatosBancarios) o;
+        return id == that.id && numCuenta.equals(that.numCuenta) && nombreBanco.equals(that.nombreBanco);
+    }
     
 }

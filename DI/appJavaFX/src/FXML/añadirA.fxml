@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="265.0" styleClass="fondo" stylesheets="@../estilos/añadirA.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.AñadirA">
+   <children>
+      <Label layoutX="107.0" layoutY="36.0" styleClass="nombre" text="Nombre">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="104.0" layoutY="103.0" styleClass="apellidos" text="Apellidos">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="115.0" layoutY="173.0" styleClass="edad" text="Edad" />
+      <Button layoutX="54.0" layoutY="283.0" mnemonicParsing="false" onAction="#onBotonGuardar" prefHeight="25.0" prefWidth="149.0" styleClass="botonGuardar" stylesheets="@../estilos/añadirA.css" text="Guardar" />
+      <Button layoutX="54.0" layoutY="322.0" mnemonicParsing="false" onAction="#onBotonSalir" prefHeight="25.0" prefWidth="149.0" styleClass="botonSalir" stylesheets="@../estilos/añadirA.css" text="Salir">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="tfApellidos" layoutX="55.0" layoutY="134.0" />
+      <TextField fx:id="tfNombre" layoutX="55.0" layoutY="66.0" />
+      <TextField fx:id="tfEdad" layoutX="55.0" layoutY="202.0" />
+   </children>
+</AnchorPane>

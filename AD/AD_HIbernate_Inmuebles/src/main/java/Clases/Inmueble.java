@@ -6,6 +6,7 @@
 package Clases;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,34 +21,37 @@ import javax.persistence.Table;
  * @author a18zemedufc
  */
 @Entity
-@Table (name = "inmuebles")
-public class Inmueble implements Serializable{
+@Table(name = "inmuebles")
+public class Inmueble implements Serializable {
+
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)//autoincremental
+    @Column(name = "id")
     private int id;
     @Column(name = "inDireccion")
     private String direccion;
     @Column(name = "idCodZona")
-    private char codigoPostal;
+    private int codigoPostal;
     @Column(name = "inEstado")
-    private char estado;
-    
+    private String estado;
+
     @ManyToOne
-    @JoinColumn(name = "inPropietario")
+    @JoinColumn(name = "inPropietario", referencedColumnName = "id", insertable = false, updatable = false)
     private Propietario propietario;
 
     public Inmueble() {
     }
 
-    public Inmueble(int id, String direccion, char codigoPostal, char estado, Propietario propietario) {
+    public Inmueble(int id, String direccion, int codigoPostal, String estado, Propietario propietario) {
         this.id = id;
         this.direccion = direccion;
         this.codigoPostal = codigoPostal;
         this.estado = estado;
         this.propietario = propietario;
     }
+
     //constructor sin id
-    public Inmueble(String direccion, char codigoPostal, char estado, Propietario propietario) {
+    public Inmueble(String direccion, int codigoPostal, String estado, Propietario propietario) {
         this.direccion = direccion;
         this.codigoPostal = codigoPostal;
         this.estado = estado;
@@ -70,19 +74,19 @@ public class Inmueble implements Serializable{
         this.direccion = direccion;
     }
 
-    public char getCodigoPostal() {
+    public int getCodigoPostal() {
         return codigoPostal;
     }
 
-    public void setCodigoPostal(char codigoPostal) {
+    public void setCodigoPostal(int codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
-    public char getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(char estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
@@ -98,6 +102,45 @@ public class Inmueble implements Serializable{
     public String toString() {
         return "Inmueble{" + "id=" + id + ", direccion=" + direccion + ", codigoPostal=" + codigoPostal + ", estado=" + estado + ", propietario=" + propietario + '}';
     }
-    
-    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.direccion);
+        hash = 17 * hash + Objects.hashCode(this.codigoPostal);
+        hash = 17 * hash + Objects.hashCode(this.estado);
+        hash = 17 * hash + Objects.hashCode(this.propietario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Inmueble other = (Inmueble) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.direccion, other.direccion)) {
+            return false;
+        }
+        if (!Objects.equals(this.codigoPostal, other.codigoPostal)) {
+            return false;
+        }
+        if (!Objects.equals(this.estado, other.estado)) {
+            return false;
+        }
+        if (!Objects.equals(this.propietario, other.propietario)) {
+            return false;
+        }
+        return true;
+    }
+
 }
