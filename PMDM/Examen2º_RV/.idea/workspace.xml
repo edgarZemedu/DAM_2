@@ -7,14 +7,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef4ea0c1-a791-4854-816b-00d461bb7e84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Android-app" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Menus/app/src/main/java/com/zeme/menus/AdaterRV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Menus/app/src/main/java/com/zeme/menus/MainActivity2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Menus/app/src/main/java/com/zeme/menus/MainActivity3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Menus/app/src/main/res/layout/activity_main2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Menus/app/src/main/res/layout/activity_main3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Menus/app/src/main/res/layout/items.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Menus/app/src/main/res/values/refs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/java/com/zeme/menus/AdaterRV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/java/com/zeme/menus/MainActivity2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/java/com/zeme/menus/MainActivity3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/layout/activity_main2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/layout/activity_main3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/layout/items.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/values/refs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zeme/examen2ev_pdmd_z/AdapterRV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zeme/examen2ev_pdmd_z/RecyclerView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zeme/examen2ev_pdmd_z/addAlbums.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adapter_r_v.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_albums.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recycler_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej1Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej1Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej3Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej3Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej4Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej4Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej2_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/values/arrays.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +54,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1st5JLmDKVnIp9B3dm9PaskiYgg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -50,7 +68,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DAM_2/PMDM" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">

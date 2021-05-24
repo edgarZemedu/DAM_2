@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="albums_base">
+        <item>Nuevo Álbum</item>
+        <item>Álbums1</item>
+    </string-array>
+    <string-array name="Rock">
+        <item>Ro...</item>
+        <item>ck...</item>
+    </string-array>
+    <string-array name="Metal">
+        <item>Me...</item>
+        <item>Tal...</item>
+    </string-array>
+
+</resources>
