@@ -5,41 +5,44 @@
       <config />
     </shared>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ef4ea0c1-a791-4854-816b-00d461bb7e84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/java/com/zeme/menus/AdaterRV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/java/com/zeme/menus/MainActivity2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/java/com/zeme/menus/MainActivity3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/layout/activity_main2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/layout/activity_main3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/layout/items.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menus/app/src/main/res/values/refs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zeme/examen2ev_pdmd_z/AdapterRV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zeme/examen2ev_pdmd_z/RecyclerView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zeme/examen2ev_pdmd_z/addAlbums.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_adapter_r_v.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_albums.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recycler_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej1Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej1Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej3Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej3Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej4Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/Ej4Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/java/com/zeme/proyecto_3/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej2_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/layout/activity_ej4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto_3/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/Contactos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/ItemFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/MyItemRecyclerViewAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/placeholder/PlaceholderContent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/layout/fragment_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/layout/fragment_item_list.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/menu/menumain.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/values/dimens.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/home/edgar/.android/avd/Pixel_2_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -50,11 +53,13 @@
       <list>
         <option value="valueResourceFile" />
         <option value="resourceFile" />
+        <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1st5JLmDKVnIp9B3dm9PaskiYgg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -67,13 +72,24 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-05-22T18:56:31.809Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android-custom-view/home/edgar/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-view/home/edgar/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
+    <property name="android-custom-view/home/edgar/Android/Sdk/sources/android-30/android/view/ViewGroup.java_SELECTED" value="ViewGroup" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DAM_2/PMDM" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documentos/proyecto_apps/whathsapp" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1621876597001" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.-493873839">
+      <recent name="com.zeme.examen2ev_pdmd_z.Fragments" />
+      <recent name="com.zeme.examen2ev_pdmd_z" />
+    </key>
     <key name="android.template.-321840162">
       <recent name="com.zeme.examen2ev_pdmd_z" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
   <component name="RunManager">
@@ -92,6 +108,7 @@
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -142,6 +159,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -155,42 +173,84 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1621879811018">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1621879811018" />
+    <state x="694" y="421" width="532" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1621927358174">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="694" y="421" width="532" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1920.1053@0.27.1920.1053" timestamp="1621927358174" />
+    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621876652290">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1621876652290" />
     <state x="92" y="92" width="1182" height="544" key="AVDManager" timestamp="1621770237282">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1621770237282" />
-    <state x="263" y="119" key="AndroidCreateResourceFileDialog" timestamp="1621760887989">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="543" y="311" width="824" height="491" key="AndroidCreateResourceDirectoryDialog" timestamp="1621902722043">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="543" y="311" width="824" height="491" key="AndroidCreateResourceDirectoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1621902722043" />
+    <state x="370" y="199" width="824" height="491" key="AndroidCreateResourceFileDialog" timestamp="1621902609768">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1621760887989" />
-    <state x="528" y="171" key="AndroidCreateXmlResourceDialog" timestamp="1621692420114">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="370" y="199" width="824" height="491" key="AndroidCreateResourceFileDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1621902609768" />
+    <state x="742" y="274" width="356" height="388" key="AndroidCreateXmlResourceDialog" timestamp="1621883725129">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="528" y="171" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1621692420114" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1621784840743">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="742" y="274" width="356" height="388" key="AndroidCreateXmlResourceDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1621883725129" />
+    <state x="651" y="199" width="424" height="491" key="FileChooserDialogImpl" timestamp="1621931405915">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1621784840743" />
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1621763251020">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="651" y="199" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1621931405915" />
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1621940956845">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621763251020" />
-    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1621763251019">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1621940956845" />
+    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1621940956845">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1621763251019" />
-    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1621763251019">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1621940956845" />
+    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1621940956845">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1621763251019" />
-    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1621763251020">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1621940956845" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1621940956845">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1621763251020" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1621940956845" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1621769542352">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1621769542352" />
+    <state x="732" y="333" width="446" height="447" key="chooseDestDirectoryDialog" timestamp="1621902195513">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="732" y="333" width="446" height="447" key="chooseDestDirectoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1621902195513" />
+    <state x="716" y="300" width="477" height="514" key="refactoring.ChangeSignatureDialog" timestamp="1621881679486">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="716" y="300" width="477" height="514" key="refactoring.ChangeSignatureDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1621881679486" />
   </component>
 </project>

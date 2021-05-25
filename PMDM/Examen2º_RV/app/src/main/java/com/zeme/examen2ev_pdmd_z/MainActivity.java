@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     static final String ALBUM_MESSAGE = "ooo";
-    static List <String> lAlbum;
+    static List <String> listaAlbum;
     Spinner sp;
     Button boton;
 
@@ -33,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         sp = findViewById(R.id.spinner);
         boton = findViewById(R.id.button);
 
-        lAlbum = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.albums_base)));
-        ArrayAdapter<String> a = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,lAlbum);
+        listaAlbum = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.albums_base)));
+        ArrayAdapter<String> a = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listaAlbum);
         sp.setAdapter(a);
 
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 1){
-            lAlbum.add(data.getStringExtra(ALBUM_MESSAGE));
+            listaAlbum.add(data.getStringExtra(ALBUM_MESSAGE));
             Toast.makeText(this,data.getStringExtra(ALBUM_MESSAGE),Toast.LENGTH_SHORT).show();
         }
     }
@@ -78,16 +80,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        MainActivity activity;
         switch (item.getItemId()){
             case R.id.itemRV:
-                startActivity(new Intent(MainActivity.this,RecyclerView.class));
+                startActivity(new Intent(MainActivity.this, RV.class));
+                break;
+            case R.id.itemFrag:
+                /*
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment_content_main, new FirstFragment())
+                        .commit();
+                 */
+                Toast.makeText(this, "Lo siento,no has diseñado nada!!!!", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Toast.makeText(this, "Ups!!!!", Toast.LENGTH_SHORT).show();
                 break;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 }
