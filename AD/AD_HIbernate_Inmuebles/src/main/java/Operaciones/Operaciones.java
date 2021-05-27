@@ -10,7 +10,10 @@ import Clases.Propietario;
 import Clases.Inmueble;
 import Excepciones.MisExcepciones;
 import Libreria.ControlData;
+import Menu.Menu;
+import static Menu.Menu.pintarMenuPrincipal;
 import Persistencia.Hibernate;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -27,6 +30,7 @@ public class Operaciones {
     /**
      * Objeto Session y Transaction para porder realizar operaciones sobre la BD
      */
+    static Scanner sc = new Scanner(System.in);
     private static Session sesion;
     private static Transaction transa;
 
@@ -54,7 +58,7 @@ public class Operaciones {
      */
     private static void manejaExcepcion(HibernateException he) {
         transa.rollback();
-        throw new HibernateException("\n\nHa sucedido un error en la capa de acceso a datos", he);
+        throw new HibernateException("\nHa sucedido un error en la capa de acceso a datos "+he.getMessage(), he);
     }
 
     /*
@@ -124,21 +128,31 @@ public class Operaciones {
         return id;
     }
 
-    public static long gurdarI(Inmueble i) {
-        int id = -1;
+    public static void gurdarI() {
+        System.out.println("Introduce el ID");
+        char id = ControlData.lerChar(sc);
+        System.out.println("Introduce la Dirección del Inmueble");
+        String inDireccion = ControlData.lerString(sc);
+        System.out.println("Introduce el código de la zona");
+        int inCodZona = ControlData.lerInt(sc);
+        System.out.println("Introduce el estado del Inmueble");
+        String inEstado = ControlData.lerString(sc);
+        System.out.println("Introduce el ID del propietario");
+        int idPropietario = ControlData.lerInt(sc);
+
+        List<Propietario> listaPropietarios = null;
+        listaPropietarios = OperacionesPropietarios.obtenListaPropietarios();
+
         try {
-            //abre la sesi�n e inicia la transici�n
-            iniciaOperacion();
-            /*guarda el contacto en la base de datos y devuelve el id generado
-            aqu� no se usa, pero se podr�a utilizar*/
-            id = (int) sesion.save(i);
-            transa.commit();
+            Propietario propietario = OperacionesPropietarios.obtenPropietario(idPropietario);
+
+            //Crea un un inmueble con los datos introducidos
+            Inmueble nuevoInmueble = new Inmueble(id, inDireccion, inCodZona, inEstado, propietario);
+            OperacionesInmuebles.guardaInmueble(nuevoInmueble);
+            System.out.println("Se ha guardado el Inmueble que tendrá el id " + id);
         } catch (HibernateException he) {
-            manejaExcepcion(he);
-        } finally {
-            sesion.close();
+            System.out.println(he.getMessage());
         }
-        return id;
     }
 
     public static long gurdarDB(DatosBancarios dp) {
@@ -180,6 +194,68 @@ public class Operaciones {
         }
         return actualizado;
     }
+    public static void menuActualizarI() {
+        System.out.println("Introduce el id del inmueble a modificar ");
+        char id = ControlData.lerChar(sc);
+        boolean modificado = false;
+        try {
+            Inmueble inmueble_localizado = OperacionesInmuebles.obtenInmueble(id);
+            if (!Objects.isNull(inmueble_localizado)) {
+                System.out.println("Confirme que el inmueble a modificar es (S/N) " + inmueble_localizado.toString());
+                char siModificar = ControlData.lerLetra(sc);
+                if (Character.toUpperCase(siModificar) == 'S') {//Realizamos la operación
+                    byte opcion = Menu.pintarMenuModificarInmueble(sc);
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("Introduce el nuevo ID");
+                            char idn = ControlData.lerChar(sc);
+                            inmueble_localizado.setId(idn);
+                            modificado = OperacionesInmuebles.actualizaInmueble(inmueble_localizado);
+                            break;
+                        case 2:
+                            System.out.println("Introduce la nueva dirección");
+                            String inDireccion = ControlData.lerString(sc);
+                            inmueble_localizado.setDireccion(inDireccion);
+                            modificado = OperacionesInmuebles.actualizaInmueble(inmueble_localizado);
+                            break;
+                        case 3:
+                            System.out.println("Introduce el nuevo código de zona");
+                            int inCodZona = ControlData.lerInt(sc);
+                            inmueble_localizado.setCodigoPostal(inCodZona);
+                            modificado = OperacionesInmuebles.actualizaInmueble(inmueble_localizado);
+                            break;
+                        case 4:
+                            System.out.println("Introduce el nuevo estado");
+                            String inEstado = ControlData.lerString(sc);
+                            inmueble_localizado.setEstado(inEstado);
+                            modificado = OperacionesInmuebles.actualizaInmueble(inmueble_localizado);
+                            break;
+                        case 5:
+                            System.out.println("Introduce el nuevo propietario");
+                            int idPropietario = ControlData.lerInt(sc);
+                            Propietario propietario = OperacionesPropietarios.obtenPropietario(idPropietario);
+                            inmueble_localizado.setPropietario(propietario);
+                            modificado = OperacionesInmuebles.actualizaInmueble(inmueble_localizado);
+                            break;
+
+                        default:
+                            System.out.println("Operación de actualización cancelada");
+                    }
+
+                    if (modificado) {
+                        System.out.println("El inmueble ha sido modificado correctamente");
+                    }
+                } else {
+                    System.out.println("Operación cancelada");
+                }
+            } else {
+                System.out.println("El inmueble no ha sido localizado");
+            }
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+
+    }
 
     /**
      * Elimina el contacto en la BD Previamente lo obtiene de la BD para
@@ -213,6 +289,30 @@ public class Operaciones {
         }
         return eliminado;
     }
+    public static void eliminarI() {
+        System.out.println("Introduce el id del inmueble a eliminar ");
+        int id = ControlData.lerInt(sc);
+        boolean eliminado = false;
+        try {
+            Inmueble ilocalizado = OperacionesInmuebles.obtenInmueble(id);
+            if (!Objects.isNull(ilocalizado)) {
+                System.out.println("El Inmueble ha sido localizado");
+                System.out.println(ilocalizado.toString());
+                System.out.println("¿Está seguro de que desea eliminarlo (S/N)?");
+                char siEliminar = ControlData.lerLetra(sc);
+                if (Character.toUpperCase(siEliminar) == 'S') {//Realizamos la operación
+                    eliminado = OperacionesInmuebles.eliminaInmueble(ilocalizado.getId());
+                    if (eliminado) {
+                        System.out.println("El Inmueble ha sido eliminado correctamente");
+                    }
+                }
+            } else {
+                System.out.println("El Inmueble no ha sido localizado");
+            }
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+    }
 
     /**
      * Obtiene un contacto de la BD Para ejecutar las b�squedas se puede usar
@@ -223,7 +323,7 @@ public class Operaciones {
      * @return
      * @throws HibernateException
      */
-    public static Propietario obtenerP(long id) {
+    public static Propietario obtenerP(int id) {
         Propietario e = null;
 
         try {
@@ -256,20 +356,29 @@ public class Operaciones {
         return dp;
     }
 
-    public static Inmueble obtenerInm(int id) {
-        Inmueble i = null;
-        boolean obtenido = false;
+    public static void obtenerInm() {
+        System.out.println("Introduce el id del inmueble a buscar ");
+        char id = ControlData.lerChar(sc);
 
         try {
-            iniciaOperacion();
-            i = sesion.get(Inmueble.class, id);
-            transa.commit();
+            List<Object[]> inmueble_localizado = OperacionesInmuebles.obtenInmueblePropietario(id);
+            if (!Objects.isNull(inmueble_localizado)) {
+                System.out.println("El inmueble ha sido localizado ");
+                System.out.println(inmueble_localizado.get(0)[0]);
+
+                System.out.println("Quiere ver el propietario (S/N) ");
+                char siModificar = ControlData.lerLetra(sc);
+                if (Character.toUpperCase(siModificar) == 'S') {//Realizamos la operación
+
+                    System.out.println(inmueble_localizado.get(0)[0] + " - " + inmueble_localizado.get(0)[1]);
+                }
+
+            } else {
+                System.out.println("El Inmueble no ha sido localizado ");
+            }
         } catch (HibernateException he) {
-            manejaExcepcion(he);
-        } finally {
-            sesion.close();
+            System.out.println(he.getMessage());
         }
-        return i;
     }
 
     /**
@@ -278,18 +387,23 @@ public class Operaciones {
      * @return devuleve un ojeto List con todos los contactos de la BD
      * @throws HibernateException
      */
-    public static List<Object[]> obtenerListaPI() throws HibernateException {
-        List<Object[]> listaED = null;
+    public static void obtenerListaPI()  {
+        int i = 0;
         try {
-            iniciaOperacion();
-            listaED = sesion.createQuery("FROM Direccion AS dire INNER JOIN dire.empleado AS emp").list();
+            List<Object[]> listaIP =  OperacionesPropietarios.listarPropietariosInmuebles();
+            if (!Objects.isNull(listaIP)) {
 
+                Iterator it = listaIP.iterator();
+
+                while (it.hasNext()) {
+                    it.next();                    
+                    System.out.println("Propietario: "+listaIP.get(i)[1] + " Inmueble: " + listaIP.get(i)[0]);
+                    i++;
+                }
+            }
         } catch (HibernateException he) {
-            manejaExcepcion(he);
-        } finally {
-            sesion.close();
+            System.out.println(he.getMessage());
         }
-        return listaED;
     }
 
     public static List<Object[]> obtenerListaPdatosB() throws HibernateException {
@@ -326,12 +440,12 @@ public class Operaciones {
         }
         return listaPI;
     }
-    public static List<Object[]> obtenerListaPdBconID(long idBuscar) throws HibernateException {
+    public static List<Object[]> obtenerListaPdBconID(int idBuscar) throws HibernateException {
         List<Object[]> listaPdatosB = null;
         boolean obtenido = false;
         try {
             iniciaOperacion();
-            listaPdatosB = sesion.createQuery("FROM datosBancarios AS db INNER JOIN db.propietarios AS pro "
+            listaPdatosB = sesion.createQuery("FROM datosbancarios AS db INNER JOIN db.propietarios AS pro "
                     + "WHERE pro.id = :idP").setParameter("idP", idBuscar).list();
 
         } catch (HibernateException he) {
@@ -344,7 +458,7 @@ public class Operaciones {
 
     public static void buscarPropietario(Scanner sc) {
         System.out.println("Introduce el id del propietario a buscar ");
-        Long id = ControlData.lerLong(sc);
+        int id = ControlData.lerInt(sc);
         try {
             Propietario encontradoP = Operaciones.obtenerP(id);
             if (!Objects.isNull(encontradoP)) {
@@ -358,7 +472,6 @@ public class Operaciones {
                     List<Object[]> propietarioCuenta = Operaciones.obtenerListaPdBconID(id);
 
                     if (!Objects.isNull(propietarioCuenta)) {
-
                         System.out.println(propietarioCuenta.get(0)[0] + " - " + propietarioCuenta.get(0)[1]);
                     }
                 }
@@ -370,4 +483,112 @@ public class Operaciones {
         }
 
     }
+
+    public static void actualizarP(Scanner sc) {
+        System.out.println("Introduce el id del propietario a modificar ");
+        int id = ControlData.lerInt(sc);
+        boolean modificado = false;
+        try {
+            Propietario prolocalizado = Operaciones.obtenerP(id);
+            if (!Objects.isNull(prolocalizado)) {
+                System.out.println("\nConfirme que el propietario a modificar es (S/N) " + prolocalizado.toString());
+                char siModificar = ControlData.lerLetra(sc);
+                if (Character.toUpperCase(siModificar) == 'S') {//Realizamos la operación
+                    System.out.println("Elige que propiedad quieres modificar: ");
+                    switch (Menu.subMenuModificarP(sc)) {
+                        case 1:
+                            System.out.println("Introduce el nuevo DNI");
+                            String prDNI = ControlData.lerString(sc);
+                            prolocalizado.setDNI(prDNI);
+                            modificado = Operaciones.actualizaP(prolocalizado);
+                            break;
+                        case 2:
+                            System.out.println("Introduce el nuevo nombre");
+                            String PrNombre = ControlData.lerString(sc);
+                            prolocalizado.setNombre(PrNombre);
+                            modificado = Operaciones.actualizaP(prolocalizado);
+                            break;
+                        case 3:
+                            System.out.println("Introduce los nuevos apellidos");
+                            String prApellidos = ControlData.lerString(sc);
+                            prolocalizado.setApellidos(prApellidos);
+                            modificado = Operaciones.actualizaP(prolocalizado);
+                            break;
+                        case 4:
+                            System.out.println("Introduce la nueva dirección");
+                            String prDireccion = ControlData.lerString(sc);
+                            prolocalizado.setDireccion(prDireccion);
+                            modificado = Operaciones.actualizaP(prolocalizado);
+                            break;
+                        case 5:
+                            System.out.println("Introduce el nuevo teléfono");
+                            String prTelefono = ControlData.lerString(sc);
+                            prolocalizado.setTelefono(prTelefono);
+                            modificado = Operaciones.actualizaP(prolocalizado);
+                            break;
+                        case 6:
+                            Operaciones.modificarDatosBancarios(id);
+
+                            break;
+                        default:
+                            System.out.println("Operación de actualización cancelada");
+                    }
+
+                    if (modificado) {
+                        System.out.println("El propietario ha sido modificado correctamente");
+                    }
+                } else {
+                    System.out.println("Operación cancelada");
+                }
+            } else {
+                System.out.println("El propietario no ha sido localizado");
+            }
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+    }
+
+    private static void modificarDatosBancarios(int id) {
+        OperacionesPropietarios propieDAO = new OperacionesPropietarios();
+
+        System.out.println("Introduzca el número de cuenta a modificar: ");
+        String numCuenta = ControlData.lerString(sc);
+
+        DatosBancarios encontrado = propieDAO.obtenDatosBancarios(numCuenta);
+
+        System.out.println("Introduzca el nuevo número de cuenta: ");
+        numCuenta = ControlData.lerString(sc);
+        System.out.println("Introduzca un nuevo nombre de Banco: ");
+        String nombreBanco = ControlData.lerString(sc);
+
+        Propietario propietario_localizado = OperacionesPropietarios.obtenPropietario(id);
+        if (!Objects.isNull(propietario_localizado)) {
+
+            encontrado.setNumCuenta(numCuenta);
+            encontrado.setNombreBanco(nombreBanco);
+            encontrado.setPropietario(propietario_localizado);
+
+            propieDAO.actualizaDatosBancarios(encontrado);
+
+            System.out.println("Datos Banarios Actualizados: ");
+            System.out.println(encontrado);
+        }
+    }    
+
+    public static void mostrarListaP() {
+        List<Propietario> listaPropietarios = null;
+        try {
+            listaPropietarios = OperacionesPropietarios.obtenListaPropietarios();
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+        if (!Objects.isNull(listaPropietarios)) {
+            System.out.println("Hay " + listaPropietarios.size() + " propietario en la base de datos");
+            for (Propietario p : listaPropietarios) {
+                System.out.println(" -id- " + p.getId() + ", DNI -> " + p.getDNI()+ ", Nombre -> " + p.getNombre()+ ", Apellidos -> " 
+                        + p.getApellidos()+ ", Dirección -> " + p.getDireccion()+ ", Teléfono -> " + p.getTelefono());
+            }
+        }
+    }    
+    
 }

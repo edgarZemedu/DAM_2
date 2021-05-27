@@ -112,7 +112,7 @@ public class Menu {
         return opcion;
     }
 
-    public static byte subMenuPropietario(Scanner sc) {
+    public static byte menuPropietario(Scanner sc) {
         byte opcion = 0;
         boolean correcta;
 
@@ -153,8 +153,50 @@ public class Menu {
 
         return opcion;
     }
+    public static byte subMenuModificarP(Scanner sc) {
+        byte opcion = 0;
+        boolean correcta;
 
-    public static byte subMenuInimuebles(Scanner sc) {
+        ArrayList<String> misOpciones = new ArrayList<String>() {
+            {
+                add("DNI");
+                add("Nombre");
+                add("Apellidos");
+                add("Dirección");
+                add("Teléfono");
+                add("Modificar Datos Bancarios");
+                add("cancelar");
+            }
+        };
+
+        /*La clase Menu permite imprimir el menú a partir de los datos de un ArrayList<String>
+            y utilizar métodos para control de rango*/
+        Menu miMenu = new Menu(misOpciones);
+
+        System.out.println("\n\n*******************************************************************************************************");
+        /* Solo sale del While cuando se selecciona una opción correcta en rango y tipo*/
+        do {
+            miMenu.printMenu();
+
+            /*La clase ControlData permite hacer un control de tipo leído*/
+            try {
+                opcion = ControlData.lerByte(sc);
+                /*miMenu.rango() lanza una excepción propia en el caso de que 
+                el parámetro opcion esté fuera del rango posible */
+                miMenu.rango(opcion);
+                correcta = true;
+            } catch (MisExcepciones e) {//Excepción personalizada
+                System.out.println(e.getMessage());
+                correcta = false;
+            }
+
+        } while (!correcta);
+
+        return opcion;
+    }
+
+
+    public static byte subMenuInmuebles(Scanner sc) {
         byte opcion = 0;
         boolean correcta;
 
@@ -165,6 +207,128 @@ public class Menu {
                 add("Eliminar Inmueble");
                 add("Modificar Inmueble");
                 add("Listar todos los Propietarios/Inmuebleres");
+                add("Finalizar");
+            }
+        };
+
+        /*La clase Menu permite imprimir el menú a partir de los datos de un ArrayList<String>
+            y utilizar métodos para control de rango*/
+        Menu miMenu = new Menu(misOpciones);
+
+        System.out.println("\n\n************************************************************************************");
+        /* Solo sale del While cuando se selecciona una opción correcta en rango y tipo*/
+        do {
+            miMenu.printMenu();
+
+            /*La clase ControlData permite hacer un control de tipo leído*/
+            try {
+                opcion = ControlData.lerByte(sc);
+                /*miMenu.rango() lanza una excepción propia en el caso de que 
+                el parámetro opcion esté fuera del rango posible */
+                miMenu.rango(opcion);
+                correcta = true;
+            } catch (MisExcepciones e) {//Excepción personalizada
+                System.out.println(e.getMessage());
+                correcta = false;
+            }
+
+        } while (!correcta);
+
+        return opcion;
+    }
+    public static byte pintarMenuModificarInmueble(Scanner sc) {
+        byte opcion = 0;
+        boolean correcta;
+
+        ArrayList<String> misOpciones = new ArrayList<String>() {
+            {
+                add("ID");
+                add("Dirección");
+                add("Código Zona");
+                add("Estado");
+                add("Propietario");
+                add("cancelar");
+            }
+        };
+
+        /*La clase Menu permite imprimir el menú a partir de los datos de un ArrayList<String>
+            y utilizar métodos para control de rango*/
+        Menu miMenu = new Menu(misOpciones);
+
+        System.out.println("\n\n*****************************************************************************************");
+        /* Solo sale del While cuando se selecciona una opción correcta en rango y tipo*/
+        do {
+            miMenu.printMenu();
+
+            /*La clase ControlData permite hacer un control de tipo leído*/
+            try {
+                opcion = ControlData.lerByte(sc);
+                /*miMenu.rango() lanza una excepción propia en el caso de que 
+                el parámetro opcion esté fuera del rango posible */
+                miMenu.rango(opcion);
+                correcta = true;
+            } catch (MisExcepciones e) {//Excepción personalizada
+                System.out.println(e.getMessage());
+                correcta = false;
+            }
+
+        } while (!correcta);
+
+        return opcion;
+    }
+    public static byte menuMongoDB(Scanner sc) {
+        byte opcion = 0;
+        boolean correcta;
+
+        ArrayList<String> misOpciones = new ArrayList<String>() {
+            {
+                add("MOSTRAR TODOS LOS DATOS DE ARTICULOS ");
+                add("AGREGAR DATOS");
+                add("MODIFICAR el precio del mouse 'LOGITECH M90");
+                add("MODIFICAR el stock en 0 del artículo cuyo _id es 6");
+                add("Agregar el campo proveedores con el array Martinez','Gutierrez'] para el artículo cuyo _id es 6");
+                add("ELIMINAR proveedores para el artículo cuyo _id es 6");
+                add("MODIFICAR EL ARTICULO ENTERO CON ID DE REFENCIA");
+                add("Finalizar");
+            }
+        };
+
+        /*La clase Menu permite imprimir el menú a partir de los datos de un ArrayList<String>
+            y utilizar métodos para control de rango*/
+        Menu miMenu = new Menu(misOpciones);
+
+        System.out.println("\n\n******************************************************************************************");
+        /* Solo sale del While cuando se selecciona una opción correcta en rango y tipo*/
+        do {
+            miMenu.printMenu();
+
+            /*La clase ControlData permite hacer un control de tipo leído*/
+            try {
+                opcion = ControlData.lerByte(sc);
+                /*miMenu.rango() lanza una excepción propia en el caso de que 
+                el parámetro opcion esté fuera del rango posible */
+                miMenu.rango(opcion);
+                correcta = true;
+            } catch (MisExcepciones e) {//Excepción personalizada
+                System.out.println(e.getMessage());
+                correcta = false;
+            }
+
+        } while (!correcta);
+
+        return opcion;
+    }
+    public static byte subMenuMongoDB(Scanner sc) {
+        byte opcion = 0;
+        boolean correcta;
+
+        ArrayList<String> misOpciones = new ArrayList<String>() {
+            {
+                add("MOSTRAR TODOS LOS ARTICULOS QUE NO SON IMPRESORAS ");
+                add("MOSTRAR TODOS LOS ARTICULOS QUE PERTENECEN A MOUSE");
+                add("Mostrar todos los artículos con un precio mayor o igual a 5000");
+                add("Mostrar todas las impresoras que tienen un precio mayor o igual a 3500");
+                add("Mostrar todos los artículos cuyo stock se encuentra comprendido entre 0 y 4");
                 add("Finalizar");
             }
         };

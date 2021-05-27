@@ -31,13 +31,11 @@ public class NewMain {
 
         //Obtenemos la lista de contactos de la base de datos
         do {
-//            Menu m = new Menu();
-//            m.printMenu();
             switch (Menu.pintarMenuPrincipal(sc)) {
                 case 1:
                     System.out.print("\n************************************************************\n"
                             + " MENÚ PROPIETARIO ");
-                    switch (Menu.subMenuPropietario(sc)) {
+                    switch (Menu.menuPropietario(sc)) {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + "Buscar/Mostrar un propietario por su id ");
@@ -69,60 +67,58 @@ public class NewMain {
                         case 4:
                             System.out.println("\n************************************************************\n"
                                     + "Modificar propietario");
-                            //menuActualizarElemento();
+                            Operaciones.actualizarP(sc);
                             break;
                         case 5:
                             System.out.println("\n************************************************************\n"
                                     + "Listar todos los propietario");
-                            //menuEliminarElemento();
+                            Operaciones.mostrarListaP();
                             break;
 
                         case 6:
                             System.out.println("\n************************************************************\n"
                                     + "Listar todos los Propietarios/Inmuebleres");
-                            //menuEliminarElemento();
+                            Operaciones.obtenerListaPI();
                             break;
                         case 7:
                             System.out.println("Hasta luego!!!");
                             finalizar = true;
-                        //Cierra la sesión de Hibernate
 
                     }
                     break;
                 case 2:
                     System.out.print("\n************************************************************\n"
                             + " MENÚ INMUEBLES ");
-                    switch (Menu.subMenuInimuebles(sc)) {
+                    switch (Menu.subMenuInmuebles(sc)) {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + " Buscar un Inmueble por su código(ID)");
-                            //mostrarTodos();
+                            Operaciones.obtenerInm();
                             break;
 
                         case 2:
                             System.out.println("\n************************************************************\n"
                                     + "Agregar Inmueble");
-                            //menuGuardarElemento();
+                            Operaciones.gurdarI();
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
                                     + "Eliminar Inmueble");
-                            //menuBuscarElemento();
+                            Operaciones.eliminarI();
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
                                     + "Modificar Inmueble");
-                            //menuActualizarElemento();
+                            Operaciones.menuActualizarI();
                             break;
                         case 5:
                             System.out.println("\n************************************************************\n"
                                     + "Listar todos los Propietarios/Inmuebleres ");
-                            //menuEliminarElemento();
+                            Operaciones.obtenerListaPI();
                             break;
                         case 6:
                             System.out.println("Hasta luego!!!");
                             finalizar = true;
-                        //Cierra la sesión de Hibernate
 
                     }
                     break;
