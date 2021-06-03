@@ -130,7 +130,7 @@ public class Operaciones {
 
     public static void gurdarI() {
         System.out.println("Introduce el ID");
-        char id = ControlData.lerChar(sc);
+        int id = ControlData.lerChar(sc);
         System.out.println("Introduce la Dirección del Inmueble");
         String inDireccion = ControlData.lerString(sc);
         System.out.println("Introduce el código de la zona");
@@ -140,14 +140,14 @@ public class Operaciones {
         System.out.println("Introduce el ID del propietario");
         int idPropietario = ControlData.lerInt(sc);
 
-        List<Propietario> listaPropietarios = null;
-        listaPropietarios = OperacionesPropietarios.obtenListaPropietarios();
+        //List<Propietario> listaPropietarios = null;
+        //listaPropietarios = OperacionesPropietarios.obtenListaPropietarios();
 
         try {
             Propietario propietario = OperacionesPropietarios.obtenPropietario(idPropietario);
 
             //Crea un un inmueble con los datos introducidos
-            Inmueble nuevoInmueble = new Inmueble(id, inDireccion, inCodZona, inEstado, propietario);
+            Inmueble nuevoInmueble = new Inmueble(inDireccion, inCodZona, inEstado, propietario);
             OperacionesInmuebles.guardaInmueble(nuevoInmueble);
             System.out.println("Se ha guardado el Inmueble que tendrá el id " + id);
         } catch (HibernateException he) {

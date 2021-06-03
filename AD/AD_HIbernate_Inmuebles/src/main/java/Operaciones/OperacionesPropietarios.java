@@ -182,7 +182,7 @@ public class OperacionesPropietarios {
         try {
             //abre la sesión e inicia la transición
             iniciaOperacion();
-            listaPropietarios = sesion.createQuery("FROM Propietarios").list();
+            listaPropietarios = sesion.createQuery("FROM Clases.Propietario").list();
         } catch (HibernateException he) {
             manejaExcepcion(he);
         } finally {
@@ -288,8 +288,8 @@ public class OperacionesPropietarios {
             //abre la sesión e inicia la transición
             iniciaOperacion();
 
-            propietarioInmueble = sesion.createQuery("FROM Inmuebles AS i "
-                    + "INNER JOIN i.propietarios").list();
+            propietarioInmueble = sesion.createQuery("FROM Inmueble AS i "
+                    + "INNER JOIN i.propietario").list();
             //query.uniqueResult();
             transa.commit();
 
@@ -301,7 +301,6 @@ public class OperacionesPropietarios {
         }
         return propietarioInmueble;
     }
-    
-    
+        
 
 }

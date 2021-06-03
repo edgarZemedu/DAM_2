@@ -7,11 +7,7 @@ package Operaciones;
 
 import Clases.Articulos;
 import Libreria.ControlData;
-import Menu.Menu;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.gte;
@@ -148,12 +144,19 @@ public class OperacionesMongoDB {
         }
     }
 
-    public static void modificarPrecioMouse(MongoCollection<Document> coleccion) {
+    public static void actualizarTelefono(MongoCollection<Document> coleccion) {
+        System.out.println("Dime el id del propietario a modificar: ");
+        int id = ControlData.lerInt(sc);
+        
+        System.out.println("Dime el número del teléfono que quieres actualizar: ");
+        String telefono = ControlData.lerString(sc);
+        if (!telefono.isBlank()) {
+            coleccion.updateOne(
+                    new Document("_id", id),
+                    new Document("$set", new Document("Telefono", telefono)));
+            System.out.println("TELEFONO DEL PROPETARIO MOFIFICADO");
+        }
 
-        coleccion.updateOne(
-                new Document("nombre", "LOGITECH M90"),
-                new Document("$set", new Document("precio", 200)));
-        System.out.println("PRECIO MOFIFICADO");
     }
 
     public static void moficarStockConID(MongoCollection<Document> coleccion) {
@@ -184,9 +187,9 @@ public class OperacionesMongoDB {
 
     }
 
-    public static void eliminarCampo(MongoCollection<Document> coleccion) {        
+    public static void eliminarCampo(MongoCollection<Document> coleccion) {
         //coleccion.deleteOne(new Document("_id", 6));
-        
+
 //        List<String> lista = new ArrayList<>();
 //        lista.add("Martinez");
 //        lista.add("Gutierrez");
@@ -194,9 +197,9 @@ public class OperacionesMongoDB {
 //        Document setLista = new Document("proveedres", lista);
         Document update = new Document("$unset", "proveedres");
         Document query = new Document("_id", 6);
-        
+
         coleccion.updateOne(query, update);
-        
+
         System.out.println("Hecho...\n");
     }
 

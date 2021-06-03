@@ -82,6 +82,7 @@ public class Menu {
             {
                 add("MENÚ PROPIETARIO");
                 add("MENÚ INMUEBLES");
+                add("MENÚ MONGODB");
                 add("Finalizar");
             }
         };
@@ -282,13 +283,8 @@ public class Menu {
 
         ArrayList<String> misOpciones = new ArrayList<String>() {
             {
-                add("MOSTRAR TODOS LOS DATOS DE ARTICULOS ");
-                add("AGREGAR DATOS");
-                add("MODIFICAR el precio del mouse 'LOGITECH M90");
-                add("MODIFICAR el stock en 0 del artículo cuyo _id es 6");
-                add("Agregar el campo proveedores con el array Martinez','Gutierrez'] para el artículo cuyo _id es 6");
-                add("ELIMINAR proveedores para el artículo cuyo _id es 6");
-                add("MODIFICAR EL ARTICULO ENTERO CON ID DE REFENCIA");
+                add("MOSTRAR TODOS LOS DATOS");
+                add("Actualizar la información del teléfono.");
                 add("Finalizar");
             }
         };

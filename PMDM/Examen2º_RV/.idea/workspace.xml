@@ -28,21 +28,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef4ea0c1-a791-4854-816b-00d461bb7e84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/Contactos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/ItemFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/MyItemRecyclerViewAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/java/com/example/whathsapp/placeholder/PlaceholderContent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/layout/fragment_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/layout/fragment_item_list.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/menu/menumain.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Whathsapp/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Whathsapp/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Whathsapp/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Whathsapp/.idea/runConfigurations.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/home/edgar/.android/avd/Pixel_2_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -76,7 +69,7 @@
     <property name="android-custom-view/home/edgar/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-view/home/edgar/Android/Sdk/sources/android-30/android/view/ViewGroup.java_SELECTED" value="ViewGroup" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documentos/proyecto_apps/whathsapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="memory.settings.postsync.last.time.stamp" value="1621876597001" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
@@ -108,7 +101,6 @@
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
-      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -183,8 +175,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="669" y="107" key="#app" timestamp="1621956795105">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="107" key="#app/0.0.1920.1040@0.0.1920.1040" timestamp="1621956795105" />
     <state x="768" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1621879811018">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -215,10 +212,11 @@
     </state>
     <state x="528" y="171" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1621692420114" />
     <state x="742" y="274" width="356" height="388" key="AndroidCreateXmlResourceDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1621883725129" />
-    <state x="651" y="199" width="424" height="491" key="FileChooserDialogImpl" timestamp="1621931405915">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="651" y="170" width="424" height="491" key="FileChooserDialogImpl" timestamp="1621957677394">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1621784840743" />
+    <state x="651" y="170" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621957677394" />
     <state x="651" y="199" width="424" height="491" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1621931405915" />
     <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1621940956845">
       <screen x="0" y="27" width="1920" height="1053" />

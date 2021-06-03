@@ -26,11 +26,10 @@ public class Inmueble implements Serializable {
 
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)//autoincremental
-    @Column(name = "id")
     private int id;
     @Column(name = "inDireccion")
     private String direccion;
-    @Column(name = "idCodZona")
+    @Column(name = "inCodZona")
     private int codigoPostal;
     @Column(name = "inEstado")
     private String estado;
