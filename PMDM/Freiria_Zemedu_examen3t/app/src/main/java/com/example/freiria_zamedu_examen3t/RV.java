@@ -2,9 +2,10 @@ package com.example.freiria_zamedu_examen3t;
 
 import androidx.annotation.FontRes;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.freiria_zamedu_examen3t.MainActivity.CLAVE_MENSAJE;
+import static com.example.freiria_zamedu_examen3t.MainActivity.stringArray;
 
 public class RV extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 1;
-
     private List<Album> listaAlbum;
     private List<Album> listadoRock;
     private List<Album> listadoBlues;
@@ -100,13 +101,28 @@ public class RV extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Album al = new Album();
-        /*for (Album i : listaAlbum){
+        //Album al = new Album();
+        boolean[] isCheckedList = {true, false, true};
+        android.app.AlertDialog.Builder builder = new AlertDialog.Builder(RV.this);
+        builder.setTitle("Actualizar géneros")
+                .setMultiChoiceItems(stringArray, isCheckedList,
+                        new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                                isCheckedList[which] = isChecked;
+                            }
+                        })
+                .setPositiveButton("Mostrar Seleccion", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
 
-            if (){
+                        getSupportFragmentManager().beginTransaction().add(R.id.fragment,
+                                new ItemFragment(listaAlbum)
+                        ).commit();
 
-            }
-        }*/
+                    }
+                });
+        builder.show();
         return super.onOptionsItemSelected(item);
     }
 

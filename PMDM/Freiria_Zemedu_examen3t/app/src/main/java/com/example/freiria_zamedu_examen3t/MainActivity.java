@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     static final String CLAVE_MENSAJE = "mensaje";
     Spinner sp;
     private List<String> listaGenero;
+    static String[] stringArray;
 
 
     @Override
@@ -38,19 +39,21 @@ public class MainActivity extends AppCompatActivity {
         listaGenero.addAll(Arrays.asList(getResources().getStringArray(R.array.generos)));
         ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listaGenero);
         sp.setAdapter(a);
-        //sp.setPrompt("Género: ");
+
         boolean[] isCheckedList = {true, false, true};
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                String[] stringArray = getResources().getStringArray(R.array.listaGenero);
+                stringArray = getResources().getStringArray(R.array.listaGenero);
 
                 if (i == 1 || i == 2 ||i == 3){
-                    Intent intent = new Intent();
+                   /* Intent intent = new Intent();
                     intent.putExtra(CLAVE_MENSAJE, i);
                     setResult(Activity.RESULT_OK, intent);
                     finish();
+                    */
+                    startActivity(new Intent(MainActivity.this, RV.class));
 
                 }else if(i == 4 ){
 
