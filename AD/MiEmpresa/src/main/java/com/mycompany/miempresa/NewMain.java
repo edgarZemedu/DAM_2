@@ -7,6 +7,7 @@ package com.mycompany.miempresa;
 
 import Libreria.ControlData;
 import Menu.Menu;
+import Operaciones.Operaciones;
 import Persistencia.Hibernate;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class NewMain {
     public static void main(String[] args) {
 
         boolean finalizar = false;
-        boolean correcta = false;
+        //boolean correcta = false;
 
         //Obtenemos la lista de contactos de la base de datos
         do {
@@ -36,7 +37,7 @@ public class NewMain {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + "Insertar cliente ");
-                            //Operaciones.buscarPropietario(sc);
+                            Operaciones.gurdarCliente(Operaciones.añadirCliente(sc));
                             break;
 
                         case 2:
