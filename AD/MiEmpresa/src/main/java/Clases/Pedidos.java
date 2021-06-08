@@ -35,42 +35,46 @@ public class Pedidos implements Serializable {
     private String fecha;
     @Column(name = "estado", nullable = false)
     private int estado;
+    @Column (name = "idCliente", length = 11, nullable = false)
+    private int id_cliente;    
+    @Column (name = "idProducto", length = 11, nullable = false)
+    private int id_producto;
 
     @ManyToOne
-    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", insertable = false, updatable = false)
+    @JoinColumn(name = "idCliente", referencedColumnName = "id", insertable = false, updatable = false)
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "idProducto", referencedColumnName = "idCliente", insertable = false, updatable = false)
+    @JoinColumn(name = "idProducto", referencedColumnName = "codigoProducto", insertable = false, updatable = false)
     private Producto producto;
 
     public Pedidos() {
     }
 
-    public Pedidos(int codigoPedido, int unidades, String direccion, String fecha, int estado, Cliente cliente, Producto producto) {
+    public Pedidos(int codigoPedido, int unidades, String direccion, String fecha, int estado, int idCliente, int idProducto) {
         this.codigoPedido = codigoPedido;
         this.unidades = unidades;
         this.direccion = direccion;
         this.fecha = fecha;
         this.estado = estado;
-        this.cliente = cliente;
-        this.producto = producto;
+        this.id_cliente = idCliente;
+        this.id_producto = idProducto;
     }
 
-    public Pedidos(int unidades, String direccion, String fecha, int estado, Cliente cliente, Producto producto) {
+    public Pedidos(int unidades, String direccion, String fecha, int estado, int idCliente, int idProducto) {
         this.unidades = unidades;
         this.direccion = direccion;
         this.fecha = fecha;
         this.estado = estado;
-        this.cliente = cliente;
-        this.producto = producto;
+        this.id_cliente = idCliente;
+        this.id_producto = idProducto;
     }
 
     
-
+    
     @Override
     public String toString() {
-        return "Inmueble{" + "codigoPedido=" + codigoPedido + ", unidades=" + unidades + ", direccion=" + direccion + ", fecha=" + fecha + ", estado=" + estado + ", cliente=" + cliente + ", producto=" + producto + '}';
+        return "Pedido{" + "codigoPedido=" + codigoPedido + ", unidades=" + unidades + ", direccion=" + direccion + ", fecha=" + fecha + ", estado=" + estado + '}';
     }
 
     public int getCodigoPedido() {
@@ -113,6 +117,22 @@ public class Pedidos implements Serializable {
         this.estado = estado;
     }
 
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
+    public int getId_producto() {
+        return id_producto;
+    }
+
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -128,8 +148,7 @@ public class Pedidos implements Serializable {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-    
-    
 
+   
     
 }

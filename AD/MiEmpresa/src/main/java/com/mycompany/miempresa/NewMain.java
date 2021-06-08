@@ -9,6 +9,7 @@ import Libreria.ControlData;
 import Menu.Menu;
 import Operaciones.Operaciones;
 import Persistencia.Hibernate;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -25,7 +26,6 @@ public class NewMain {
     public static void main(String[] args) {
 
         boolean finalizar = false;
-        //boolean correcta = false;
 
         //Obtenemos la lista de contactos de la base de datos
         do {
@@ -38,34 +38,29 @@ public class NewMain {
                             System.out.println("\n************************************************************\n"
                                     + "Insertar cliente ");
                             Operaciones.gurdarCliente(Operaciones.añadirCliente(sc));
+                            System.out.println("Éxito,se añadio un cliente");
                             break;
 
                         case 2:
                             System.out.println("\n************************************************************\n"
                                     + "Buscar cliente por NIF");
-                            //Propietario p = Operaciones.añadirP(sc);
-                            //Operaciones.gurdarP(p);
 
-                            System.out.println("Quiere agregar datos Bancarios (S/N) ");
-                            char siModificar = ControlData.lerLetra(sc);
-                            if (Character.toUpperCase(siModificar) == 'S') {//Realizamos la operación
-                                //Pide los datos por teclado
-                                //Operaciones.añadirDatosBancariosP(p, sc);
-                            }
+                            Operaciones.buscarPorNIF(sc);    
+                            
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
-                                    + "Modificar cliente");
-                            System.out.println("Dime el id a eliminar: ");
-                            int id = sc.nextInt();
-                            //mostrar para ser los existen y comprobar si mete bn los datos
-                            //Operaciones.eliminaP(id);
-                            System.out.println("Se ha eliminado, pringaooo");
+                                    + "Modificar cliente");                            
+                            Operaciones.moficarCliente(sc);
+                            System.out.println("Se ha modificado el cliente, pringaooo");
+                            
+                            //PARA HACER 
+                            
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
                                     + "Eliminar cliente");
-                            //Operaciones.actualizarP(sc);
+                            Operaciones.eliminarCliente(sc);
                             break;
                         case 5:
                             System.out.println("Chaoo!!!");
@@ -79,23 +74,28 @@ public class NewMain {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + "Insertar producto");
-                            //Operaciones.obtenerInm();
+                            Operaciones.gurdarProducto(Operaciones.añadirProducto(sc));
+                            System.out.println("Éxito,se añadio un producto");
                             break;
 
                         case 2:
                             System.out.println("\n************************************************************\n"
                                     + "Buscar producto por código");
-                            //Operaciones.gurdarI();
+                            Operaciones.buscarPorCodigoProducto(sc);
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
                                     + "Modificar producto");
-                            //Operaciones.eliminarI();
+                            Operaciones.moficarProducto(sc);
+                            
+                            // PARA HACER
+                            
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
                                     + ". Eliminar producto");
-                            //Operaciones.menuActualizarI();
+                            Operaciones.eliminarProducto(sc);
+                            
                             break;
                         case 6:
                             System.out.println("Chaoo!!!");
@@ -109,18 +109,18 @@ public class NewMain {
                         case 1:
                             System.out.println("\n************************************************************\n"
                                     + " Crear pedido");
-                            //Operaciones.obtenerInm();
+                            Operaciones.añadirPedidos(sc);
                             break;
 
                         case 2:
                             System.out.println("\n************************************************************\n"
-                                    + "Ver estado del pedido");
-                            //Operaciones.gurdarI();
+                                    + "Ver el estado del pedido");
+                            Operaciones.verEstadoPedido(sc);
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
                                     + "Modificar pedido");
-                            //Operaciones.eliminarI();
+                            Operaciones.();
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
