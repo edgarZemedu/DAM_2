@@ -206,7 +206,7 @@ public class Menu {
                 add("Modificar pedido");
                 add("Eliminar pedido");
                 add("Cambiar el estado del pedido");
-                add("Finalizar");
+                add("Ver lista de pedidos y SALIR");
             }
         };
 

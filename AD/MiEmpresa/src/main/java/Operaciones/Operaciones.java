@@ -13,6 +13,8 @@ import Libreria.ControlData;
 import Menu.Menu;
 import static Menu.Menu.pintarMenuPrincipal;
 import Persistencia.Hibernate;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -145,8 +147,11 @@ public class Operaciones {
         int unidades = ControlData.lerInt(sc);
         System.out.println("Introduce la direccion: ");
         String direccion = ControlData.lerNome(sc);
-        System.out.println("Introduce una fecha: ");
-        String fecha = ControlData.lerString(sc);
+        
+        LocalDate hoy = LocalDate.now();
+        DateTimeFormatter formatear = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String fecha = hoy.format(formatear);
+        System.out.println("Fecha actual: "+fecha);
         System.out.println("Introduce un estado(-2,-1,0,1,2): ");
         int estado = ControlData.lerInt(sc);
         if (estado > 2 || estado < -2) {
@@ -208,7 +213,6 @@ public class Operaciones {
             List<Producto> lista = Operaciones.ObtenListaProductos();
 
             for (Producto p : lista) {
-
                 System.out.println("-> " + p.toString());
                 System.out.println("\n*********");
 
@@ -219,6 +223,30 @@ public class Operaciones {
         }
 
         System.out.println("Elige el id del producto: ");
+        id = ControlData.lerInt(sc);
+
+        return id;
+
+    }
+
+    public static int elegirPedido(Scanner sc) {
+
+        int id = 0;
+        try {
+            //encontrar el producto
+            List<Pedidos> lista = Operaciones.ObtenListaPedidos();
+
+            for (Pedidos p : lista) {
+                System.out.println("-> " + p.toString());
+                System.out.println("\n*********");
+
+            }
+
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+
+        System.out.println("Elige el id del pedido: ");
         id = ControlData.lerInt(sc);
 
         return id;
@@ -249,8 +277,7 @@ public class Operaciones {
 
     public static void buscarPorCodigoProducto(Scanner sc) {
 
-        System.out.println("Introduce el cçodigo del producto a buscar ");
-        int codigo = ControlData.lerInt(sc);
+        int codigo = elegirProducto(sc);
 
         try {
 
@@ -269,10 +296,25 @@ public class Operaciones {
 
     }
 
-    public static void moficarCliente(Scanner sc) {
+    public static Pedidos BuscarPedido(int idpedido) throws HibernateException {
 
-        System.out.println("Dime el id del cliente a modificar: ");
-        int id = ControlData.lerInt(sc);
+        Pedidos pedido = null;
+
+        try {
+            iniciaOperacion();
+            pedido = (Pedidos) sesion.get(Pedidos.class, idpedido);
+
+        } finally {
+
+            sesion.close();
+        }
+
+        return pedido;
+    }
+
+    public static void modificarCliente(Scanner sc) {
+
+        int id = elegirCliente(sc);
 
         try {
             //encontrar el cliente
@@ -297,8 +339,7 @@ public class Operaciones {
 
     public static void moficarProducto(Scanner sc) {
 
-        System.out.println("Dime el código del producto a modificar: ");
-        int id = ControlData.lerInt(sc);
+        int id = elegirProducto(sc);
 
         try {
             //encontrar el cliente
@@ -320,23 +361,80 @@ public class Operaciones {
         }
 
     }
+
     public static void moficarPedidos(Scanner sc) {
 
-        System.out.println("Dime el código del producto a modificar: ");
-        int id = ControlData.lerInt(sc);
+        int id = elegirPedido(sc);
 
         try {
             //encontrar el cliente
-            List<Producto> listaclientes = Operaciones.ObtenListaProductos();
+            List<Pedidos> listaclientes = Operaciones.ObtenListaPedidos();
 
-            for (Producto p : listaclientes) {
-                if (p.getCodigoProducto() == id) {
+            for (Pedidos p : listaclientes) {
+                if (p.getCodigoPedido() == id) {
+                    System.out.println("\n****Este es el producto que vas a modificar*****");
                     System.out.println("-> " + p.toString());
                     System.out.println("\n*********");
-                    //moficar una vez encontrado el cliente
-                    System.out.println("Dime que quieres modificar");
 
-                    //  PARA HACER   *********
+                    //int idAEliminar = 0;
+                    System.out.println("Introduce unidades del pedido: ");
+                    int uni = ControlData.lerInt(sc);
+
+                    System.out.println("Introduce la direccion: ");
+                    String direccion = ControlData.lerString(sc);
+
+                    LocalDate hoy = LocalDate.now();
+                    DateTimeFormatter formatear = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+                    String fecha = hoy.format(formatear);
+
+                    System.out.println("Introduce el estado pedido: ");
+                    int estado = ControlData.lerInt(sc);
+
+                    //  ELEMINAR EL PRODUCTO EXITENTE   *********
+                    p.setUnidades(uni);
+                    p.setDireccion(direccion);
+                    p.setFecha(fecha);
+                    p.setEstado(estado);
+                    actualizarPedido(p);
+
+                    System.out.println("----------------------------");
+                    System.out.println("Pedido modificado con éxito");
+                    System.out.println("\n -> " + p.toString());
+
+                }
+            }
+
+        } catch (HibernateException he) {
+            System.out.println(he.getMessage());
+        }
+
+    }
+
+    public static void moficarEstadoPedido(Scanner sc) {
+
+        int id = elegirPedido(sc);
+
+        try {
+            //encontrar el cliente
+            List<Pedidos> listaclientes = Operaciones.ObtenListaPedidos();
+
+            for (Pedidos p : listaclientes) {
+                if (p.getCodigoPedido() == id) {
+                    System.out.println("\n****Este es el pedido que vas a modificar*****");
+                    System.out.println("-> " + p.toString());
+                    System.out.println("\n*********");
+
+                    System.out.println("Introduce nuevo estado para este pedido: ");
+                    int estado = ControlData.lerInt(sc);
+
+                    //  ELEMINAR EL PRODUCTO EXITENTE   *********
+                    p.setEstado(estado);
+                    actualizarPedido(p);
+
+                    System.out.println("----------------------------");
+                    System.out.println("Pedido modificado con éxito");
+                    System.out.println("\n -> " + p.toString());
+
                 }
             }
 
@@ -411,6 +509,37 @@ public class Operaciones {
 
     }
 
+    public static void eliminarPedidos(Scanner sc) {
+
+        System.out.println("Dime el código del pedido a eliminar: ");
+        int id = ControlData.lerInt(sc);
+
+        try {
+            //encontrar el cliente
+            List<Pedidos> lista = Operaciones.ObtenListaPedidos();
+
+            for (Pedidos p : lista) {
+                if (p.getCodigoPedido() == id) {
+                    System.out.println("-> " + p.toString());
+
+                    iniciaOperacion();
+                    sesion.delete(p);
+                    transa.commit();
+
+                    System.out.println("\n Pedido eliminado");
+                }
+            }
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+
+        } finally {
+            sesion.close();
+        }
+
+    }
+
     public static List<Cliente> ObtenListaClientes() throws HibernateException {
 
         List<Cliente> listacliente = null;
@@ -447,7 +576,7 @@ public class Operaciones {
 
         try {
             iniciaOperacion();
-            listapedido = sesion.createQuery("from Clases.Pedido").list();
+            listapedido = sesion.createQuery("from Pedidos").list();
 
         } finally {
             sesion.close();
@@ -458,8 +587,7 @@ public class Operaciones {
 
     public static void verEstadoPedido(Scanner sc) {
 
-        System.out.println("Introduzca el id del pedido para ver su estado: ");
-        int idAEliminar = ControlData.lerInt(sc);
+        int idAEliminar = elegirProducto(sc);
 
         List<Pedidos> listapedidos = Operaciones.ObtenListaPedidos();
 
@@ -473,6 +601,23 @@ public class Operaciones {
             }
         }
 
+    }
+
+    public static void actualizarPedido(Pedidos pedido) throws HibernateException {
+
+        try {
+            iniciaOperacion();
+            sesion.update(pedido);
+            transa.commit();
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+
+        } finally {
+
+            sesion.close();
+        }
     }
 
 }

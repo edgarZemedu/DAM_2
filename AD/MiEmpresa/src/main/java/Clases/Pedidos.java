@@ -70,6 +70,13 @@ public class Pedidos implements Serializable {
         this.id_producto = idProducto;
     }
 
+    public Pedidos(int unidades, String direccion, String fecha, int estado) {
+        this.unidades = unidades;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.estado = estado;
+    }
+
     
     
     @Override
@@ -79,10 +86,6 @@ public class Pedidos implements Serializable {
 
     public int getCodigoPedido() {
         return codigoPedido;
-    }
-
-    public void setCodigoPedido(int codigoPedido) {
-        this.codigoPedido = codigoPedido;
     }
 
     public int getUnidades() {

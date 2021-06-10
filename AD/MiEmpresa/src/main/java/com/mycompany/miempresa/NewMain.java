@@ -5,6 +5,8 @@
  */
 package com.mycompany.miempresa;
 
+import Clases.Cliente;
+import Clases.Pedidos;
 import Libreria.ControlData;
 import Menu.Menu;
 import Operaciones.Operaciones;
@@ -45,17 +47,16 @@ public class NewMain {
                             System.out.println("\n************************************************************\n"
                                     + "Buscar cliente por NIF");
 
-                            Operaciones.buscarPorNIF(sc);    
-                            
+                            Operaciones.buscarPorNIF(sc);
+
                             break;
                         case 3:
                             System.out.println("\n************************************************************\n"
-                                    + "Modificar cliente");                            
-                            Operaciones.moficarCliente(sc);
+                                    + "Modificar cliente");
+                            Operaciones.modificarCliente(sc);
                             System.out.println("Se ha modificado el cliente, pringaooo");
-                            
+
                             //PARA HACER 
-                            
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
@@ -63,6 +64,11 @@ public class NewMain {
                             Operaciones.eliminarCliente(sc);
                             break;
                         case 5:
+                            System.out.println("-->!!!");
+                            List<Cliente> lista = Operaciones.ObtenListaClientes();
+                            for (Cliente c : lista) {
+                                System.out.println("-> "+ c.toString());
+                            }
                             System.out.println("Chaoo!!!");
 
                     }
@@ -87,15 +93,14 @@ public class NewMain {
                             System.out.println("\n************************************************************\n"
                                     + "Modificar producto");
                             Operaciones.moficarProducto(sc);
-                            
+
                             // PARA HACER
-                            
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
                                     + ". Eliminar producto");
                             Operaciones.eliminarProducto(sc);
-                            
+
                             break;
                         case 6:
                             System.out.println("Chaoo!!!");
@@ -120,19 +125,24 @@ public class NewMain {
                         case 3:
                             System.out.println("\n************************************************************\n"
                                     + "Modificar pedido");
-                            Operaciones.();
+                            Operaciones.moficarPedidos(sc);
                             break;
                         case 4:
                             System.out.println("\n************************************************************\n"
                                     + "Eliminar pedido");
-                            //Operaciones.menuActualizarI();
+                            Operaciones.eliminarPedidos(sc);
                             break;
                         case 5:
                             System.out.println("\n************************************************************\n"
                                     + "Cambiar el estado del pedido");
-                            //Operaciones.menuActualizarI();
+                            Operaciones.moficarEstadoPedido(sc);
                             break;
                         case 6:
+                            System.out.println("-->!!!");
+                            List<Pedidos> listapedidos = Operaciones.ObtenListaPedidos();
+                            for (Pedidos p : listapedidos) {
+                                System.out.println("-> "+ p.toString());
+                            }                            
                             System.out.println("Chaoo!!!");
 
                     }
