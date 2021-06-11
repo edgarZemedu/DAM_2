@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="generos">
+    <string-array name="los3g">
+        <item>Rock</item>
+        <item>Blues</item>
+        <item>Jazz</item>
+    </string-array>
+    <!--
+    <string-array name="genero">
+        <item>Genero </item>
+    </string-array>
+    -->
+    <string-array name="losGeneros">
+        <item>Genero </item>
         <item>Rock</item>
         <item>Blues</item>
         <item>Jazz</item>
         <item>Varios</item>
-    </string-array>
-    <string-array name="genero">
-        <item>Genero </item>
-    </string-array>
-    <string-array name="listaGenero">
-        <item>Rock</item>
-        <item>Blues</item>
-        <item>Jazz</item>
     </string-array>
 </resources>

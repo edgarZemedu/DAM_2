@@ -23,10 +23,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String CLAVE_MENSAJE = "mensaje";
+    //static final String CLAVE_MENSAJE = "mensaje";
     Spinner sp;
-    private List<String> listaGenero;
-    static String[] stringArray;
+    //private List<String> listaGenero;
+    static String[] arrayGeneros;
+    static String[] los3g;
 
 
     @Override
@@ -35,31 +36,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sp = findViewById(R.id.spinner);
-        listaGenero = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.genero)));
-        listaGenero.addAll(Arrays.asList(getResources().getStringArray(R.array.generos)));
-        ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listaGenero);
+        //listaGenero = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.losGeneros)));
+        //listaGenero.addAll(Arrays.asList(getResources().getStringArray(R.array.generos)));
+        arrayGeneros = getResources().getStringArray(R.array.losGeneros);
+        ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayGeneros);
         sp.setAdapter(a);
 
-        boolean[] isCheckedList = {true, false, true};
+        boolean[] isCheckedList = {false, false, false};
+
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                stringArray = getResources().getStringArray(R.array.listaGenero);
+                arrayGeneros = getResources().getStringArray(R.array.losGeneros);
 
                 if (i == 1 || i == 2 ||i == 3){
-                   /* Intent intent = new Intent();
-                    intent.putExtra(CLAVE_MENSAJE, i);
-                    setResult(Activity.RESULT_OK, intent);
-                    finish();
-                    */
-                    startActivity(new Intent(MainActivity.this, RV.class));
+                    isCheckedList[i-1] = true;
+
+                    Intent intent = new Intent(MainActivity.this, RV.class);
+                    Bundle datosDelIntent = getIntent().getExtras();
+                    //boolean[] check = datosDelIntent.getBooleanArray("check");
+
+
+                    //listaAlbum = new ArrayList<>();
+                    if (check[0]) {
+                        //listaAlbum.addAll(listadoRock);
+                         cbRock.setChecked(true);
+                    }
+                    if (check[1]) {
+                        //listaAlbum.addAll(listadoBlues);
+                        cbBlues.setChecked(true);
+                    }
+                    if (check[2]) {
+                        //listaAlbum.addAll(listadoJazz);
+                         cbJazz.setChecked(true);
+                    }
+                    intent.putExtra("checkM", isCheckedList);
+                    startActivity(intent);
 
                 }else if(i == 4 ){
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);//MainActivity.this
                     builder.setTitle("Elige géneros")
-                            .setMultiChoiceItems(stringArray, isCheckedList,
+                            .setMultiChoiceItems(arrayGeneros, isCheckedList,
                                     new DialogInterface.OnMultiChoiceClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -70,9 +89,8 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
                                     Intent intent = new Intent();
-                                    intent.putExtra(CLAVE_MENSAJE, stringArray[i]);
-                                    setResult(Activity.RESULT_OK, intent);
-                                    finish();
+                                    intent.putExtra("checkM", isCheckedList);
+                                    startActivity(intent);
 
                                 }
                             });

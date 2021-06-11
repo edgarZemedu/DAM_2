@@ -20,17 +20,11 @@ import java.util.List;
  */
 public class ItemFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
+
     private int mColumnCount = 1;
 
     private List<Album> listaAlbum;
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public ItemFragment(List<Album> listaAlbum) {
         this.listaAlbum = listaAlbum;
     }
@@ -44,20 +38,12 @@ public class ItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item, container, false);
+        View view = inflater.inflate(R.layout.elementos /*fragment_item*/, container, false);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) { // Garantiza que la vista que se acaba de inflar sea un RecyclerView
-            Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) { // Setea el LayoutManager adecuado al número de columnas deseado
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            // Setea el adaptador personalizado
+            recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
             recyclerView.setAdapter(new MyAdapter(listaAlbum));
-        }
+
         return view;
     }
 }

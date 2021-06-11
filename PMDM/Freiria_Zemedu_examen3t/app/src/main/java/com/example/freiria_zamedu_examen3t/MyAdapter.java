@@ -50,7 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), holder.toString(),Toast.LENGTH_SHORT).show();
-                ;            }
+            }
         });
         holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +59,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 // notificamos la eliminación del elemento
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, miLista.size());
+            }
+        });
+        holder.imagenInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

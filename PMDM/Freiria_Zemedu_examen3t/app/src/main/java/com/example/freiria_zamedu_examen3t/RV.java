@@ -16,8 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.freiria_zamedu_examen3t.MainActivity.CLAVE_MENSAJE;
-import static com.example.freiria_zamedu_examen3t.MainActivity.stringArray;
+//import static com.example.freiria_zamedu_examen3t.MainActivity.CLAVE_MENSAJE;
+import static com.example.freiria_zamedu_examen3t.MainActivity.los3g;
 
 public class RV extends AppCompatActivity {
 
@@ -67,10 +67,31 @@ public class RV extends AppCompatActivity {
                 getResources().getString(R.string.alovesupreme)));
 
         listaAlbum = new ArrayList<>();
-        listaAlbum.addAll(listadoRock);
-        listaAlbum.addAll(listadoBlues);
-        listaAlbum.addAll(listadoJazz);
 
+        Bundle datosDelIntent = getIntent().getExtras();
+        boolean[] check = datosDelIntent.getBooleanArray("checkM");
+
+
+        listaAlbum = new ArrayList<>();
+        /* Comprobación de que el Intent contenga algún extra; es decir, que el Bundle que
+        devuelve "getExtras()" no sea null. Ya que cuando cambiamos de actividad con el botón
+        que no pasa extras, eso generaría una nullPointerExcepcion al intentar leer de ese Bundle */
+        if (check[0]) {
+            listaAlbum.addAll(listadoRock);
+           // cbRock.setChecked(true);
+        }
+        if (check[1]) {
+            listaAlbum.addAll(listadoBlues);
+            //cbBlues.setChecked(true);
+        }
+        if (check[2]) {
+            listaAlbum.addAll(listadoJazz);
+           // cbJazz.setChecked(true);
+        }
+
+        getSupportFragmentManager().beginTransaction().
+                add(R.id.contenedor,new ItemFragment(listaAlbum))
+                .commit();
 
 
     }
@@ -84,7 +105,7 @@ public class RV extends AppCompatActivity {
          */
         if ( (resultCode == RESULT_OK) && (requestCode==REQUEST_CODE)){
             getSupportFragmentManager().beginTransaction().
-                    add(R.id.fragment,new ItemFragment(listaAlbum))
+                    add(R.id.contenedor,new ItemFragment(listaAlbum))
                     .commit();
 
         } else {
@@ -105,7 +126,7 @@ public class RV extends AppCompatActivity {
         boolean[] isCheckedList = {true, false, true};
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(RV.this);
         builder.setTitle("Actualizar géneros")
-                .setMultiChoiceItems(stringArray, isCheckedList,
+                .setMultiChoiceItems(los3g, isCheckedList,
                         new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -115,8 +136,7 @@ public class RV extends AppCompatActivity {
                 .setPositiveButton("Mostrar Seleccion", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-
-                        getSupportFragmentManager().beginTransaction().add(R.id.fragment,
+                        getSupportFragmentManager().beginTransaction().add(R.id.contenedor,
                                 new ItemFragment(listaAlbum)
                         ).commit();
 
