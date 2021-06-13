@@ -27,15 +27,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef4ea0c1-a791-4854-816b-00d461bb7e84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Whathsapp/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Whathsapp/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Whathsapp/.idea/runConfigurations.xml" beforeDir="false" />
-    </list>
+    <list default="true" id="ef4ea0c1-a791-4854-816b-00d461bb7e84" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/home/edgar/.android/avd/Pixel_2_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -101,6 +99,7 @@
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
