@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="generos">
+    <item>Género</item>
+    <item>Rock</item>
+    <item>Blues</item>
+    <item>Jazz</item>
+</string-array>
+
+    <string-array name="Listadogeneros">
+        <item>abbeyroad</item>
+        <item>areyouexperienced</item>
+        <item>velvetunderground</item>
+        <item>exilesonmainstreet</item>
+        <item>kindofblue</item>
+    </string-array>
+
+
+
+
+
+</resources>
+

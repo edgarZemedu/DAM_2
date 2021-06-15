@@ -20,14 +20,19 @@ import java.util.List;
  */
 public class ItemFragment extends Fragment {
 
+    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-
+    // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private List<Album> listaAlbum;
-
-    public ItemFragment(List<Album> listaAlbum) {
-        this.listaAlbum = listaAlbum;
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the
+     * fragment (e.g. upon screen orientation changes).
+     */
+    public ItemFragment() {
+    }
+    public static ItemFragment newInstance(){
+        return new ItemFragment();
     }
 
     @Override
@@ -39,11 +44,11 @@ public class ItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.elementos /*fragment_item*/, container, false);
+        View view = inflater.inflate(R.layout.elementos, container, false);
 
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-            recyclerView.setAdapter(new MyAdapter(listaAlbum));
+            recyclerView.setAdapter(new MyAdapter(RV.listaAlbum));
 
         return view;
     }
