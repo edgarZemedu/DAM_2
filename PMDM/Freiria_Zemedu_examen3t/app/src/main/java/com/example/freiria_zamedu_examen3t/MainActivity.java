@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 if (i == 1 || i == 2 ||i == 3){
                     isCheckedList[i-1] = true;
                     Intent intent = new Intent(MainActivity.this, RV.class);
-                    intent.putExtra("clave", i);
+                    intent.putExtra("clave", 1);
                     startActivity(intent);
 
                 }else if(i == 4 ){

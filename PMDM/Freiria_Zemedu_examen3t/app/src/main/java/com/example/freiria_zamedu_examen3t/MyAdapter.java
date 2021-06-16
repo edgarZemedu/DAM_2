@@ -13,76 +13,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private static final int REQUEST_CODE = 1;
-    Context context;
-    private final List<Album> miLista;
+    //private static final int REQUEST_CODE = 1;
+    private Context context;
+    private List<Album> miLista;
 
 
     public MyAdapter(List<Album> listaGenero) {
         this.miLista = listaGenero;
     }
-
-    //cargo cada uno de los fragments
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
-
-        return new ViewHolder(view);
-
-    }
-    //vinculación
-    @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        //holder.imagen.setImageResource(miLista.get(positixºon).);
-        holder.nombre.setText(miLista.get(position).getNombre());
-        holder.grupo.setText(miLista.get(position).getGrupo());
-        holder.imagen.setImageResource(miLista.get(position).getImagen());
-
-        /*holder.nombre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), holder.toString(),Toast.LENGTH_SHORT).show();
-            }
-        });*/
-        holder.remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                miLista.remove(position);
-                // notificamos la eliminación del elemento
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, miLista.size());
-            }
-        });
-        holder.imagenInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //info SnackBarr
-                AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
-                dialog.setTitle( miLista.get(position).getImagen());
-                dialog.setMessage(miLista.get(position).getDescripcion());
-                dialog.setPositiveButton("CERRAR", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-                dialog.create().show();
-
-            }
-        });
-
-    }
-    //tamaño
-    @Override
-    public int getItemCount() {
-        return miLista.size();
-    }
-
     //es una clase por si sola del fragment_item
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView ;
@@ -104,9 +48,69 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         }
 
-        @Override
-        public String toString() {
-            return nombre.getText().toString();
+        public TextView getTextView() {
+            return nombre;
         }
     }
+
+    //cargo cada uno de los fragments
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.fragment_item, parent, false);
+
+        return new ViewHolder(view);
+
+    }
+    //vinculación
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        holder.nombre.setText(miLista.get(position).getNombre());
+        holder.grupo.setText(miLista.get(position).getGrupo());
+        holder.imagen.setImageResource(miLista.get(position).getImagen());
+
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                miLista.remove(position);
+                // notificamos la eliminación del elemento
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, miLista.size());
+            }
+        });
+
+        holder.imagenInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
+                dialog.setTitle("INFORMACIÓN");
+                dialog.setMessage(miLista.get(position).getNombre() + "\n" + miLista.get(position).getDescripcion());
+                dialog.setPositiveButton("CERRAR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                dialog.create().show();
+
+                Snackbar.make(v, (miLista.get(position).getNombre() + " - " + miLista.get(position).getGrupo()), Snackbar.LENGTH_LONG)
+                        .setAction("INFORMACIÓN", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.show(); // Mostramos el Diálogo
+                            }
+                        }).show();
+
+            }
+        });
+
+    }
+    //tamaño
+    @Override
+    public int getItemCount() {
+        return miLista.size();
+    }
+
+
 }

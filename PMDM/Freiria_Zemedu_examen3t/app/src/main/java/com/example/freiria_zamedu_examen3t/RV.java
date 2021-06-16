@@ -18,8 +18,6 @@ import java.util.List;
 
 public class RV extends AppCompatActivity {
 
-    private static final int REQUEST_CODE = 1;
-
     public static List<Album> listaAlbum;
     private List<Album> listadoRock;
     private List<Album> listadoBlues;
@@ -65,10 +63,10 @@ public class RV extends AppCompatActivity {
                 getResources().getString(R.string.alovesupreme)));
 
         listaAlbum = new ArrayList<>();
-        listaAlbum.addAll(listadoRock);
+        /*listaAlbum.addAll(listadoRock);
         listaAlbum.addAll(listadoBlues);
-        listaAlbum.addAll(listadoJazz);
-/*
+        listaAlbum.addAll(listadoJazz);*/
+
         Bundle datos = getIntent().getExtras();
         //boolean[] check = datos.getBooleanArray("clave");
         int check = datos.getInt("clave");
@@ -80,13 +78,15 @@ public class RV extends AppCompatActivity {
         }
         if (check == 2){
             listaAlbum.addAll(listadoJazz);
-        }*/
+        }
         if (listaAlbum.isEmpty()) Toast.makeText(this, "Lista album está vacio",Toast.LENGTH_SHORT).show();
+
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment, ItemFragment.newInstance())
                 .commit();
 
+        //Toast.makeText(this,"tamaño: --->"+ listaAlbum.toString(),Toast.LENGTH_SHORT).show();
 
 
     }
