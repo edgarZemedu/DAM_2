@@ -68,25 +68,47 @@ public class RV extends AppCompatActivity {
         listaAlbum.addAll(listadoJazz);*/
 
         Bundle datos = getIntent().getExtras();
-        //boolean[] check = datos.getBooleanArray("clave");
         int check = datos.getInt("clave");
         if (check == 1){
             listaAlbum.addAll(listadoRock);
         }
-        if (check == 0){
+        if (check == 2){
             listaAlbum.addAll(listadoBlues);
         }
-        if (check == 2){
+        if (check == 3){
             listaAlbum.addAll(listadoJazz);
+        }
+        //PARA VARIOS
+        Bundle datosVarios = getIntent().getExtras();
+        String checkVarios = datosVarios.getString("checkVarios");
+
+        switch (checkVarios){
+            case "12":
+                listaAlbum.addAll(listadoRock);
+                listaAlbum.addAll(listadoBlues);
+                break;
+            case "13":
+                listaAlbum.addAll(listadoRock);
+                listaAlbum.addAll(listadoJazz);
+                break;
+            case "23":
+                listaAlbum.addAll(listadoBlues);
+                listaAlbum.addAll(listadoJazz);
+                break;
+            case "123":
+                listaAlbum.addAll(listadoRock);
+                listaAlbum.addAll(listadoBlues);
+                listaAlbum.addAll(listadoJazz);
+                break;
         }
         if (listaAlbum.isEmpty()) Toast.makeText(this, "Lista album está vacio",Toast.LENGTH_SHORT).show();
 
-
+        Toast.makeText(this,"check numero: --->"+ check,Toast.LENGTH_SHORT).show();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment, ItemFragment.newInstance())
+                .add(R.id.contenedorFragment, ItemFragment.newInstance())
                 .commit();
 
-        //Toast.makeText(this,"tamaño: --->"+ listaAlbum.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"fin --> ",Toast.LENGTH_SHORT).show();
 
 
     }

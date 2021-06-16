@@ -34,25 +34,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sp = findViewById(R.id.spinner);
-        listaGenero = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.genero)));
-        listaGenero.addAll(Arrays.asList(getResources().getStringArray(R.array.generos)));
-        ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listaGenero);
+        listaGenero = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.generos)));
+        ArrayAdapter<String> a = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaGenero);
         sp.setAdapter(a);
         //sp.setPrompt("Género: ");
-        boolean[] isCheckedList = {true, false, true};
+        boolean[] isCheckedList = {false, false, false};
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                String[] stringArray = getResources().getStringArray(R.array.listaGenero);
+                String[] stringArray = getResources().getStringArray(R.array.los3Generos);
 
-                if (i == 1 || i == 2 ||i == 3){
-                    isCheckedList[i-1] = true;
+                if (i == 1 || i == 2 || i == 3) {
+                    isCheckedList[i - 1] = true;
                     Intent intent = new Intent(MainActivity.this, RV.class);
-                    intent.putExtra("clave", 1);
+                    intent.putExtra("clave", i);
                     startActivity(intent);
 
-                }else if(i == 4 ){
+                } else if (i == 4) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);//MainActivity.this
                     builder.setTitle("Elige géneros")
@@ -66,8 +65,21 @@ public class MainActivity extends AppCompatActivity {
                             .setPositiveButton("Mostrar Seleccion", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
+
                                     Intent intent = new Intent(MainActivity.this, RV.class);
-                                    intent.putExtra("clave", stringArray[i]);
+                                    String numero = "";
+                                    for (int i = 0; i < stringArray.length; i++) {
+                                        if (isCheckedList[i]) {
+                                            numero += stringArray[i];
+                                        }
+                                    }
+                                    //LOS NUMEROS POSIBLES QUE PUEDEN SER
+                                        //1-2-3
+                                        //12-13
+                                        //23
+                                        //123
+                                    intent.putExtra("claveVarios", numero);
+
                                     startActivity(intent);
 
                                 }
@@ -75,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     builder.show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu1,menu);
+        getMenuInflater().inflate(R.menu.menu1, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

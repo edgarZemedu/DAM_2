@@ -24,12 +24,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Album> miLista;
 
 
-    public MyAdapter(List<Album> listaGenero) {
-        this.miLista = listaGenero;
-    }
     //es una clase por si sola del fragment_item
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView ;
+        public final View mView;
         public final TextView nombre;
         public final TextView grupo;
         public final ImageView imagen;
@@ -53,6 +50,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
+    public MyAdapter(List<Album> listaGenero) {
+        this.miLista = listaGenero;
+    }
+
     //cargo cada uno de los fragments
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -63,6 +64,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return new ViewHolder(view);
 
     }
+
     //vinculación
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
@@ -106,6 +108,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         });
 
     }
+
     //tamaño
     @Override
     public int getItemCount() {

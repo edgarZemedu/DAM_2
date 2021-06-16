@@ -104,20 +104,17 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         });
 
 
-        holder.remove.setOnClickListener(new View.OnClickListener()
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listadoAlbums.remove(position);
+                // notificamos la eliminación del elemento
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, listadoAlbums.size());
+            }
+        });
 
-    {
-        @Override
-        public void onClick (View v){
-        listadoAlbums.remove(position);
-        // notificamos la eliminación del elemento
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, listadoAlbums.size());
     }
-    });
-
-
-}
 
 
     @Override

@@ -54,23 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     isCheckedList[i-1] = true;
 
                     Intent intent = new Intent(MainActivity.this, RV.class);
-                    Bundle datosDelIntent = getIntent().getExtras();
-                    boolean[] check = datosDelIntent.getBooleanArray("check");
 
-
-                    //listaAlbum = new ArrayList<>();
-//                    if (check[0]) {
-//                        //listaAlbum.addAll(listadoRock);
-//                         cbRock.setChecked(true);
-//                    }
-//                    if (check[1]) {
-//                        //listaAlbum.addAll(listadoBlues);
-//                        cbBlues.setChecked(true);
-//                    }
-//                    if (check[2]) {
-//                        //listaAlbum.addAll(listadoJazz);
-//                         cbJazz.setChecked(true);
-//                    }
                     intent.putExtra("checkM", isCheckedList);
                     startActivity(intent);
 

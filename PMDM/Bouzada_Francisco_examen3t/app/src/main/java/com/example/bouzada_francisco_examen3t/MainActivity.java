@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, Main3Activity.class);
 
                     //String message = ((TextView)view).getText().toString(); // Leemos el string que esté escrito dentro
-                    intent.putExtra("numero", 1); // Añadimos un valor de tipo int
+                    intent.putExtra("numero", position); // Añadimos un valor de tipo int
 
                     startActivity(intent);
 
@@ -231,8 +231,6 @@ public class MainActivity extends AppCompatActivity {
                         } else if (mensaje.equals(" Rock Blues Jazz")) {
                             opcion = 7;
                         }
-
-
 
                         // Creamos un intent, su contexto es el objeto de tipo MainActivity que encierra este escuchador
                         // y su acción s la inicialización de la clase SecondActivity
