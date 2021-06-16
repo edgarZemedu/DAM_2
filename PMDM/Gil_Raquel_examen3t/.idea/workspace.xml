@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c13e62a2-14db-4d0b-b1a4-5e909962ee49" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/java/com/example/bouzada_francisco_examen3t/ItemFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/java/com/example/bouzada_francisco_examen3t/ListaAlbums.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/java/com/example/bouzada_francisco_examen3t/Main3Activity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/java/com/example/bouzada_francisco_examen3t/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/java/com/example/bouzada_francisco_examen3t/MyItemRecyclerViewAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/java/com/example/bouzada_francisco_examen3t/dummy/DummyContent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/abbeyroad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/alovesupreme.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/appetitefordestruction.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/areyouexperienced.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/backinblack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/bitchesbrew.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/disco.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/exileonmainst.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/kindofblue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/ladysoul.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/ledzeppeliniv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/neverloved.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/velvetunderground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/whatsgoingon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/layout/elemento6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/layout/fragment_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/layout/fragment_item_list.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/menu/menu2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/menu/menu3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/values/desc_albums.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/.idea/modules/Freiria_Zemedu_examen3t.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Gil_Raquel_examen3t.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/androidTest/java/com/example/examen2conextra/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/androidTest/java/com/example/bouzada_francisco_examen3t/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/java/com/example/examen2conextra/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/layout/activity_main3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/app/src/test/java/com/example/examen2conextra/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/app/src/test/java/com/example/bouzada_francisco_examen3t/ExampleUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Examen2conExtra/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bouzada_Francisco_examen3t/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/ItemFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/ItemFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/MyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/MyAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/RV.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/java/com/example/freiria_zamedu_examen3t/RV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/layout/activity_r_v.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/layout/activity_r_v.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/layout/fragment_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/layout/fragment_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/layout/fragment_item_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/layout/fragment_item_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Freiria_Zemedu_examen3t/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1u28V0npW66FixrapBbcJULiqAd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c13e62a2-14db-4d0b-b1a4-5e909962ee49" name="Default Changelist" comment="" />
+      <created>1623852343226</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623852343226</updated>
+    </task>
+    <servers />
+  </component>
+</project>
